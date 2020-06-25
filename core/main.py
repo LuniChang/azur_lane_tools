@@ -24,14 +24,14 @@ import common.screen as screen
 handle = screen.getWinHandle()
 main = tk.Tk()
 
-replyHongRanD3 = ReplyHongranD3(handle, 3)
-replySpcEssexD3 = ReplySpcEssexD3(handle, 5)
+replyHongRanD3 = ReplyHongranD3(handle, 2)
+replySpcEssex = ReplySpcEssexD3(handle, 5)
 
 
 def resetHandle():
     handle = screen.getWinHandle()
     replyHongRanD3.handle = handle
-    eeplySpcEssexD3 = handle
+    replySpcEssex.handle = handle
 
 
 main.title("碧蓝航线工具")
@@ -53,10 +53,19 @@ tk.Button(fm1, text="开始红染D3", width=10, height=1,
 tk.Button(fm1, text="结束红染", width=10, height=1,
           command=replyHongRanD3.stop).grid(row=2, column=2)
 
+
+tk.Label(fm1,text="0自动1234EX按顺序").grid(row=3,column=0)
+assignLevel=tk.IntVar()
+assignLevel.set(0)
+def startSpcEssex():
+    replySpcEssex.assignLevel=int(assignLevel.get())
+    replySpcEssex.start()
+tk.Entry(fm1,textvariable=assignLevel,width=10).grid(row=3,column=1)
+
 tk.Button(fm1, text="开始特别演戏-埃塞克斯", width=20, height=1,
-          command=replySpcEssexD3.start).grid(row=3, column=1)
+          command=startSpcEssex).grid(row=3, column=2)
 tk.Button(fm1, text="结束特别演戏-埃塞克斯", width=20, height=1,
-          command=replySpcEssexD3.stop).grid(row=3, column=2)
+          command=replySpcEssex.stop).grid(row=3, column=3)
 
 
 tk.Label(main, text="工具操作").pack()

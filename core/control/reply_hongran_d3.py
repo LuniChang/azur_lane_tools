@@ -121,16 +121,16 @@ class ReplyHongranD3(BaseControl):
                     if team1MoveCount==6: 
                         self.resetTeamLocation()
                         self.moveUp(1)
-
+                    print("team1BattleCount",team1BattleCount)
                     if team1BattleCount<5:
                         if team1MoveCount==7: 
                             self.resetTeamLocation()
                             self.moveLeft(1)   
                         if team1MoveCount==8: 
-                            # self.resetTeamLocation()
-                            self.moveLeft(2)
+                            self.resetTeamLocation()
+                            self.moveLeft(1)
                         if team1MoveCount==9: 
-                            self.moveLeft(3)
+                            self.moveLeft(2)
 
                         #这里还不够五次就下去回溯 
                         if team1MoveCount==10: 
@@ -142,28 +142,38 @@ class ReplyHongranD3(BaseControl):
                         if team1MoveCount==12: 
                             self.moveRight(2) 
                         if team1MoveCount==13: 
-                            self.resetTeamLocation() 
-                            self.moveDown(1)  
+                            self.moveRight(3) 
                         if team1MoveCount==14: 
                             self.resetTeamLocation() 
-                            self.moveLeft(1) 
+                            self.moveDown(1)  
                         if team1MoveCount==15: 
-                            self.moveLeft(2)     
+                            self.resetTeamLocation() 
+                            self.moveLeft(1) 
                         if team1MoveCount==16: 
+                            self.moveLeft(2)     
+                        if team1MoveCount==17: 
+                            self.moveLeft(3) 
+                        if team1MoveCount==18: 
+                            self.resetTeamLocation() 
+                            self.moveUp(1)
+                        if team1MoveCount==19: 
                             self.resetTeamLocation() 
                             self.moveUp(1) 
                             team1MoveCount=11 #循环
 
                     else:      #这里够五次换队
-                        if team1MoveCount==7 or team1MoveCount==9 : #走上进安全区 （也可拖动走到起点待定）
-                            self.resetTeamLocation() 
-                            self.moveUp(1)
-                        if team1MoveCount>9:
-                            self.resetTeamLocation() 
-                            self.dragPer(50,90,50,40)
-                            self.leftClickPer(50,60) 
-                            time.sleep(10)    
-
+                        # if team1MoveCount==7 or team1MoveCount==9 : #走上进安全区 （也可拖动走到起点待定）
+                        #     self.resetTeamLocation() 
+                        #     self.moveUp(1)
+                        # if team1MoveCount>9:
+                        #     self.resetTeamLocation() 
+                        #     self.dragPer(50,90,50,40)
+                        #     self.leftClickPer(50,60) 
+                        #     time.sleep(10)    
+                        self.resetTeamLocation() 
+                        self.dragPer(50,90,50,30)
+                        self.leftClickPer(50,60) 
+                        time.sleep(10)
                         self.switchTeam()
                         teamNum=2
                    
