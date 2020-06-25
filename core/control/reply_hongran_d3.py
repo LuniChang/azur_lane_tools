@@ -41,6 +41,9 @@ class ReplyHongranD3(BaseControl):
     def isAtD3Ready(self):
         return self.matchResImgInWindow("hongran//d3_ready_20_20_80_80.png")
 
+    def getBossLocation(self):
+        return screen.matchResImgInWindow(self.handle,"hongran//boss_45_45_55_55.png")
+   
     def needUseKey(self):
         return screen.autoCompareResImgHash(self.handle,"hongran//usekey_30_26_70_76.png")
     def useKey(self):
@@ -96,12 +99,13 @@ class ReplyHongranD3(BaseControl):
                         self.resetTeamLocation()
                         self.moveUp(1)
                     if team1MoveCount==1:   
-                        # self.resetTeamLocation()
-                        self.moveUp(2)
+                        self.resetTeamLocation()
+                        self.moveUp(1)
+                    #走到无怪区域  
                     if team1MoveCount==2: 
                         self.resetTeamLocation()
                         self.moveUp(1)
-                    #走到无怪区域   
+                     
                     if team1MoveCount==3: 
                         self.resetTeamLocation()
                         self.moveLeft(1)
@@ -123,41 +127,38 @@ class ReplyHongranD3(BaseControl):
                             self.resetTeamLocation()
                             self.moveLeft(1)   
                         if team1MoveCount==8: 
-                            self.resetTeamLocation()
-                            self.moveLeft(1)
-                        if team1MoveCount==9: 
+                            # self.resetTeamLocation()
                             self.moveLeft(2)
-                        if team1MoveCount==10: 
-                            self.moveLeft(3)    
-                        if team1MoveCount==11: 
-                            self.moveLeft(4)
+                        if team1MoveCount==9: 
+                            self.moveLeft(3)
+
                         #这里还不够五次就下去回溯 
-                        if team1MoveCount==12: 
+                        if team1MoveCount==10: 
                             self.resetTeamLocation() 
                             self.moveDown(1) 
-                        if team1MoveCount==14: 
+                        if team1MoveCount==11: 
                             self.resetTeamLocation() 
                             self.moveRight(1) 
-                        if team1MoveCount==15: 
+                        if team1MoveCount==12: 
                             self.moveRight(2) 
-                        if team1MoveCount==16: 
+                        if team1MoveCount==13: 
                             self.resetTeamLocation() 
                             self.moveDown(1)  
-                        if team1MoveCount==17: 
+                        if team1MoveCount==14: 
                             self.resetTeamLocation() 
                             self.moveLeft(1) 
-                        if team1MoveCount==18: 
+                        if team1MoveCount==15: 
                             self.moveLeft(2)     
-                        if team1MoveCount==19: 
+                        if team1MoveCount==16: 
                             self.resetTeamLocation() 
                             self.moveUp(1) 
                             team1MoveCount=11 #循环
 
                     else:      #这里够五次换队
-                        if team1MoveCount==7 or team1MoveCount==11 : #走上进安全区 （也可拖动走到起点待定）
+                        if team1MoveCount==7 or team1MoveCount==9 : #走上进安全区 （也可拖动走到起点待定）
                             self.resetTeamLocation() 
                             self.moveUp(1)
-                        if team1MoveCount>11:
+                        if team1MoveCount>9:
                             self.resetTeamLocation() 
                             self.dragPer(50,90,50,40)
                             self.leftClickPer(50,60) 
@@ -233,7 +234,14 @@ class ReplyHongranD3(BaseControl):
                     team2MoveCount=team2MoveCount+1   
 
 
-            print("onBattleEnd")   
+
+
+            if self.onGetSR():
+                print("onGetSR")  
+                self.clickOnGetSR()
+                time.sleep(2)
+
+           
             if self.onBattleEnd():  
                self.battleContinue()
                time.sleep(2)
@@ -242,8 +250,9 @@ class ReplyHongranD3(BaseControl):
                time.sleep(2)
                
 
-            print("onBattleEndCount") 
+            
             if self.onBattleEndCount():  
+               print("onBattleEndCount") 
                if teamNum==1:
                   team1BattleCount=team1BattleCount+1
                else:

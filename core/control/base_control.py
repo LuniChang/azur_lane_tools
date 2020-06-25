@@ -138,11 +138,9 @@ class BaseControl:
         win32api.SetCursorPos((0, 0))
 
     def onBattleEnd(self):
-        return self.matchResImgInWindow("battle_end1_30_80_50_95.png")
+        return screen.autoCompareResImgHash(self.handle,"battle_end1_30_80_50_95.png")
 
-    def getBossLocation(self):
-        return screen.matchResImgInWindow(self.handle,"boss_45_45_55_55.png")
-   
+
 
     def onBattleEndCount(self):
         return self.matchResImgInWindow("battle_end_68_86_92_96.png")
@@ -151,14 +149,21 @@ class BaseControl:
     def isInMap(self):
         return screen.autoCompareResImgHash(self.handle,"in_map_65_90_100_100.png")
 
+    def onGetSR(self):
+        return screen.autoCompareResImgHash(self.handle,"on_get_sr_70_20_95_60.png")
+
+    def clickOnGetSR(self):
+        self.leftClickPer(95,75)
+        
     def isNewMission(self):
         return self.matchResImgInWindow("new_mission_28_26_70_76.png")
 
     def onSelectTeam(self):
         print("onSelectTeam")
-        # return self.matchResImgInWindow("on_select_team_78_80_92_88.png")
         return screen.autoCompareResImgHash(self.handle,"on_select_team_78_80_92_88.png")
-
+    def onSelectTeamByMatch(self):#这种方式在地图会有问题
+        print("onSelectTeamByMatch")
+        return self.matchResImgInWindow("on_select_team_78_80_92_88.png")  
     def intoMap(self):
         win32gui.SetForegroundWindow(self.handle)
         self.leftClick(self.getPosX(80), self.getPosY(85))    
@@ -198,4 +203,7 @@ class BaseControl:
 
     def run(self):
         pass
+
+ 
+
 pass
