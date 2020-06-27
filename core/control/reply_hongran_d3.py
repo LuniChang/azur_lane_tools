@@ -86,6 +86,10 @@ class ReplyHongranD3(BaseControl):
             if self.needUseKey():  
                self.useKey()
                time.sleep(10)
+            print("isNewMission")   
+            if self.isNewMission():  
+               self.leftClickPer(50,50)
+               time.sleep(2)
 
 
             print("isInMap")
@@ -93,6 +97,7 @@ class ReplyHongranD3(BaseControl):
                 if teamNum==1:
                     print("team1MoveCount",team1MoveCount)
                     if team1MoveCount==0:
+                        time.sleep(3)
                         self.resetTeamLocation()
                         self.moveRight(2)
                         self.moveRight(3)
@@ -136,6 +141,7 @@ class ReplyHongranD3(BaseControl):
                         if team1MoveCount==10: 
                             self.resetTeamLocation() 
                             self.moveDown(1) 
+                        #在中间    
                         if team1MoveCount==11: 
                             self.resetTeamLocation() 
                             self.moveRight(1) 
@@ -143,9 +149,11 @@ class ReplyHongranD3(BaseControl):
                             self.moveRight(2) 
                         if team1MoveCount==13: 
                             self.moveRight(3) 
+                         
                         if team1MoveCount==14: 
                             self.resetTeamLocation() 
-                            self.moveDown(1)  
+                            self.moveDown(1)
+                        #在底部    
                         if team1MoveCount==15: 
                             self.resetTeamLocation() 
                             self.moveLeft(1) 
@@ -172,7 +180,13 @@ class ReplyHongranD3(BaseControl):
                         #     time.sleep(10)    
                         self.resetTeamLocation() 
                         self.dragPer(50,90,50,30)
-                        self.leftClickPer(50,60) 
+                        #需要做判断
+
+                        if team1MoveCount<=9:
+                           self.leftClickPer(50,80) 
+                        if team1MoveCount>9:
+                           self.leftClickPer(50,65) 
+                           
                         time.sleep(10)
                         self.switchTeam()
                         teamNum=2
@@ -209,7 +223,8 @@ class ReplyHongranD3(BaseControl):
                         self.resetTeamLocation()
                         self.moveUp(1)   
                     if team2MoveCount==6:
-                        self.moveUp(2)  
+                        self.resetTeamLocation()
+                        self.moveUp(1)  
 
                     if team2BattleCount<2:
                         if team2MoveCount==7:
@@ -268,7 +283,7 @@ class ReplyHongranD3(BaseControl):
                else:
                   team2BattleCount=team2BattleCount+1  
                self.battleContinue()
-               time.sleep(3)
+               time.sleep(9)
 
             xylist= self.getBossLocation() 
             if  len(xylist)>0:
@@ -279,7 +294,7 @@ class ReplyHongranD3(BaseControl):
                 team1MoveCount=0
                 team2MoveCount=0
                 teamNum=1
-                time.sleep(60)
+                time.sleep(20)
 
            
 

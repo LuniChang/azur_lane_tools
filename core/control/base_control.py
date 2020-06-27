@@ -61,8 +61,10 @@ class BaseControl:
 
     def leftClickPer(self,x,y):
         win32api.SetCursorPos((self.getPosX(x), self.getPosY(y)))
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
-        win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)   
+        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN , 0, 0, 0, 0)  
+        time.sleep(0.2)
+        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP , 0, 0, 0, 0)  
+         
         self.resetCusor() 
 
     
@@ -101,7 +103,7 @@ class BaseControl:
         self.leftClickPer(82,96)
         time.sleep(3)
         self.leftClickPer(82,96)
-        time.sleep(2)
+        time.sleep(3)
         self.resetCusor()
 
     def moveLeft(self,num=1):
@@ -134,7 +136,7 @@ class BaseControl:
         self.resetCusor()
 
     def resetCusor(self):
-        time.sleep(0.2)
+        time.sleep(0.5)
         win32api.SetCursorPos((0, 0))
 
     def onBattleEnd(self):
@@ -156,7 +158,7 @@ class BaseControl:
         self.leftClickPer(95,75)
         
     def isNewMission(self):
-        return self.matchResImgInWindow("new_mission_28_26_70_76.png")
+        return screen.autoCompareResImgHash(self.handle,"new_mission_28_26_70_76.png")
 
     def onSelectTeam(self):
         print("onSelectTeam")

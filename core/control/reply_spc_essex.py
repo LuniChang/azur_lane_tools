@@ -40,7 +40,7 @@ class ReplySpcEssexD3(BaseControl):
         self.leftClickPer(90, 55)
 
     def clickEasy(self):
-        self.leftClickPer(90, 65)
+        self.leftClickPer(90, 70)
 
     def run(self):
         battleCount = 0
