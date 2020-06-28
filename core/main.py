@@ -41,7 +41,7 @@ fm1 = tk.Frame(main)
 fm1.pack()
 
 
-tk.Label(fm1, text="模拟器分辨率1280*720").grid(row=0, column=2, columnspan=3)
+tk.Label(fm1, text="模拟器分辨率1024*576").grid(row=0, column=2, columnspan=3)
 
 
 tk.Button(fm1, text="重设窗口句柄", width=10, height=1,
@@ -111,4 +111,4 @@ hashBtn.pack()
 main.mainloop()
 
 
-# exit()
+exit()

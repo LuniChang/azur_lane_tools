@@ -152,6 +152,7 @@ class BaseControl:
         return screen.autoCompareResImgHash(self.handle,"in_map_65_90_100_100.png")
 
     def onGetSR(self):
+        print("onGetSR") 
         return screen.autoCompareResImgHash(self.handle,"on_get_sr_70_20_95_60.png")
 
     def clickOnGetSR(self):

@@ -55,11 +55,13 @@ class ReplyHongranD3(BaseControl):
 
     
     def run(self):    
-        team1BattleCount=0
+        team1BattleCount=2
         team2BattleCount=0
         team1MoveCount=0
         team2MoveCount=0
         teamNum=1
+
+
         while self._isRun:
             win32gui.SetForegroundWindow(self.handle)
            
@@ -88,12 +90,15 @@ class ReplyHongranD3(BaseControl):
                time.sleep(10)
             print("isNewMission")   
             if self.isNewMission():  
-               self.leftClickPer(50,50)
-               time.sleep(2)
-
+               self.leftClickPer(99,99)
+               time.sleep(1)
+               self.leftClickPer(99,99)#防止有任务弹出
+               time.sleep(1)
 
             print("isInMap")
             if self.isInMap():
+                
+                time.sleep(1)
                 if teamNum==1:
                     print("team1MoveCount",team1MoveCount)
                     if team1MoveCount==0:
@@ -183,9 +188,9 @@ class ReplyHongranD3(BaseControl):
                         #需要做判断
 
                         if team1MoveCount<=9:
-                           self.leftClickPer(50,80) 
+                           self.leftClickPer(50,85) 
                         if team1MoveCount>9:
-                           self.leftClickPer(50,65) 
+                           self.leftClickPer(50,70) 
                            
                         time.sleep(10)
                         self.switchTeam()
@@ -260,9 +265,9 @@ class ReplyHongranD3(BaseControl):
 
 
 
-
+ 
             if self.onGetSR():
-                print("onGetSR")  
+                 
                 self.clickOnGetSR()
                 time.sleep(2)
 
