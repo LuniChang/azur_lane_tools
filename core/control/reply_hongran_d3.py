@@ -55,7 +55,7 @@ class ReplyHongranD3(BaseControl):
 
     
     def run(self):    
-        team1BattleCount=2
+        team1BattleCount=0
         team2BattleCount=0
         team1MoveCount=0
         team2MoveCount=0
@@ -288,7 +288,7 @@ class ReplyHongranD3(BaseControl):
                else:
                   team2BattleCount=team2BattleCount+1  
                self.battleContinue()
-               time.sleep(9)
+               time.sleep(4)
 
             xylist= self.getBossLocation() 
             if  len(xylist)>0:
