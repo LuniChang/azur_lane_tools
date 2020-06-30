@@ -153,10 +153,10 @@ class BaseControl:
 
     def onGetSR(self):
         print("onGetSR") 
-        return screen.autoCompareResImgHash(self.handle,"on_get_sr_70_20_95_60.png")
+        return screen.autoCompareResImgHashValue(self.handle,"on_get_sr_70_20_95_60.png")>0.2
 
     def clickOnGetSR(self):
-        self.leftClickPer(95,75)
+        self.leftClickPer(98,98)
         
     def isNewMission(self):
         return screen.autoCompareResImgHashValue(self.handle,"new_mission_28_26_70_76.png")>0.15

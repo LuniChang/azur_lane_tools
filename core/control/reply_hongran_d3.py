@@ -69,8 +69,13 @@ class ReplyHongranD3(BaseControl):
             self.resetCusor() 
             print("isAtHome")
             if self.isAtHome():
-               self.clickD3()
-               time.sleep(2)
+                team1BattleCount=0
+                team2BattleCount=0
+                team1MoveCount=0
+                team2MoveCount=0
+                teamNum=1
+                self.clickD3()
+                time.sleep(2)
              
             print("isAtD3Ready")
             if self.isAtD3Ready():
@@ -294,11 +299,7 @@ class ReplyHongranD3(BaseControl):
             if  len(xylist)>0:
                 x,y=xylist[0]
                 self.leftClick(x,y)
-                team1BattleCount=-1
-                team2BattleCount=0
-                team1MoveCount=0
-                team2MoveCount=0
-                teamNum=1
+              
                 time.sleep(20)
 
            
