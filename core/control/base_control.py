@@ -159,7 +159,7 @@ class BaseControl:
         self.leftClickPer(95,75)
         
     def isNewMission(self):
-        return screen.autoCompareResImgHashValue(self.handle,"new_mission_28_26_70_76.png")>0.2
+        return screen.autoCompareResImgHashValue(self.handle,"new_mission_28_26_70_76.png")>0.15
 
     def onSelectTeam(self):
         print("onSelectTeam")
