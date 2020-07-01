@@ -271,7 +271,7 @@ class ReplyHongranD3(BaseControl):
 
 
  
-            if self.onGetSR():
+            if self.onGetSR() or self.onGetSSR() :
                  
                 self.clickOnGetSR()
                 time.sleep(2)
