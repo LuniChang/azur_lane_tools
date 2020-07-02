@@ -140,12 +140,14 @@ class BaseControl:
         win32api.SetCursorPos((0, 0))
 
     def onBattleEnd(self):
-        return screen.autoCompareResImgHash(self.handle,"battle_end1_30_80_50_95.png")
+        return screen.autoCompareResImgHash(self.handle,"on_battle_end_10_10_90_30.png") \
+            or screen.autoCompareResImgHash(self.handle,"battle_end1_30_80_50_95.png") 
 
 
 
     def onBattleEndCount(self):
-        return self.matchResImgInWindow("battle_end_68_86_92_96.png")
+        return self.matchResImgInWindow("battle_end_68_86_92_96.png")\
+            # or screen.autoCompareResImgHash(self.handle,"battle_end2_68_86_92_96.png")
 
 
     def isInMap(self):

@@ -41,6 +41,10 @@ class ReplySpcEssexD3(BaseControl):
 
     def clickEasy(self):
         self.leftClickPer(90, 70)
+    def onBattleEndCount(self):
+        return self.matchResImgInWindow("battle_end_68_86_92_96.png")\
+            or screen.autoCompareResImgHash(self.handle,"battle_end2_68_86_92_96.png")
+
 
     def run(self):
         battleCount = 0
