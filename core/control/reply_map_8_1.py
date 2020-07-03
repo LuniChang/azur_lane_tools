@@ -54,7 +54,8 @@ class ReplyMap81(BaseControl):
         team1MoveCount=0
         team2MoveCount=0
         teamNum=1
-
+        self.resetTeamLocation()
+        self.moveRight(3)
 
         while self._isRun:
             win32gui.SetForegroundWindow(self.handle)
@@ -111,7 +112,8 @@ class ReplyMap81(BaseControl):
                     if team1MoveCount==2: 
                         self.moveRight(2)
                     if team1MoveCount==3: #E3
-                        self.moveRight(3)
+                        self.resetTeamLocation()
+                        self.moveRight(1)
 
                     #切队
                     if team1MoveCount==4: 
