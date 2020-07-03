@@ -9,13 +9,12 @@ from control.reply_hongran_d3 import ReplyHongranD3
 
 from control.reply_spc_essex import ReplySpcEssexD3
 
+from control.reply_map_8_1 import ReplyMap81
+
 import common.screen as screen
 
 
-# def MAKELPARAM(x,y):
-#     return x+(y<<16)
 
-# class MuMuClick:
 
 # 从顶层窗口向下搜索主窗口，无法搜索子窗口
 # FindWindow(lpClassName=None, lpWindowName=None)  窗口类名 窗口标题名
@@ -26,13 +25,13 @@ main = tk.Tk()
 
 replyHongRanD3 = ReplyHongranD3(handle, 3)
 replySpcEssex = ReplySpcEssexD3(handle, 5)
-
+replyMap81= ReplyMap81(handle, 2)
 
 def resetHandle():
     handle = screen.getWinHandle()
     replyHongRanD3.handle = handle
     replySpcEssex.handle = handle
-
+    replyMap81.handle = handle
 
 main.title("碧蓝航线工具")
 main.geometry("480x780")
@@ -60,12 +59,20 @@ assignLevel.set(0)
 def startSpcEssex():
     replySpcEssex.assignLevel=int(assignLevel.get())
     replySpcEssex.start()
+    
 tk.Entry(fm1,textvariable=assignLevel,width=10).grid(row=3,column=1)
 
 tk.Button(fm1, text="开始特别演戏-埃塞克斯", width=20, height=1,
           command=startSpcEssex).grid(row=3, column=2)
 tk.Button(fm1, text="结束特别演戏-埃塞克斯", width=20, height=1,
           command=replySpcEssex.stop).grid(row=3, column=3)
+
+
+tk.Button(fm1, text="开始8-1", width=20, height=1,
+          command=replyMap81.start).grid(row=4, column=1)
+tk.Button(fm1, text="结束8-1", width=20, height=1,
+          command=replyMap81.stop).grid(row=4, column=2)
+
 
 
 tk.Label(main, text="工具操作").pack()

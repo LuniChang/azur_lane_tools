@@ -197,7 +197,7 @@ class ReplyHongranD3(BaseControl):
                         if team1MoveCount>9:
                            self.leftClickPer(50,70) 
                            
-                        time.sleep(10)
+                        time.sleep(15)
                         self.switchTeam()
                         teamNum=2
                    
