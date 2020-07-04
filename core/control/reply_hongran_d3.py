@@ -113,7 +113,7 @@ class ReplyHongranD3(BaseControl):
                         self.moveRight(3)
                         self.resetTeamLocation()
                         self.moveUp(1)
-                    if team1MoveCount==1:   
+                    if team1MoveCount==1:   #此处经常走不到
                         self.resetTeamLocation()
                         self.moveUp(1)
                     #走到无怪区域  

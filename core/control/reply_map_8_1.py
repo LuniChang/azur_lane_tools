@@ -44,7 +44,7 @@ class ReplyMap81(BaseControl):
         return self.matchResImgInWindow("map8//81ready_20_30_80_86.png")
 
     def getBossLocation(self):
-        return screen.matchResImgInWindow(self.handle,"hongran//boss_45_45_55_55.png")
+        return screen.matchResImgInWindow(self.handle,"map8//boss_48_45_54_55.png")
 
 
     
@@ -54,8 +54,6 @@ class ReplyMap81(BaseControl):
         team1MoveCount=0
         team2MoveCount=0
         teamNum=1
-        self.resetTeamLocation()
-        self.moveRight(3)
 
         while self._isRun:
             win32gui.SetForegroundWindow(self.handle)
@@ -92,6 +90,43 @@ class ReplyMap81(BaseControl):
                self.leftClickPer(99,99)#防止有任务弹出
                time.sleep(2)
 
+           
+
+
+
+ 
+            if self.onGetSR() or self.onGetSSR() :
+                 
+                self.clickOnGetSR()
+                time.sleep(2)
+
+           
+            if self.onBattleEnd():  
+               self.battleContinue()
+               time.sleep(2)
+            if self.onGetItems():   
+               self.battleContinue()
+               time.sleep(2)
+               
+
+            
+            if self.onBattleEndCount():  
+               print("onBattleEndCount") 
+               if teamNum==1:
+                  team1BattleCount=team1BattleCount+1
+               else:
+                  team2BattleCount=team2BattleCount+1  
+               self.battleContinue()
+               time.sleep(4)
+
+            xylist= self.getBossLocation() 
+            if  len(xylist)>0:
+                x,y=xylist[0]
+                self.leftClick(x,y)
+              
+                time.sleep(20)
+
+           
             print("isInMap")
             if self.isInMap():
                 
@@ -161,16 +196,7 @@ class ReplyMap81(BaseControl):
 
                     else:      #这里够4次换队
   
-                        # self.resetTeamLocation() 
-                        # self.dragPer(90,50,10,50)
-                        # #需要做判断
-
-                        # if team1MoveCount<=9:
-                        #    self.leftClickPer(50,50) 
-                        # if team1MoveCount>9:
-                        #    self.leftClickPer(50,50) 
-                           
-                        # time.sleep(10)
+   
                         self.switchTeam()
                         teamNum=2
                    
@@ -183,10 +209,10 @@ class ReplyMap81(BaseControl):
                     if team2MoveCount==0:
                         #往右走1格子
                         self.moveRight(1)
-                        time.sleep(2)
+                        self.resetTeamLocation()
                         self.moveDown(1)
     
-                    if team2MoveCount==1:
+                    if team2MoveCount==1:#B3
                         self.moveDown(2)
 
                     if team2MoveCount==2:
@@ -201,6 +227,7 @@ class ReplyMap81(BaseControl):
                         
                     if team2MoveCount==4:#E3
                         self.moveRight(1)
+
                     if team2MoveCount==5:#E2
                         self.resetTeamLocation()
                         self.moveUp(1)   
@@ -216,43 +243,6 @@ class ReplyMap81(BaseControl):
                         self.switchTeam()
                         self.moveRight(1)        
                     team2MoveCount=team2MoveCount+1   
-
-
-
- 
-            if self.onGetSR() or self.onGetSSR() :
-                 
-                self.clickOnGetSR()
-                time.sleep(2)
-
-           
-            if self.onBattleEnd():  
-               self.battleContinue()
-               time.sleep(2)
-            if self.onGetItems():   
-               self.battleContinue()
-               time.sleep(2)
-               
-
-            
-            if self.onBattleEndCount():  
-               print("onBattleEndCount") 
-               if teamNum==1:
-                  team1BattleCount=team1BattleCount+1
-               else:
-                  team2BattleCount=team2BattleCount+1  
-               self.battleContinue()
-               time.sleep(4)
-
-            xylist= self.getBossLocation() 
-            if  len(xylist)>0:
-                x,y=xylist[0]
-                self.leftClick(x,y)
-              
-                time.sleep(20)
-
-           
-
 
 
             time.sleep(self.interval)

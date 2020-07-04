@@ -124,7 +124,7 @@ class BaseControl:
     def moveUp(self,num=1):
         print("moveUp")
         win32gui.SetForegroundWindow(self.handle)
-        self.leftClickPer(50,50-num*12)
+        self.leftClickPer(50,50-num*13)
         time.sleep(num)
         self.resetCusor()
 
@@ -165,8 +165,11 @@ class BaseControl:
     def clickOnGetSR(self):
         self.leftClickPer(98,98)
         
-    def isNewMission(self):
-        return screen.autoCompareResImgHashValue(self.handle,"new_mission_28_26_70_76.png")>0.15
+    def isNewMission(self):#TODO 待优化
+        print("isNewMission")
+        return screen.autoCompareResImgHashValue(self.handle,"new_mission_28_26_70_76.png") \
+            or screen.autoCompareResImgHash(self.handle,"newtask_28_26_70_30.png") \
+            or self.matchResImgInWindow("newtask_30_68_66_76.png") 
 
     def onSelectTeam(self):
         print("onSelectTeam")
