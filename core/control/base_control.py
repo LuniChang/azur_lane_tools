@@ -168,7 +168,7 @@ class BaseControl:
     def isNewMission(self):#TODO 待优化
         print("isNewMission")
         return screen.autoCompareResImgHashValue(self.handle,"new_mission_28_26_70_76.png") \
-            or self.matchResImgInWindow(self.handle,"newtask_28_26_70_30.png") \
+            or self.matchResImgInWindow("newtask_28_26_70_30.png") \
             or self.matchResImgInWindow("newtask_30_68_66_76.png") 
 
     def onSelectTeam(self):
