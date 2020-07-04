@@ -87,8 +87,8 @@ class ReplyMap81(BaseControl):
             if self.isNewMission():  
                self.leftClickPer(99,99)
                time.sleep(2)
-               self.leftClickPer(99,99)#防止有任务弹出
-               time.sleep(2)
+            #    self.leftClickPer(99,99)#防止有任务弹出
+            #    time.sleep(2)
 
            
 
