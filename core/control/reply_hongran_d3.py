@@ -100,6 +100,43 @@ class ReplyHongranD3(BaseControl):
                self.leftClickPer(99,99)#防止有任务弹出
                time.sleep(1)
 
+            
+
+
+
+ 
+            if self.onGetSR() or self.onGetSSR() :
+                 
+                self.clickOnGetSR()
+                time.sleep(2)
+
+           
+            if self.onBattleEnd():  
+               self.battleContinue()
+               time.sleep(2)
+            if self.onGetItems():   
+               self.battleContinue()
+               time.sleep(2)
+               
+
+            
+            if self.onBattleEndCount():  
+               print("onBattleEndCount") 
+               if teamNum==1:
+                  team1BattleCount=team1BattleCount+1
+               else:
+                  team2BattleCount=team2BattleCount+1  
+               self.battleContinue()
+               time.sleep(4)
+
+            xylist= self.getBossLocation() 
+            if  len(xylist)>0:
+                x,y=xylist[0]
+                self.leftClick(x,y)
+              
+                time.sleep(20)
+
+           
             print("isInMap")
             if self.isInMap():
                 
@@ -267,43 +304,6 @@ class ReplyHongranD3(BaseControl):
                     else:
                         self.leftClickPer(50,50)        
                     team2MoveCount=team2MoveCount+1   
-
-
-
- 
-            if self.onGetSR() or self.onGetSSR() :
-                 
-                self.clickOnGetSR()
-                time.sleep(2)
-
-           
-            if self.onBattleEnd():  
-               self.battleContinue()
-               time.sleep(2)
-            if self.onGetItems():   
-               self.battleContinue()
-               time.sleep(2)
-               
-
-            
-            if self.onBattleEndCount():  
-               print("onBattleEndCount") 
-               if teamNum==1:
-                  team1BattleCount=team1BattleCount+1
-               else:
-                  team2BattleCount=team2BattleCount+1  
-               self.battleContinue()
-               time.sleep(4)
-
-            xylist= self.getBossLocation() 
-            if  len(xylist)>0:
-                x,y=xylist[0]
-                self.leftClick(x,y)
-              
-                time.sleep(20)
-
-           
-
 
 
             time.sleep(self.interval)
