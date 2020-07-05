@@ -206,7 +206,7 @@ class ReplyMap81(BaseControl):
                         if team1MoveCount==20:  #E1
                             self.resetTeamLocation()
                             self.moveRight(1)
-                            team1MoveCount=8 #循环
+                            team1MoveCount=7 #循环
 
                     else:      #这里够4次换队
   
