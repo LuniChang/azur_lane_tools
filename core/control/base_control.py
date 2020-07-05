@@ -169,7 +169,7 @@ class BaseControl:
         print("isNewMission")
         return screen.autoCompareResImgHashValue(self.handle,"new_mission_28_26_70_76.png")>0.1 \
             or screen.autoCompareResImgHashValue(self.handle,"newtask_28_26_70_30.png")>0.2  \
-            or  self.matchResImgInWindow(self.handle,"newtask_30_68_66_76.png") 
+            or  self.matchResImgInWindow("newtask_30_68_66_76.png") 
 
     def onSelectTeam(self):
         print("onSelectTeam")
