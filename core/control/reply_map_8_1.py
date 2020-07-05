@@ -185,11 +185,25 @@ class ReplyMap81(BaseControl):
                             self.moveUp(1)
                         if team1MoveCount==13:  #E2
                             self.resetTeamLocation()
-                            self.moveLeft(3)
-                        if team1MoveCount==14:  #E1
+                            self.moveLeft(1)
+                        if team1MoveCount==14:  #G1
                             self.resetTeamLocation()
                             self.moveUp(1)    
-                        if team1MoveCount==14:  #E1
+                        if team1MoveCount==15:  #E1
+                            self.resetTeamLocation()
+                            self.moveLeft(2)
+                        if team1MoveCount==16:  #E2
+                            self.resetTeamLocation()
+                            self.moveDown(1)
+                        if team1MoveCount==17:  #E3
+                            self.moveDown(2)
+                        if team1MoveCount==18:  #E2
+                            self.resetTeamLocation()
+                            self.moveUp(1)
+                        if team1MoveCount==19:  #E1
+                            self.resetTeamLocation()
+                            self.moveUp(1)
+                        if team1MoveCount==20:  #E1
                             self.resetTeamLocation()
                             self.moveRight(1)
                             team1MoveCount=8 #循环
