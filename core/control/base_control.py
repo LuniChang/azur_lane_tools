@@ -167,9 +167,9 @@ class BaseControl:
         
     def isNewMission(self):#TODO 待优化
         print("isNewMission")
-        return screen.autoCompareResImgHash(self.handle,"new_mission_28_26_70_76.png") \
-            or screen.autoCompareResImgHash(self.handle,"newtask_28_26_70_30.png") \
-            or screen.autoCompareResImgHash(self.handle,"newtask_30_68_66_76.png") 
+        return screen.autoCompareResImgHashValue(self.handle,"new_mission_28_26_70_76.png")>0.2 \
+            or screen.autoCompareResImgHashValue(self.handle,"newtask_28_26_70_30.png")>0.2  \
+            or screen.autoCompareResImgHashValue(self.handle,"newtask_30_68_66_76.png")>0.2 
 
     def onSelectTeam(self):
         print("onSelectTeam")
