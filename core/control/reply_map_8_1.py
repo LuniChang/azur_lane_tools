@@ -119,12 +119,7 @@ class ReplyMap81(BaseControl):
                self.battleContinue()
                time.sleep(4)
 
-            xylist= self.getBossLocation() 
-            if  len(xylist)>0:
-                x,y=xylist[0]
-                self.leftClick(x,y)
-              
-                time.sleep(20)
+            
 
            
             print("isInMap")
@@ -248,7 +243,15 @@ class ReplyMap81(BaseControl):
                         self.moveRight(1)        
                     team2MoveCount=team2MoveCount+1   
 
+            xylist= self.getBossLocation() 
+            if  len(xylist)>0:
+                x,y=xylist[0]
+                self.leftClick(x,y)
+              
+                time.sleep(20)
 
+
+                
             time.sleep(self.interval)
             # screen.grabCaptureDir(self.handle,"reply_battle")
 
