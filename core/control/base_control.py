@@ -94,7 +94,7 @@ class BaseControl:
         print("onSelectTeam")
         win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(82,96)
-        time.sleep(1)
+        time.sleep(2)
         self.resetCusor()
         
     def resetTeamLocation(self):

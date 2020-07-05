@@ -72,8 +72,13 @@ class ReplyMap81(BaseControl):
              
             print("isAtInMapReady")
             if self.isAtInMapReady():
-               self.intoMap()
-               time.sleep(2)
+                team1BattleCount=0
+                team2BattleCount=0
+                team1MoveCount=0
+                team2MoveCount=0
+                teamNum=1
+                self.intoMap()
+                time.sleep(2)
 
             print("onSelectTeam")
             if self.onSelectTeam():  
@@ -247,7 +252,7 @@ class ReplyMap81(BaseControl):
             if  len(xylist)>0:
                 x,y=xylist[0]
                 self.leftClick(x,y)
-              
+                
                 time.sleep(20)
 
 
