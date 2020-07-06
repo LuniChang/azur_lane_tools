@@ -88,7 +88,7 @@ class ReplyMap81(BaseControl):
                time.sleep(2)
                
            
-            print("isNewMission")   
+          
             if self.isNewMission():  
                self.leftClickPer(99,99)
                time.sleep(2)
