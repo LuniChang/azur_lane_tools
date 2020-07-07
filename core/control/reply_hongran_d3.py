@@ -96,9 +96,9 @@ class ReplyHongranD3(BaseControl):
             print("isNewMission")   
             if self.isNewMission():  
                self.leftClickPer(99,99)
-               time.sleep(1)
-               self.leftClickPer(99,99)#防止有任务弹出
-               time.sleep(1)
+            #    time.sleep(1)
+            #    self.leftClickPer(99,99)#防止有任务弹出
+               time.sleep(3)
 
             
 
