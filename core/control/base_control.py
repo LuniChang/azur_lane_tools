@@ -97,13 +97,13 @@ class BaseControl:
         time.sleep(3)
         self.resetCusor()
 
-    def resetTeamLocation(self):
+    def resetTeamLocation(self,t=3):
         print("resetTeamLocation")
         win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(82, 96)
-        time.sleep(3)
+        time.sleep(t)
         self.leftClickPer(82, 96)
-        time.sleep(3)
+        time.sleep(t)
         self.resetCusor()
 
     def moveLeft(self, num=1):
