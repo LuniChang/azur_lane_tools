@@ -96,8 +96,6 @@ class ReplyHongranD3(BaseControl):
             print("isNewMission")   
             if self.isNewMission():  
                self.leftClickPer(99,99)
-            #    time.sleep(1)
-            #    self.leftClickPer(99,99)#防止有任务弹出
                time.sleep(3)
 
             
@@ -134,7 +132,10 @@ class ReplyHongranD3(BaseControl):
            
             print("isInMap")
             if self.isInMap():
-                
+                if self.isNewMission():  
+                    self.leftClickPer(99,99)
+                    time.sleep(3)
+
                 time.sleep(1)
                 if teamNum==1:
                     print("team1MoveCount",team1MoveCount)

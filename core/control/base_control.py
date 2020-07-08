@@ -97,9 +97,11 @@ class BaseControl:
         time.sleep(3)
         self.resetCusor()
 
-    def resetTeamLocation(self,t=3):
+    def resetTeamLocation(self, t=3):
         print("resetTeamLocation")
         win32gui.SetForegroundWindow(self.handle)
+        self.leftClickPer(99, 99)#防止任务弹出
+        time.sleep(0.5)
         self.leftClickPer(82, 96)
         time.sleep(t)
         self.leftClickPer(82, 96)
@@ -164,9 +166,9 @@ class BaseControl:
 
     def isNewMission(self):  # TODO 待优化
         print("isNewMission")
-        return screen.autoCompareResImgHashValue(self.handle, "new_mission_28_26_70_76.png") > 0.1 \
-            or screen.autoCompareResImgHashValue(self.handle, "newtask_28_26_70_30.png") > 0.1  \
-            or screen.autoCompareResImgHashValue(self.handle, "newtask_30_68_66_76.png") > 0.1
+        return screen.autoCompareResImgHash(self.handle, "new_mission_28_26_70_76.png") \
+            or screen.autoCompareResImgHash(self.handle, "newtask_28_26_70_30.png") \
+            or screen.autoCompareResImgHash(self.handle, "newtask_30_68_66_76.png")
 
     def onSelectTeam(self):
         print("onSelectTeam")
