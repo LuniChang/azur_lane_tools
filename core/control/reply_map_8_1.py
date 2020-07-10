@@ -254,13 +254,13 @@ class ReplyMap81(BaseControl):
                         self.switchTeam()
                         teamNum=1
                     if team2MoveCount==8:#H2  无怪
-                        self.switchTeam()
+                        self.resetTeamLocation()
                         self.moveRight(1)  
                     if team2MoveCount==9:#I2  
-                        self.switchTeam()
-                        self.moveRight(1) 
+                        # self.resetTeamLocation()
+                        self.moveRight(2) 
                     if team2MoveCount==10:#J2  
-                        self.switchTeam()
+                        self.resetTeamLocation()
                         self.moveRight(1)        
                     team2MoveCount=team2MoveCount+1   
 
