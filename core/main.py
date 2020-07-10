@@ -23,7 +23,7 @@ import common.screen as screen
 handle = screen.getWinHandle()
 main = tk.Tk()
 
-replyHongRanD3 = ReplyHongranD3(handle, 3)
+replyHongRanD3 = ReplyHongranD3(handle, 2)
 replySpcEssex = ReplySpcEssexD3(handle, 5)
 replyMap81= ReplyMap81(handle, 2)
 

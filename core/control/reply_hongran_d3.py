@@ -211,7 +211,7 @@ class ReplyHongranD3(BaseControl):
                         if team1MoveCount==19: 
                             self.resetTeamLocation() 
                             self.moveUp(1) 
-                            team1MoveCount=10 #循环
+                            team1MoveCount=9 #循环
 
                     else:      #这里够五次换队
                         # if team1MoveCount==7 or team1MoveCount==9 : #走上进安全区 （也可拖动走到起点待定）

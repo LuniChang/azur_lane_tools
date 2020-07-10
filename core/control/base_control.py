@@ -114,6 +114,7 @@ class BaseControl:
         print("moveLeft")
         win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(50-num*10, 50)
+        self.leftClickPer(50-num*10, 50)
         time.sleep(num)
         self.resetCusor()
 
@@ -122,6 +123,7 @@ class BaseControl:
         win32gui.SetForegroundWindow(self.handle)
 
         self.leftClickPer(50+num*10, 50)
+        self.leftClickPer(50+num*10, 50)
         time.sleep(num)
         self.resetCusor()
 
@@ -129,13 +131,14 @@ class BaseControl:
         print("moveUp")
         win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(50, 50-num*13)
+        self.leftClickPer(50, 50-num*13)
         time.sleep(num)
         self.resetCusor()
 
     def moveDown(self, num=1):
         print("moveDown")
         win32gui.SetForegroundWindow(self.handle)
-
+        self.leftClickPer(50, 50+num*15)
         self.leftClickPer(50, 50+num*15)
         time.sleep(num)
         self.resetCusor()
