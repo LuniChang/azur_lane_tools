@@ -269,7 +269,7 @@ class ReplyMap81(BaseControl):
                 x,y=xylist[0]
                 self.leftClick(x,y)
                 
-                time.sleep(20)
+                time.sleep(5)
 
 
                 
