@@ -228,9 +228,10 @@ class ReplyHongranD3(BaseControl):
 
                         if team1MoveCount<=9:
                            self.leftClickPer(50,85) 
-                        if team1MoveCount>9:
+                        if team1MoveCount>9 and team1MoveCount<15:
                            self.leftClickPer(50,70) 
-                           
+                        if team1MoveCount>=15:
+                           self.leftClickPer(50,60)    
                         time.sleep(15)
                         self.switchTeam()
                         teamNum=2
@@ -269,34 +270,35 @@ class ReplyHongranD3(BaseControl):
                     if team2MoveCount==6:
                         self.resetTeamLocation()
                         self.moveUp(1)  
+                    if team2MoveCount==7:
+                        self.resetTeamLocation() 
+                        self.moveLeft(1)  
+                    if team2MoveCount==8:
+                        self.moveLeft(2)    
+                    if team2MoveCount==9:
+                        self.moveLeft(3)    
 
                     if team2BattleCount<2:
-                        if team2MoveCount==7:
-                            self.resetTeamLocation() 
-                            self.moveLeft(1)  
-                        if team2MoveCount==8:
-                            self.moveLeft(2)    
-                        if team2MoveCount==9:
-                            self.moveLeft(3)        
+                            
                         if team2MoveCount==10:
-                            self.resetTeamLocation()
+                            self.resetTeamLocation(4)
                             self.moveDown(1)   
                         if team2MoveCount==11:
                             self.moveDown(2)   
                         if team2MoveCount==12:
-                            self.resetTeamLocation()
+                            self.resetTeamLocation(4)
                             self.moveRight(1)   
                         if team2MoveCount==13:
                             self.moveRight(2)  
                         if team2MoveCount==14:
                             self.moveRight(3)  
                         if team2MoveCount==15:
-                            self.resetTeamLocation()
+                            self.resetTeamLocation(4)
                             self.moveUp(1)    
                         if team2MoveCount==16:
                             self.moveUp(2) 
                         if team2MoveCount==17:
-                            self.resetTeamLocation() 
+                            self.resetTeamLocation(4) 
                             team2MoveCount=6   
                     else:
                         self.leftClickPer(50,50)        
