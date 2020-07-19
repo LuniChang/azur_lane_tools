@@ -231,7 +231,7 @@ class ReplyHongranD3(BaseControl):
                         if team1MoveCount>9 and team1MoveCount<15:
                            self.leftClickPer(50,70) 
                         if team1MoveCount>=15:
-                           self.leftClickPer(50,60)    
+                           self.leftClickPer(50,55)    
                         time.sleep(15)
                         self.switchTeam()
                         teamNum=2
@@ -276,7 +276,8 @@ class ReplyHongranD3(BaseControl):
                     if team2MoveCount==8:
                         self.moveLeft(2)    
                     if team2MoveCount==9:
-                        self.moveLeft(3)    
+                        self.resetTeamLocation() 
+                        self.moveLeft(1)    
 
                     if team2BattleCount<2:
                             
@@ -300,8 +301,11 @@ class ReplyHongranD3(BaseControl):
                         if team2MoveCount==17:
                             self.resetTeamLocation(4) 
                             team2MoveCount=6   
-                    else:
-                        self.leftClickPer(50,50)        
+                            
+                    if team2BattleCount==2:
+                         self.leftClickPer(50,50)  
+                        
+                              
                     team2MoveCount=team2MoveCount+1  
                     
                      
