@@ -226,9 +226,9 @@ class ReplyHongranD3(BaseControl):
                         self.dragPer(50,90,50,30)
                         #需要做判断
 
-                        if team1MoveCount<=9:
+                        if team1MoveCount<=10:
                            self.leftClickPer(50,85) 
-                        if team1MoveCount>9 and team1MoveCount<15:
+                        if team1MoveCount>910 and team1MoveCount<15:
                            self.leftClickPer(50,70) 
                         if team1MoveCount>=15:
                            self.leftClickPer(50,55)    
