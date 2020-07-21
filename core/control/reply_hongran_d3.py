@@ -52,7 +52,14 @@ class ReplyHongranD3(BaseControl):
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0) 
         self.resetCusor()  
-
+    
+    def findAndClickBoss(self):
+        xylist= self.getBossLocation() 
+        if  len(xylist)>0:
+            x,y=xylist[0]
+            self.leftClick(x,y)
+            
+            time.sleep(5)
     
     def run(self):    
         team1BattleCount=0
@@ -128,15 +135,15 @@ class ReplyHongranD3(BaseControl):
                time.sleep(4)
 
             
-
+            self.findAndClickBoss()
            
             print("isInMap")
             if self.isInMap():
                 self.leftClickPer(99, 99)
                 time.sleep(2)
-                # if self.isNewMission():  
-                #     self.leftClickPer(99,99)
-                #     time.sleep(3)
+                if self.isNewMission():  
+                    self.leftClickPer(99,99)
+                    time.sleep(3)
 
                 # time.sleep(1)
                 if teamNum==1:
@@ -148,7 +155,7 @@ class ReplyHongranD3(BaseControl):
                         self.moveRight(3)
                         self.resetTeamLocation()
                         self.moveUp(1)
-                    if team1MoveCount==1:   #此处经常走不到
+                    if team1MoveCount==1:   
                         self.resetTeamLocation()
                         self.moveUp(1)
                     #走到无怪区域  
@@ -216,14 +223,7 @@ class ReplyHongranD3(BaseControl):
                             team1MoveCount=9 #循环
 
                     else:      #这里够五次换队
-                        # if team1MoveCount==7 or team1MoveCount==9 : #走上进安全区 （也可拖动走到起点待定）
-                        #     self.resetTeamLocation() 
-                        #     self.moveUp(1)
-                        # if team1MoveCount>9:
-                        #     self.resetTeamLocation() 
-                        #     self.dragPer(50,90,50,40)
-                        #     self.leftClickPer(50,60) 
-                        #     time.sleep(10)    
+        
                         self.resetTeamLocation() 
                         self.dragPer(50,90,50,30)
                         #需要做判断
@@ -306,17 +306,13 @@ class ReplyHongranD3(BaseControl):
                             
                     if team2BattleCount==2:
                          self.leftClickPer(50,50)  
+                         self.findAndClickBoss()
                         
                               
                     team2MoveCount=team2MoveCount+1  
                     
                      
-            xylist= self.getBossLocation() 
-            if  len(xylist)>0:
-                x,y=xylist[0]
-                self.leftClick(x,y)
-              
-                time.sleep(20)
+            self.findAndClickBoss()
 
             time.sleep(self.interval)
             # screen.grabCaptureDir(self.handle,"reply_battle")

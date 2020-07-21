@@ -129,8 +129,10 @@ class ReplyMap81(BaseControl):
            
             print("isInMap")
             if self.isInMap():
-                # if self.isNewMission():  
                 self.leftClickPer(99,99)
+                time.sleep(2)
+                if self.isNewMission():  
+                    self.leftClickPer(99,99)
                 time.sleep(2)
                 # time.sleep(1)
                 if teamNum==1:
