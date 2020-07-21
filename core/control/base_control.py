@@ -93,7 +93,7 @@ class BaseControl:
     def switchTeam(self):
         print("switchTeam")
         win32gui.SetForegroundWindow(self.handle)
-        self.leftClickPer(99, 99)#防止任务弹出
+        # self.leftClickPer(99, 99)#防止任务弹出
         time.sleep(0.5)
         self.leftClickPer(82, 96)
         time.sleep(3)
@@ -102,7 +102,7 @@ class BaseControl:
     def resetTeamLocation(self, t=3):
         print("resetTeamLocation")
         win32gui.SetForegroundWindow(self.handle)
-        self.leftClickPer(99, 99)#防止任务弹出
+        # self.leftClickPer(99, 99)#防止任务弹出
         time.sleep(0.5)
         self.leftClickPer(82, 96)
         time.sleep(t)

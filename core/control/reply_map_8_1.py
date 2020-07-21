@@ -129,10 +129,10 @@ class ReplyMap81(BaseControl):
            
             print("isInMap")
             if self.isInMap():
-                if self.isNewMission():  
-                    self.leftClickPer(99,99)
-                    time.sleep(3)
-                time.sleep(1)
+                # if self.isNewMission():  
+                self.leftClickPer(99,99)
+                time.sleep(2)
+                # time.sleep(1)
                 if teamNum==1:
                     print("team1MoveCount",team1MoveCount)
                     if team1MoveCount==0:
