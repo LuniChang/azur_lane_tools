@@ -10,7 +10,11 @@ class BaseControl:
 
     handle = 0
     interval = 5
-
+    _team1BattleCount = 0
+    _team2BattleCount = 0
+    _team1MoveCount = 0
+    _team2MoveCount = 0
+    _teamNum = 1
     _isRun = False
 
     def __init__(self):
@@ -46,10 +50,12 @@ class BaseControl:
         win32api.SetCursorPos((self.getPosX(x), self.getPosY(y)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
         time.sleep(0.2)
-        moveToX = self.getPosX(toX)
-        moveToY = self.getPosY(toY)
-        win32api.mouse_event(win32con.MOUSEEVENTF_ABSOLUTE +
-                             win32con.MOUSEEVENTF_MOVE, moveToX*47, moveToY*85, 0, 0)
+
+        moveToX=int(self.getPosX(toX)*(65535/win32api.GetSystemMetrics(0)))
+        moveToY=int(self.getPosY(toY)*(65535/win32api.GetSystemMetrics(1)))
+        win32api.mouse_event(win32con.MOUSEEVENTF_ABSOLUTE + win32con.MOUSEEVENTF_MOVE, moveToX, moveToY, 0, 0)  
+       
+
         time.sleep(0.2)
         win32api.SetCursorPos((moveToX, moveToY))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
@@ -224,6 +230,32 @@ class BaseControl:
 
     def isHpEmpty(self):
         return screen.autoCompareResImgHash(self.handle, "hp_empty_10_40_90_62.png")
+
+    def commonAction(self):
+        if self.isNewMission():
+            self.leftClickPer(99, 99)
+            time.sleep(3)
+
+        if self.onGetSR() or self.onGetSSR():
+
+            self.clickOnGetSR()
+            time.sleep(2)
+
+        if self.onBattleEnd():
+            self.battleContinue()
+            time.sleep(2)
+        if self.onGetItems():
+            self.battleContinue()
+            time.sleep(2)
+
+        if self.onBattleEndCount():
+            print("onBattleEndCount")
+            if self._teamNum == 1:
+                self._team1BattleCount = self._team1BattleCount+1
+            else:
+                self._team2BattleCount = self._team2BattleCount+1
+            self.battleContinue()
+            time.sleep(4)
 
     def run(self):
         pass
