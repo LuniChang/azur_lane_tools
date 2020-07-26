@@ -20,7 +20,7 @@ class ReplyMapCommon(BaseControl):
      
     
     team1BattleMaxCount = 5
-    team2BattleMaxCount = 5
+    team2BattleMaxCount = 0
 
 
     def __init__(self, handle, interval):
@@ -28,13 +28,64 @@ class ReplyMapCommon(BaseControl):
         self.interval = interval
 
     def getEnemyLocation(self):
-        return screen.matchResImgInWindow(self.handle, "map//boss_48_45_54_55.png")  \
-            or screen.matchResImgInWindow(self.handle, "map//boss_48_45_54_55.png") \
-            or screen.matchResImgInWindow(self.handle, "map//boss_48_45_54_55.png") \
-            or screen.matchResImgInWindow(self.handle, "map//boss_48_45_54_55.png")
 
-    def getLocation(self):
-        return screen.matchResImgInWindow(self.handle, "map//boss_48_45_54_55.png")
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_p1_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_p2_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist    
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_p3_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_p4_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist 
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_z1_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist
+
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_z2_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist
+
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_z3_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist
+
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_h1_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist     
+
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_h2_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist     
+
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_q1_45_45_55_55.png")
+        if len(xylist) > 0:
+            return xylist     
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\ship_q2_45_45_55_55.png")
+        if len(xylist) > 0:
+            return xylist
+        
+        
+        return self.getBossLocation()
+
+    def getBossLocation(self):
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\d1_4_boss_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\d1_2_boss_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\d1_3_boss_45_45_55_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist    
+        xylist =screen.matchResImgInWindow(self.handle, "enemy\\boss_48_45_52_55.png",0.6)
+        if len(xylist) > 0:
+            return xylist
+        
+        return []
 
     def dragPerLeft(self):
         self.dragPer(10, 50, 80, 50)
@@ -52,7 +103,12 @@ class ReplyMapCommon(BaseControl):
         if  not self._isScranMap:
             winHash = ""
             while winHash != screen.winScreenRectHash(self.handle, 0, 0, 50, 50):
-                self.dragPer(20, 20, 70, 70)
+                self.dragPerUp()
+                time.sleep(0.5)
+                winHash = screen.winScreenRectHash(self.handle, 0, 0, 50, 50)
+            while winHash != screen.winScreenRectHash(self.handle, 0, 0, 50, 50):
+                self.dragPerLeft()
+                time.sleep(0.5)
                 winHash = screen.winScreenRectHash(self.handle, 0, 0, 50, 50)
             self._needResetMap = False
             self._scranMapEnd = False
@@ -63,6 +119,7 @@ class ReplyMapCommon(BaseControl):
         self._isScranMap=True
         if self._scranDirection == RIGHT:
             self.dragPerRight()
+            time.sleep(0.5)
             if winHash == screen.winScreenRectHash(self.handle, 0, 0, 50, 50):
                 self._nextScranDirection = LEFT
                 self._scranDirection = DOWN
@@ -70,6 +127,7 @@ class ReplyMapCommon(BaseControl):
         if self._scranDirection == DOWN:
             self.dragPerDown()
             # 换方向左右
+            time.sleep(0.5)
             if winHash == screen.winScreenRectHash(self.handle, 0, 0, 50, 50):
                 self._isScranMap = False  # 扫完全图
                 return
@@ -77,6 +135,7 @@ class ReplyMapCommon(BaseControl):
             self._scranDirection = self._nextScranDirection
         if self._scranDirection == LEFT:
             self.dragPerLeft()
+            time.sleep(0.5)
             if winHash == screen.winScreenRectHash(self.handle, 0, 0, 50, 50):
                 self._nextScranDirection = RIGHT  # 左边到尽头 下去后往右
                 self._scranDirection = DOWN
@@ -84,11 +143,10 @@ class ReplyMapCommon(BaseControl):
 
     def findAndBattle(self):
         
-        self.commonAction()
 
         if self._teamNum == 1 :
             if self._team1BattleCount < self.team1BattleMaxCount:
-                xylist = self.getEnemyLocation()()
+                xylist = self.getEnemyLocation()
                 if len(xylist) > 0:
                     x,y=xylist[0]
                     self.leftClick(x, y)
@@ -99,11 +157,13 @@ class ReplyMapCommon(BaseControl):
 
                 
             else :
+                time.sleep(1)
                 self.switchTeam()
+                self._teamNum = 2
 
         if self._teamNum == 2 :
             if self._team2BattleCount < self.team2BattleMaxCount:
-                xylist = self.getEnemyLocation()()
+                xylist = self.getEnemyLocation()
                 if len(xylist) > 0:
                     x,y=xylist[0]
                     self.leftClick(x, y)
@@ -111,4 +171,12 @@ class ReplyMapCommon(BaseControl):
                 else :
                     self.resetMapPosition()
                     self.scranDragMap()
-          
+            else:
+                xylist = self.getBossLocation()
+                if len(xylist) > 0:
+                    x,y=xylist[0]
+                    self.leftClick(x, y)
+                    time.sleep(5)
+                else :
+                    self.resetMapPosition()
+                    self.scranDragMap()

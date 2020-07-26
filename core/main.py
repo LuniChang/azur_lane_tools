@@ -11,6 +11,8 @@ from control.reply_spc_essex import ReplySpcEssexD3
 
 from control.reply_map_8_1 import ReplyMap81
 
+from control.reply_map_activity import ReplyMapActivity
+
 import common.screen as screen
 
 
@@ -26,6 +28,7 @@ main = tk.Tk()
 replyHongRanD3 = ReplyHongranD3(handle, 2)
 replySpcEssex = ReplySpcEssexD3(handle, 5)
 replyMap81= ReplyMap81(handle, 2)
+replyMapActivity= ReplyMapActivity(handle, 2)
 
 def resetHandle():
     handle = screen.getWinHandle()
@@ -74,6 +77,26 @@ tk.Button(fm1, text="结束8-1", width=20, height=1,
           command=replyMap81.stop).grid(row=4, column=2)
 
 
+
+
+team1BattleMaxCount=tk.IntVar()
+team1BattleMaxCount.set(5)
+team2BattleMaxCount=tk.IntVar()
+team2BattleMaxCount.set(0)
+tk.Label(fm1,text="1队打小怪数").grid(row=5,column=0) 
+tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=5,column=1)
+tk.Label(fm1,text="2队打小怪数").grid(row=6,column=0) 
+tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=6,column=1)
+def startAct():
+    replyMapActivity.team1BattleMaxCount=int(team1BattleMaxCount.get())
+    replyMapActivity.team2BattleMaxCount=int(team2BattleMaxCount.get())
+    replyMapActivity.start()
+
+
+tk.Button(fm1, text="开始活动D1", width=20, height=1,
+          command=startAct).grid(row=7, column=1)
+tk.Button(fm1, text="结束活动D1", width=20, height=1,
+          command=replyMapActivity.stop).grid(row=7, column=2)
 
 tk.Label(main, text="工具操作").pack()
 

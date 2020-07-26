@@ -178,8 +178,8 @@ class BaseControl:
     def isNewMission(self):  # TODO 待优化
         print("isNewMission")
         return screen.autoCompareResImgHash(self.handle, "new_mission_28_26_70_76.png") \
-            or screen.autoCompareResImgHash(self.handle, "newtask_28_26_70_30.png") \
-            or screen.autoCompareResImgHash(self.handle, "newtask_30_68_66_76.png")
+            or self.matchResImgInWindow("newtask_28_26_70_30.png") \
+            or self.matchResImgInWindow("newtask_30_68_66_76.png")
 
     def onSelectTeam(self):
         print("onSelectTeam")
@@ -242,6 +242,11 @@ class BaseControl:
             time.sleep(2)
 
         if self.onBattleEnd():
+            print("onBattleEnd",self._team1BattleCount,self._team2BattleCount)
+            if self._teamNum == 1:
+                self._team1BattleCount = self._team1BattleCount+1
+            else:
+                self._team2BattleCount = self._team2BattleCount+1
             self.battleContinue()
             time.sleep(2)
         if self.onGetItems():
@@ -249,11 +254,7 @@ class BaseControl:
             time.sleep(2)
 
         if self.onBattleEndCount():
-            print("onBattleEndCount")
-            if self._teamNum == 1:
-                self._team1BattleCount = self._team1BattleCount+1
-            else:
-                self._team2BattleCount = self._team2BattleCount+1
+
             self.battleContinue()
             time.sleep(4)
 

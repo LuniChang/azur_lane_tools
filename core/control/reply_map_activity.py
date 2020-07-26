@@ -19,25 +19,21 @@ class ReplyMapActivity(ReplyMapCommon):
     #进地图
     def clickMap(self):
         win32gui.SetForegroundWindow(self.handle)
-        win32api.SetCursorPos((self.getPosX(44), self.getPosY(34)))
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
-        win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)   
-        self.resetCusor()    
+        self.leftClickPer(15,35)    
+        self.resetCusor()   
 
     def intoMap(self):
         win32gui.SetForegroundWindow(self.handle)
-        win32api.SetCursorPos((self.getPosX(70), self.getPosY(68)))
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
-        win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)      
+        self.leftClickPer(70,68)    
         self.resetCusor()  
 
  
 
     def isAtHome(self):
-        return self.matchResImgInWindow("map8//at_home_0_0_40_20.png")
+        return self.matchResImgInWindow("act//map_home_0_0_30_20.png")
 
     def isAtInMapReady(self):
-        return self.matchResImgInWindow("map8//81ready_20_30_80_86.png")
+        return screen.autoCompareResImgHash(self.handle,"act//ready_20_30_80_80.png")
 
    
   
