@@ -242,11 +242,6 @@ class BaseControl:
             time.sleep(2)
 
         if self.onBattleEnd():
-            print("onBattleEnd",self._team1BattleCount,self._team2BattleCount)
-            if self._teamNum == 1:
-                self._team1BattleCount = self._team1BattleCount+1
-            else:
-                self._team2BattleCount = self._team2BattleCount+1
             self.battleContinue()
             time.sleep(2)
         if self.onGetItems():
@@ -256,6 +251,11 @@ class BaseControl:
         if self.onBattleEndCount():
 
             self.battleContinue()
+            print("onBattleEnd",self._team1BattleCount,self._team2BattleCount)
+            if self._teamNum == 1:
+                self._team1BattleCount = self._team1BattleCount+1
+            else:
+                self._team2BattleCount = self._team2BattleCount+1
             time.sleep(4)
 
     def run(self):
