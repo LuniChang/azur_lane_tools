@@ -142,7 +142,7 @@ class ReplyMapCommon(BaseControl):
                     self.scranDragMap()
 
             else:
-                time.sleep(1)
+                time.sleep(10)
                 self.switchTeam()
                 self._teamNum = 2
 
