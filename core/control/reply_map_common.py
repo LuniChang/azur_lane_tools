@@ -45,7 +45,7 @@ class ReplyMapCommon(BaseControl):
         random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i],0.5)
+                self.handle, imgs[i],0.7)
             if len(xylist) > 0:
                 return xylist
   
@@ -54,24 +54,22 @@ class ReplyMapCommon(BaseControl):
         return []
 
     def getBossLocation(self):
-        xylist = screen.matchResImgInWindow(
-            self.handle, "enemy\\d1_4_boss_45_45_55_55.png", 0.6)
-        if len(xylist) > 0:
-            return xylist
-        xylist = screen.matchResImgInWindow(
-            self.handle, "enemy\\d1_2_boss_45_45_55_55.png", 0.6)
-        if len(xylist) > 0:
-            return xylist
-        xylist = screen.matchResImgInWindow(
-            self.handle, "enemy\\d1_3_boss_45_45_55_55.png", 0.6)
-        if len(xylist) > 0:
-            return xylist
-        xylist = screen.matchResImgInWindow(
-            self.handle, "enemy\\boss_48_45_52_55.png", 0.6)
-        if len(xylist) > 0:
-            return xylist
+        imgs = ["enemy\\d1_4_boss_45_45_55_55.png",
+                "enemy\\d1_2_boss_45_45_55_55.png",
+                "enemy\\d1_3_boss_45_45_55_55.png",
+                "enemy\\boss_48_45_52_55.png",
+                ]
+
+        # random.shuffle(imgs)
+        for i in range(len(imgs)):
+            xylist = screen.matchResImgInWindow(
+                self.handle, imgs[i],0.7)
+            if len(xylist) > 0:
+                return xylist
+ 
 
         return []
+
 
     def dragPerLeft(self):
         self.dragPer(10, 50, 80, 50)
