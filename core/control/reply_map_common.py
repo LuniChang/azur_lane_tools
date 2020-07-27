@@ -85,17 +85,20 @@ class ReplyMapCommon(BaseControl):
     def dragPerDown(self):
         self.dragPer(50, 70, 50, 20)
 
+   
     def resetMapPosition(self):
         if not self._isScranMap:
             winHash = ""
             while  not screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
+                winHash = screen.winScreenHash(self.handle )
                 self.dragPerUp()
-                time.sleep(0.5)
-                winHash = screen.winScreenHash(self.handle )
+               
+            winHash = ""   
             while not screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
-                self.dragPerLeft()
-                time.sleep(0.5)
                 winHash = screen.winScreenHash(self.handle )
+                self.dragPerLeft()
+             
+               
             self._needResetMap = False
             self._scranMapEnd = False
             self._scranDirection = 0
@@ -105,7 +108,7 @@ class ReplyMapCommon(BaseControl):
         self._isScranMap = True
         if self._scranDirection == RIGHT:
             self.dragPerRight()
-            time.sleep(0.5)
+          
             if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
                 self._nextScranDirection = LEFT
                 self._scranDirection = DOWN
@@ -113,7 +116,7 @@ class ReplyMapCommon(BaseControl):
         if self._scranDirection == DOWN:
             self.dragPerDown()
             # 换方向左右
-            time.sleep(0.5)
+       
             if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
                 self._isScranMap = False  # 扫完全图
                 return
@@ -121,7 +124,7 @@ class ReplyMapCommon(BaseControl):
             self._scranDirection = self._nextScranDirection
         if self._scranDirection == LEFT:
             self.dragPerLeft()
-            time.sleep(0.5)
+   
             if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
                 self._nextScranDirection = RIGHT  # 左边到尽头 下去后往右
                 self._scranDirection = DOWN
