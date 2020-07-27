@@ -93,7 +93,7 @@ class BaseControl:
 
     def closeNewMission(self):
         win32gui.SetForegroundWindow(self.handle)
-        self.leftClick(self.getPosX(50), self.getPosY(72))
+        self.leftClickPer(99,99)
         self.resetCusor()
 
     def switchTeam(self):
@@ -200,26 +200,7 @@ class BaseControl:
                              win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
         self.resetCusor()
 
-    # 阵容小于3或者大于6不能用
-    def toSelectTeam(self, teamNo):
-        win32gui.SetForegroundWindow(self.handle)
-        if teamNo == 1:
-            win32api.SetCursorPos((self.getPosX(30), self.getPosY(50)))  # 点击1队
-        elif teamNo == 2:
-            win32api.SetCursorPos((self.getPosX(55), self.getPosY(50)))  # 点击2队
-        elif teamNo == 3:
-            win32api.SetCursorPos((self.getPosX(80), self.getPosY(50)))  # 点击3队
-        elif teamNo == 4:
-            win32api.SetCursorPos((self.getPosX(30), self.getPosY(55)))  # 点击4队
-        elif teamNo == 5:
-            win32api.SetCursorPos((self.getPosX(55), self.getPosY(55)))  # 点击5队
-        elif teamNo == 6:
-            win32api.SetCursorPos((self.getPosX(80), self.getPosY(55)))  # 点击6队
-        else:
-            pass
-
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
-                             win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+   
 
     def matchResImgInWindow(self, imgName, threshold=0.8):
         xylist = screen.matchResImgInWindow(self.handle, imgName, threshold)
@@ -249,13 +230,12 @@ class BaseControl:
             time.sleep(2)
 
         if self.onBattleEndCount():
-
-            self.battleContinue()
-            print("onBattleEnd",self._team1BattleCount,self._team2BattleCount)
+            print("onBattleEndCount",self._team1BattleCount,self._team2BattleCount)
             if self._teamNum == 1:
                 self._team1BattleCount = self._team1BattleCount+1
             else:
                 self._team2BattleCount = self._team2BattleCount+1
+            self.battleContinue()         
             time.sleep(4)
 
     def run(self):

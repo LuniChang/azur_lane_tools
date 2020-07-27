@@ -249,8 +249,10 @@ def winScreenHash(hwnd):
   img.close()
   return phash
 
-def alikeHash(hash1,hash2): #明汉距离 实际缩放会在2  哈希字符串 比较差异过大
+def alikeHash(hash1,hash2,alikeValue=0.35): #明汉距离 实际缩放会在2  哈希字符串 比较差异过大
     length=len(hash1)
+    if length==0:
+      return False
     num = 0
     for index in range(len(hash1.encode())): 
         if hash1[index] == hash2[index]: 
@@ -258,7 +260,7 @@ def alikeHash(hash1,hash2): #明汉距离 实际缩放会在2  哈希字符串 �
   
     res=num/length
     print("alikeHash",length,hash1,hash2,res)
-    return  True  if num/length >= 0.35 else False
+    return  True  if num/length >=alikeValue else False
 
 
 def imgHash(img,hashSize,highfreq_factor):
@@ -355,5 +357,5 @@ def matchResImgInWindow(handle,imgName,threshold=0.8,mult=True):
     xyList.append((wLeft+top_left[0]+(targetImgWidth>>1),wTop+top_left[1]+(targetImgHeigth>>1)))
 
 
-  print(xyList)
+  # print(xyList)
   return  xyList
