@@ -45,7 +45,7 @@ class ReplyMapCommon(BaseControl):
         # random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i],0.6)
+                self.handle, imgs[i],0.7)
             if len(xylist) > 0:
                 return xylist
   
@@ -60,10 +60,10 @@ class ReplyMapCommon(BaseControl):
                 "enemy\\boss_48_45_52_55.png",
                 ]
 
-        # random.shuffle(imgs)
+        random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i],0.6)
+                self.handle, imgs[i],0.7)
             if len(xylist) > 0:
                 return xylist
  
