@@ -174,9 +174,9 @@ def getResImgHash(fileName):
 
 
 
-def autoCompareResImgHash(handle,fileName):
+def autoCompareResImgHash(handle,fileName,alikeValue=0.3):
   
-  return autoCompareResImgHashValue(handle,fileName)>0.3
+  return autoCompareResImgHashValue(handle,fileName)>alikeValue
 
 def autoCompareResImgHashValue(handle,fileName):
   imgPath=path.getResDirPath()+fileName

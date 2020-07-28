@@ -192,7 +192,7 @@ class BaseControl:
     def isNewMission(self):  # TODO 待优化
         print("isNewMission")
         return screen.autoCompareResImgHash(self.handle, "new_mission_28_26_70_76.png") \
-            or self.matchResImgInWindow("newtask_28_26_70_30.png") \
+        return self.matchResImgInWindow("newtask_28_26_70_30.png") \
             or self.matchResImgInWindow("newtask_30_68_66_76.png")
 
     def onSelectTeam(self):
@@ -225,10 +225,7 @@ class BaseControl:
         return screen.autoCompareResImgHash(self.handle, "hp_empty_10_40_90_62.png")
 
     def commonAction(self):
-        if self.isNewMission():
-            self.leftClickPer(99, 99)
-            time.sleep(3)
-
+        
         if self.onGetSR() or self.onGetSSR():
 
             self.clickOnGetSR()
@@ -250,6 +247,9 @@ class BaseControl:
                 self._team2BattleCount = self._team2BattleCount+1
             self.battleContinue()
             time.sleep(4)
+        if self.isNewMission():
+            self.leftClickPer(99, 99)
+            time.sleep(3)
 
     def run(self):
         pass
