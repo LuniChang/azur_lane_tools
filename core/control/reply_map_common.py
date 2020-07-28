@@ -42,10 +42,10 @@ class ReplyMapCommon(BaseControl):
                 "enemy\\ship_q2_45_45_55_55.png",
                 ]
 
-        random.shuffle(imgs)
+        # random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i],0.7)
+                self.handle, imgs[i],0.6)
             if len(xylist) > 0:
                 return xylist
   
@@ -63,7 +63,7 @@ class ReplyMapCommon(BaseControl):
         # random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i],0.7)
+                self.handle, imgs[i],0.6)
             if len(xylist) > 0:
                 return xylist
  
@@ -87,12 +87,12 @@ class ReplyMapCommon(BaseControl):
     def resetMapPosition(self):
         if not self._isScranMap:
             winHash = ""
-            while  not screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
+            while  not screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
                 winHash = screen.winScreenHash(self.handle )
                 self.dragPerUp()
                
             winHash = ""   
-            while not screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
+            while not screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
                 winHash = screen.winScreenHash(self.handle )
                 self.dragPerLeft()
              
@@ -107,7 +107,7 @@ class ReplyMapCommon(BaseControl):
         if self._scranDirection == RIGHT:
             self.dragPerRight()
           
-            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
+            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
                 self._nextScranDirection = LEFT
                 self._scranDirection = DOWN
                 return
@@ -115,7 +115,7 @@ class ReplyMapCommon(BaseControl):
             self.dragPerDown()
             # 换方向左右
        
-            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
+            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
                 self._isScranMap = False  # 扫完全图
                 return
 
@@ -123,7 +123,7 @@ class ReplyMapCommon(BaseControl):
         if self._scranDirection == LEFT:
             self.dragPerLeft()
    
-            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.9) :
+            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
                 self._nextScranDirection = RIGHT  # 左边到尽头 下去后往右
                 self._scranDirection = DOWN
                 return
@@ -135,7 +135,13 @@ class ReplyMapCommon(BaseControl):
                 xylist = self.getEnemyLocation()
                 if len(xylist) > 0:
                     x, y = xylist[0]
-                    self.leftClick(x, y)
+                     # self.leftClick(x, y)
+                    cx=self.getPosX(50)
+                    cy=self.getPosY(50)
+                    self.drag(x,y,cx,cy) #拖动不是一比一 大概是一半
+                    time.sleep(2)
+                    self.drag(x,y,cx,cy) 
+                    self.leftClick(cx, cy)
                     time.sleep(5)
                 else:
                     self.resetMapPosition()
@@ -151,7 +157,13 @@ class ReplyMapCommon(BaseControl):
                 xylist = self.getEnemyLocation()
                 if len(xylist) > 0:
                     x, y = xylist[0]
-                    self.leftClick(x, y)
+                    # self.leftClick(x, y)
+                    cx=self.getPosX(50)
+                    cy=self.getPosY(50)
+                    self.drag(x,y,cx,cy) #拖动不是一比一 大概是一半
+                    time.sleep(2)
+                    self.drag(x,y,cx,cy) 
+                    self.leftClick(cx, cy)
                     time.sleep(5)
                 else:
                     self.resetMapPosition()

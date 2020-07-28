@@ -51,15 +51,29 @@ class BaseControl:
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
         time.sleep(0.2)
 
-        moveToX=int(self.getPosX(toX)*(65535/win32api.GetSystemMetrics(0)))
-        moveToY=int(self.getPosY(toY)*(65535/win32api.GetSystemMetrics(1)))
-        win32api.mouse_event(win32con.MOUSEEVENTF_ABSOLUTE + win32con.MOUSEEVENTF_MOVE, moveToX, moveToY, 0, 0)  
-       
+        moveToX = int(self.getPosX(toX)*(65535/win32api.GetSystemMetrics(0)))
+        moveToY = int(self.getPosY(toY)*(65535/win32api.GetSystemMetrics(1)))
+        win32api.mouse_event(win32con.MOUSEEVENTF_ABSOLUTE +
+                             win32con.MOUSEEVENTF_MOVE, moveToX, moveToY, 0, 0)
 
         time.sleep(0.2)
         win32api.SetCursorPos((moveToX, moveToY))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
         self.resetCusor()
+
+    def drag(self, x, y, toX, toY):
+        win32api.SetCursorPos((x, y))
+        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+        time.sleep(0.3)
+        sw = win32api.GetSystemMetrics(win32con.SM_CXSCREEN)
+        sh = win32api.GetSystemMetrics(win32con.SM_CYSCREEN)
+        moveToX = int(toX*(65535/sw))
+        moveToY = int(toY*(65535/sh))
+        win32api.mouse_event(win32con.MOUSEEVENTF_ABSOLUTE +
+                             win32con.MOUSEEVENTF_MOVE, moveToX, moveToY, 0, 0)
+        time.sleep(0.6)
+        win32api.SetCursorPos((moveToX, moveToY))
+        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
 
     def leftClick(self, x, y):
         win32api.SetCursorPos((x, y))
@@ -93,7 +107,7 @@ class BaseControl:
 
     def closeNewMission(self):
         win32gui.SetForegroundWindow(self.handle)
-        self.leftClickPer(99,99)
+        self.leftClickPer(99, 99)
         self.resetCusor()
 
     def switchTeam(self):
@@ -200,8 +214,6 @@ class BaseControl:
                              win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
         self.resetCusor()
 
-   
-
     def matchResImgInWindow(self, imgName, threshold=0.8):
         xylist = screen.matchResImgInWindow(self.handle, imgName, threshold)
         if len(xylist) > 0:
@@ -230,12 +242,13 @@ class BaseControl:
             time.sleep(2)
 
         if self.onBattleEndCount():
-            print("onBattleEndCount",self._team1BattleCount,self._team2BattleCount)
+            print("onBattleEndCount", self._team1BattleCount,
+                  self._team2BattleCount)
             if self._teamNum == 1:
                 self._team1BattleCount = self._team1BattleCount+1
             else:
                 self._team2BattleCount = self._team2BattleCount+1
-            self.battleContinue()         
+            self.battleContinue()
             time.sleep(4)
 
     def run(self):
