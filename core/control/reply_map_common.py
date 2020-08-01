@@ -133,8 +133,14 @@ class ReplyMapCommon(BaseControl):
         if self._teamNum == 1:
             if self._team1BattleCount < self.team1BattleMaxCount:
                 xylist = self.getEnemyLocation()
-                if len(xylist) > 0:
-                    x, y = xylist[0]
+                minX=self.getPosX(15)
+                # maxY=self.getPosY(80)
+                resList=[]
+                for point in xylist:
+                    if point[0]>=minX:
+                        resList.append(point)
+                if len(resList) > 0:
+                    x, y = resList[0]
                      # self.leftClick(x, y)
                     cx=self.getPosX(50)
                     cy=self.getPosY(50)
