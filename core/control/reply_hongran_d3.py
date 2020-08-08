@@ -196,7 +196,7 @@ class ReplyHongranD3(BaseControl):
                         for i in range(6):
                             self.dragPer(50,90,50,30)
                         #需要做判断
-                        self.leftClickPer(50,25) 
+                        self.leftClickPer(50,20) 
                         # if self._team1MoveCount<=10:
                         #    self.leftClickPer(50,85) 
                         # if self._team1MoveCount>910 and self._team1MoveCount<15:
@@ -281,7 +281,7 @@ class ReplyHongranD3(BaseControl):
 
                         if self._team2MoveCount==20:
                             self.moveUp(2)  
-                            self._team2MoveCount=9:
+                            self._team2MoveCount=9
 
 
                          
