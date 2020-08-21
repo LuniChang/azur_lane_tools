@@ -11,7 +11,7 @@ from control.reply_spc_essex import ReplySpcEssexD3
 
 from control.reply_map_8_1 import ReplyMap81
 
-from control.reply_map_activity import ReplyMapActivity
+from control.reply_map_activity_tiexue_c1 import ReplyMapActivity
 
 import common.screen as screen
 
@@ -93,10 +93,12 @@ def startAct():
     replyMapActivity.start()
 
 
-tk.Button(fm1, text="开始活动D1", width=20, height=1,
+tk.Button(fm1, text="开始活动图", width=20, height=1,
           command=startAct).grid(row=7, column=1)
-tk.Button(fm1, text="结束活动D1", width=20, height=1,
+tk.Button(fm1, text="结束活动图", width=20, height=1,
           command=replyMapActivity.stop).grid(row=7, column=2)
+
+          
 
 tk.Label(main, text="工具操作").pack()
 

@@ -26,50 +26,51 @@ class ReplyMapCommon(BaseControl):
         self.handle = handle
         self.interval = interval
 
+    _enemys = [
+
+        "enemy\\ship_p4_45_45_55_55.png",
+        "enemy\\ship_z1_45_45_55_55.png",
+        "enemy\\ship_z2_45_45_55_55.png",
+        "enemy\\ship_z3_45_45_55_55.png",
+        "enemy\\ship_h1_45_45_55_55.png",
+        "enemy\\ship_h1_45_45_55_55.png",
+        "enemy\\ship_h2_45_45_55_55.png",
+        "enemy\\ship_h3_47_47_54_54.png",
+        "enemy\\ship_q1_45_45_55_55.png",
+        "enemy\\ship_q2_45_45_55_55.png",
+        "enemy\\ship_q3_47_47_54_54.png",
+    ]
+
+    _boss = ["enemy\\boss_48_45_52_55.png",
+             "enemy\\boss1_47_47_54_54.png",
+             "enemy\\boss2_47_47_54_54.png",
+             "enemy\\boss3_47_47_52_52.png",
+             ]
+
     def getEnemyLocation(self):
 
-        imgs = ["enemy\\ship_p1_45_45_55_55.png",
-                "enemy\\ship_p2_45_45_55_55.png",
-                "enemy\\ship_p3_45_45_55_55.png",
-                "enemy\\ship_p4_45_45_55_55.png",
-                "enemy\\ship_z1_45_45_55_55.png",
-                "enemy\\ship_z2_45_45_55_55.png",
-                "enemy\\ship_z3_45_45_55_55.png",
-                "enemy\\ship_h1_45_45_55_55.png",
-                "enemy\\ship_h1_45_45_55_55.png",
-                "enemy\\ship_h2_45_45_55_55.png",
-                "enemy\\ship_q1_45_45_55_55.png",
-                "enemy\\ship_q2_45_45_55_55.png",
-                ]
+        imgs = self._enemys
 
         # random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i],0.7)
+                self.handle, imgs[i], 0.7)
             if len(xylist) > 0:
                 return xylist
-  
- 
 
         return []
 
     def getBossLocation(self):
-        imgs = ["enemy\\d1_4_boss_45_45_55_55.png",
-                "enemy\\d1_2_boss_45_45_55_55.png",
-                "enemy\\d1_3_boss_45_45_55_55.png",
-                "enemy\\boss_48_45_52_55.png",
-                ]
+        imgs = self._boss
 
         random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i],0.7)
+                self.handle, imgs[i], 0.7)
             if len(xylist) > 0:
                 return xylist
- 
 
         return []
-
 
     def dragPerLeft(self):
         self.dragPer(10, 50, 80, 50)
@@ -83,47 +84,45 @@ class ReplyMapCommon(BaseControl):
     def dragPerDown(self):
         self.dragPer(50, 70, 50, 20)
 
-   
     def resetMapPosition(self):
         if not self._isScranMap:
             winHash = ""
-            while  not screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
-                winHash = screen.winScreenHash(self.handle )
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+                winHash = screen.winScreenHash(self.handle)
                 self.dragPerUp()
-               
-            winHash = ""   
-            while not screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
-                winHash = screen.winScreenHash(self.handle )
+
+            winHash = ""
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+                winHash = screen.winScreenHash(self.handle)
                 self.dragPerLeft()
-             
-               
+
             self._needResetMap = False
             self._scranMapEnd = False
             self._scranDirection = 0
 
     def scranDragMap(self):  # 全图扫描
-        winHash = screen.winScreenHash(self.handle )
+        winHash = screen.winScreenHash(self.handle)
         self._isScranMap = True
         if self._scranDirection == RIGHT:
             self.dragPerRight()
-          
-            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
+
+            if screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
                 self._nextScranDirection = LEFT
                 self._scranDirection = DOWN
                 return
         if self._scranDirection == DOWN:
             self.dragPerDown()
             # 换方向左右
-       
-            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
+
+            if screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
                 self._isScranMap = False  # 扫完全图
                 return
 
             self._scranDirection = self._nextScranDirection
         if self._scranDirection == LEFT:
             self.dragPerLeft()
-   
-            if screen.alikeHash(winHash ,screen.winScreenHash(self.handle),0.8) :
+
+            if screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
                 self._nextScranDirection = RIGHT  # 左边到尽头 下去后往右
                 self._scranDirection = DOWN
                 return
@@ -133,20 +132,20 @@ class ReplyMapCommon(BaseControl):
         if self._teamNum == 1:
             if self._team1BattleCount < self.team1BattleMaxCount:
                 xylist = self.getEnemyLocation()
-                minX=self.getPosX(15)
+                minX = self.getPosX(15)
                 # maxY=self.getPosY(80)
-                resList=[]
+                resList = []
                 for point in xylist:
-                    if point[0]>=minX:
+                    if point[0] >= minX:
                         resList.append(point)
                 if len(resList) > 0:
                     x, y = resList[0]
-                     # self.leftClick(x, y)
-                    cx=self.getPosX(50)
-                    cy=self.getPosY(50)
-                    self.drag(x,y,cx,cy) #拖动不是一比一 大概是一半
+                    # self.leftClick(x, y)
+                    cx = self.getPosX(50)
+                    cy = self.getPosY(50)
+                    self.drag(x, y, cx, cy)  # 拖动不是一比一 大概是一半
                     time.sleep(2)
-                    self.drag(x,y,cx,cy) 
+                    self.drag(x, y, cx, cy)
                     self.leftClick(cx, cy)
                     time.sleep(5)
                 else:
@@ -164,11 +163,11 @@ class ReplyMapCommon(BaseControl):
                 if len(xylist) > 0:
                     x, y = xylist[0]
                     # self.leftClick(x, y)
-                    cx=self.getPosX(50)
-                    cy=self.getPosY(50)
-                    self.drag(x,y,cx,cy) #拖动不是一比一 大概是一半
+                    cx = self.getPosX(50)
+                    cy = self.getPosY(50)
+                    self.drag(x, y, cx, cy)  # 拖动不是一比一 大概是一半
                     time.sleep(2)
-                    self.drag(x,y,cx,cy) 
+                    self.drag(x, y, cx, cy)
                     self.leftClick(cx, cy)
                     time.sleep(5)
                 else:
