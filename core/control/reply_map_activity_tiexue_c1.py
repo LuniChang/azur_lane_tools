@@ -35,7 +35,7 @@ class ReplyMapActivity(ReplyMapCommon):
             "enemy\\tiexie\\c1_p3_47_47_54_54.png",
             "enemy\\tiexie\\c1_p4_46_46_54_54.png",
             "enemy\\tiexie\\c1_p5_46_46_54_54.png",
-            "enemy\\tiexie\\c1_p6_47_47_54_54.png",
+            # "enemy\\tiexie\\c1_p6_47_47_54_54.png",
 
         ]
 
