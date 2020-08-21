@@ -28,7 +28,6 @@ class ReplyMapCommon(BaseControl):
 
     _enemys = [
 
-        "enemy\\ship_p4_45_45_55_55.png",
         "enemy\\ship_z1_45_45_55_55.png",
         "enemy\\ship_z2_45_45_55_55.png",
         "enemy\\ship_z3_45_45_55_55.png",
@@ -39,12 +38,17 @@ class ReplyMapCommon(BaseControl):
         "enemy\\ship_q1_45_45_55_55.png",
         "enemy\\ship_q2_45_45_55_55.png",
         "enemy\\ship_q3_47_47_54_54.png",
+        "enemy\\ship_z4_47_47_54_54.png",
+        "enemy\\ship_z5_47_47_54_54.png",
+        "enemy\\ship_z6_47_47_54_54.png",
     ]
 
     _boss = ["enemy\\boss_48_45_52_55.png",
              "enemy\\boss1_47_47_54_54.png",
              "enemy\\boss2_47_47_54_54.png",
              "enemy\\boss3_47_47_52_52.png",
+             "enemy\\boss4_46_46_50_52.png",
+
              ]
 
     def getEnemyLocation(self):

@@ -13,7 +13,7 @@ class ReplyMapActivity(ReplyMapCommon):
     # 进地图
     def clickMap(self):
         win32gui.SetForegroundWindow(self.handle)
-        self.leftClickPer(15, 35)
+        self.leftClickPer(25, 35)
         self.resetCusor()
 
     def intoMap(self):
@@ -22,10 +22,10 @@ class ReplyMapActivity(ReplyMapCommon):
         self.resetCusor()
 
     def isAtHome(self):
-        return self.matchResImgInWindow("act/tiexie/map_c1_0_0_30_20.png")
+        return screen.autoCompareResImgHash(self.handle,"act/tiexie/map_c1_0_0_30_20.png",0.4)
 
     def isAtInMapReady(self):
-        return screen.autoCompareResImgHash(self.handle, "act/ready_20_30_80_80.png")
+        return screen.autoCompareResImgHash(self.handle, "act/tiexie/ready_20_30_80_80.png")
 
 
 
@@ -33,7 +33,9 @@ class ReplyMapActivity(ReplyMapCommon):
             "enemy\\tiexie\\c1_p1_47_47_54_54.png",
             "enemy\\tiexie\\c1_p2_47_47_54_54.png",
             "enemy\\tiexie\\c1_p3_47_47_54_54.png",
-            "enemy\\tiexie\\c1_p4_47_47_54_54.png",
+            "enemy\\tiexie\\c1_p4_46_46_54_54.png",
+            "enemy\\tiexie\\c1_p5_46_46_54_54.png",
+            "enemy\\tiexie\\c1_p6_47_47_54_54.png",
 
         ]
 
