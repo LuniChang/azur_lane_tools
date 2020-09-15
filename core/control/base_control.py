@@ -130,6 +130,7 @@ class BaseControl:
         time.sleep(t)
         self.resetCusor()
 
+
     def moveLeft(self, num=1):
         print("moveLeft")
         win32gui.SetForegroundWindow(self.handle)
@@ -138,14 +139,37 @@ class BaseControl:
         time.sleep(num)
         self.resetCusor()
 
+    def moveLeftDrag(self, num=1):
+        x=self.getPosX(50-num*10)
+        y= self.getPosY(50)
+        cx = self.getPosX(50)
+        cy = self.getPosY(50)
+        self.drag(x, y, cx, cy)
+        self.drag(x, y, cx, cy)
+        time.sleep(2)
+        self.leftClickPer(50, 50)
+        time.sleep(num)
+        self.resetCusor()    
+
     def moveRight(self, num=1):
         print("moveRight")
         win32gui.SetForegroundWindow(self.handle)
-
         self.leftClickPer(50+num*10, 50)
         self.leftClickPer(50+num*10, 50)
         time.sleep(num)
         self.resetCusor()
+
+    def moveRightDrag(self, num=1):
+        x=self.getPosX(50+num*10)
+        y= self.getPosY(50)
+        cx = self.getPosX(50)
+        cy = self.getPosY(50)
+        self.drag(x, y, cx, cy)
+        self.drag(x, y, cx, cy)
+        time.sleep(2)
+        self.leftClickPer(50, 50)
+        time.sleep(num)
+        self.resetCusor()  
 
     def moveUp(self, num=1):
         print("moveUp")
@@ -154,6 +178,18 @@ class BaseControl:
         self.leftClickPer(50, 50-num*13)
         time.sleep(num)
         self.resetCusor()
+    
+    def moveUpDrag(self, num=1):
+        x=self.getPosX(50)
+        y= self.getPosY(50-num*13)
+        cx = self.getPosX(50)
+        cy = self.getPosY(50)
+        self.drag(x, y, cx, cy)
+        self.drag(x, y, cx, cy)
+        time.sleep(2)
+        self.leftClickPer(50, 50)
+        time.sleep(num)
+        self.resetCusor()  
 
     def moveDown(self, num=1):
         print("moveDown")
@@ -162,6 +198,18 @@ class BaseControl:
         self.leftClickPer(50, 50+num*15)
         time.sleep(num)
         self.resetCusor()
+
+    def moveDownDrag(self, num=1):
+        x=self.getPosX(50)
+        y= self.getPosY(50+num*15)
+        cx = self.getPosX(50)
+        cy = self.getPosY(50)
+        self.drag(x, y, cx, cy)
+        self.drag(x, y, cx, cy)
+        time.sleep(2)
+        self.leftClickPer(50, 50)
+        time.sleep(num)
+        self.resetCusor()  
 
     def resetCusor(self):
         time.sleep(0.5)

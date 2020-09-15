@@ -3,11 +3,11 @@ import win32gui
 import win32con
 import time
 
-from control.base_control import BaseControl
+from control.reply_map_common import  ReplyMapCommon
 
 import common.screen as screen
 
-class ReplyHongranD3(BaseControl):
+class ReplyHongranD3(ReplyMapCommon):
 
   
   
@@ -289,6 +289,8 @@ class ReplyHongranD3(BaseControl):
                     if self._team2BattleCount==2:
                          self.leftClickPer(50,50)  
                          self.findAndClickBoss()
+                         self.resetMapPosition()
+                         self.scranDragMap()
                         
                               
                     self._team2MoveCount=self._team2MoveCount+1  
