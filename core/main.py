@@ -11,7 +11,7 @@ from control.reply_spc_essex import ReplySpcEssexD3
 
 from control.reply_map_8_1 import ReplyMap81
 
-from control.reply_map_activity_tiexue_c1 import ReplyMapActivity
+from control.reply_map_activity_diehai_ht6 import ReplyMapActivity
 
 import common.screen as screen
 
@@ -80,7 +80,7 @@ tk.Button(fm1, text="结束8-1", width=20, height=1,
 
 
 team1BattleMaxCount=tk.IntVar()
-team1BattleMaxCount.set(5)
+team1BattleMaxCount.set(6)
 team2BattleMaxCount=tk.IntVar()
 team2BattleMaxCount.set(0)
 tk.Label(fm1,text="1队打小怪数").grid(row=5,column=0) 
