@@ -41,7 +41,7 @@ class ReplyMap81(BaseControl):
         return self.matchResImgInWindow("map8//at_home_0_0_40_20.png")
 
     def isAtInMapReady(self):
-        return self.matchResImgInWindow("map8//81ready_20_30_80_86.png")
+        return self.matchResImgInWindow("map8//ready_20_30_80_50.png")
 
     def getBossLocation(self):
         return screen.matchResImgInWindow(self.handle,"map8//boss_48_45_54_55.png")
