@@ -10,6 +10,7 @@ from control.reply_hongran_d3 import ReplyHongranD3
 from control.reply_spc_essex import ReplySpcEssexD3
 
 from control.reply_map_8_1 import ReplyMap81
+from control.reply_map_7_2 import ReplyMap72
 
 from control.reply_map_activity_diehai_ht6 import ReplyMapActivity
 
@@ -78,29 +79,59 @@ tk.Button(fm1, text="结束8-1", width=20, height=1,
 
 
 
+def initAct():
+    team1BattleMaxCount=tk.IntVar()
+    team1BattleMaxCount.set(6)
+    team2BattleMaxCount=tk.IntVar()
+    team2BattleMaxCount.set(0)
+    tk.Label(fm1,text="1队打小怪数").grid(row=5,column=0) 
+    tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=5,column=1)
+    tk.Label(fm1,text="2队打小怪数").grid(row=6,column=0) 
+    tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=6,column=1)
+    def startAct():
+        replyMapActivity.team1BattleMaxCount=int(team1BattleMaxCount.get())
+        replyMapActivity.team2BattleMaxCount=int(team2BattleMaxCount.get())
+        replyMapActivity.start()
 
-team1BattleMaxCount=tk.IntVar()
-team1BattleMaxCount.set(6)
-team2BattleMaxCount=tk.IntVar()
-team2BattleMaxCount.set(0)
-tk.Label(fm1,text="1队打小怪数").grid(row=5,column=0) 
-tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=5,column=1)
-tk.Label(fm1,text="2队打小怪数").grid(row=6,column=0) 
-tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=6,column=1)
-def startAct():
-    replyMapActivity.team1BattleMaxCount=int(team1BattleMaxCount.get())
-    replyMapActivity.team2BattleMaxCount=int(team2BattleMaxCount.get())
-    replyMapActivity.start()
+
+    tk.Button(fm1, text="开始活动图", width=20, height=1,
+            command=startAct).grid(row=7, column=1)
+    tk.Button(fm1, text="结束活动图", width=20, height=1,
+            command=replyMapActivity.stop).grid(row=7, column=2)
+
+initAct()          
 
 
-tk.Button(fm1, text="开始活动图", width=20, height=1,
-          command=startAct).grid(row=7, column=1)
-tk.Button(fm1, text="结束活动图", width=20, height=1,
-          command=replyMapActivity.stop).grid(row=7, column=2)
+def iniMap72():
+    replyMapActivity= ReplyMap72(handle, 2)
+    team1BattleMaxCount=tk.IntVar()
+    team1BattleMaxCount.set(5)
+    team2BattleMaxCount=tk.IntVar()
+    team2BattleMaxCount.set(0)
+    tk.Label(fm1,text="1队打小怪数").grid(row=8,column=0) 
+    tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=8,column=1)
+    tk.Label(fm1,text="2队打小怪数").grid(row=9,column=0) 
+    tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=9,column=1)
+    def startAct():
+        replyMapActivity.team1BattleMaxCount=int(team1BattleMaxCount.get())
+        replyMapActivity.team2BattleMaxCount=int(team2BattleMaxCount.get())
+        replyMapActivity.start()
 
-          
+
+    tk.Button(fm1, text="开始7-2", width=20, height=1,
+            command=startAct).grid(row=10, column=1)
+    tk.Button(fm1, text="结束7-2", width=20, height=1,
+            command=replyMapActivity.stop).grid(row=10, column=2)
+
+iniMap72()        
+
+
+
 
 tk.Label(main, text="工具操作").pack()
+
+
+
 
 # fmTools=tk.Frame(main).pack()
 tk.Button(main, text="窗口截图",
