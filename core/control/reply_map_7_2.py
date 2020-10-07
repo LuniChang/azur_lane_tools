@@ -22,19 +22,21 @@ class ReplyMap72(ReplyMapCommon):
         self.resetCusor()
 
     def isAtHome(self):
-        return screen.autoCompareResImgHash(self.handle,"map7/on_map_0_0_30_20.png",0.4)
+        return screen.autoCompareResImgHash(self.handle, "map7/on_map_0_0_30_20.png", 0.4)
 
     def isAtInMapReady(self):
         return screen.autoCompareResImgHash(self.handle, "map7/ready_20_30_80_50.png")
 
-
-
     _c1Enemys = [
-           "map7/point_45_45_55_55.png",
-           "map7/point2_45_45_55_55.png",
-           "map7/point3_47_47_54_54.png",
-           "map7/point4_45_45_55_55.png",
-        ]
+        "map7/point_45_45_55_55.png",
+        "map7/point2_45_45_55_55.png",
+        # "map7/point3_47_47_54_54.png",
+        "map7/point4_45_45_55_55.png",
+    ]
+    _boss = ["map7/boss3_45_45_55_55.png",
+             "map7/boss2_45_45_55_55.png",
+             "map7/boss1_45_45_55_55.png",
+             ]
 
     def getEnemyLocation(self):
 
@@ -48,8 +50,6 @@ class ReplyMap72(ReplyMapCommon):
                 return xylist
 
         return []
-
-
 
     def run(self):
         self._team1BattleCount = 0
