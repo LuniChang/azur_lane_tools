@@ -31,11 +31,12 @@ class ReplyMap72(ReplyMapCommon):
         "map7/point_45_45_55_55.png",
         "map7/point2_45_45_55_55.png",
         # "map7/point3_47_47_54_54.png",
-        "map7/point4_45_45_55_55.png",
+        "map7/point_45_38_55_55.png",
     ]
     _boss = ["map7/boss3_45_45_55_55.png",
              "map7/boss2_45_45_55_55.png",
              "map7/boss1_45_45_55_55.png",
+             
              ]
 
     def getEnemyLocation(self):
@@ -95,6 +96,7 @@ class ReplyMap72(ReplyMapCommon):
             print("isInMap")
             if self.isInMap():
                 self.findAndBattle()
+                
 
             time.sleep(self.interval)
             # screen.grabCaptureDir(self.handle,"reply_battle")
