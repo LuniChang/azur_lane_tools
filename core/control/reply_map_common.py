@@ -164,9 +164,15 @@ class ReplyMapCommon(BaseControl):
         if self._teamNum == 2:
             if self._team2BattleCount < self.team2BattleMaxCount:
                 xylist = self.getEnemyLocation()
-                if len(xylist) > 0:
-                    x, y = xylist[0]
-                    # self.leftClick(x, y)
+                minX = self.getPosX(15)
+                # maxY=self.getPosY(80)
+                resList = []
+                for point in xylist:
+                    if point[0] >= minX:
+                        resList.append(point)
+                if len(resList) > 0:
+                    x, y = resList[0]
+                    
                     cx = self.getPosX(50)
                     cy = self.getPosY(50)
                     self.drag(x, y, cx, cy)  # 拖动不是一比一 大概是一半
@@ -179,8 +185,14 @@ class ReplyMapCommon(BaseControl):
                     self.scranDragMap()
             else:
                 xylist = self.getBossLocation()
-                if len(xylist) > 0:
-                    x, y = xylist[0]
+                minX = self.getPosX(15)
+                # maxY=self.getPosY(80)
+                resList = []
+                for point in xylist:
+                    if point[0] >= minX:
+                        resList.append(point)
+                if len(resList) > 0:
+                    x, y = resList[0]
                     self.leftClick(x, y)
                     time.sleep(5)
                 else:
