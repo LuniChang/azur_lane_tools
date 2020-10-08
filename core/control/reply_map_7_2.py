@@ -36,14 +36,25 @@ class ReplyMap72(ReplyMapCommon):
     _boss = ["map7/boss3_45_45_55_55.png",
              "map7/boss2_45_45_55_55.png",
              "map7/boss1_45_45_55_55.png",
-             
+             "enemy\\boss_48_45_52_55.png",
+             "enemy\\boss1_47_47_54_54.png",
+             "enemy\\boss2_47_47_54_54.png",
+             "enemy\\boss3_47_47_52_52.png",
+             "enemy\\boss4_46_46_50_52.png",
              ]
 
+    # _lastWinHash=""
     def getEnemyLocation(self):
 
-        imgs = self._c1Enemys+self._enemys
+        # imgs = self._c1Enemys+self._enemys
+        # winHash=screen.winScreenHash(self.handle)
+        # if screen.alikeHash( self._lastWinHash, winHash, 0.8):
 
-        random.shuffle(imgs)
+        #    imgs=self._enemys
+        #    random.shuffle(imgs)
+
+        # self._lastWinHash=winHash
+        imgs = self._enemys
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
                 self.handle, imgs[i], 0.8)
@@ -51,6 +62,17 @@ class ReplyMap72(ReplyMapCommon):
                 return xylist
 
         return []
+
+    def clickPoint(self):
+        imgs = self._c1Enemys
+       
+        for i in range(len(imgs)):
+            xylist = screen.matchResImgInWindow(
+                self.handle, imgs[i], 0.8)
+            if len(xylist) > 0:
+                x, y = xylist[0]
+                self.leftClick(x, y)
+                time.sleep(10)
 
     def run(self):
         self._team1BattleCount = 0
@@ -64,8 +86,9 @@ class ReplyMap72(ReplyMapCommon):
 
             # 底部菜单hash
             self.resetCusor()
-            print("isAtHome")
+
             if self.isAtHome():
+                print("isAtHome")
                 self._team1BattleCount = 0
                 self._team2BattleCount = 0
                 self._team1MoveCount = 0
@@ -74,8 +97,8 @@ class ReplyMap72(ReplyMapCommon):
                 self.clickMap()
                 time.sleep(2)
 
-            print("isAtInMapReady")
             if self.isAtInMapReady():
+                print("isAtInMapReady")
                 self._team1BattleCount = 0
                 self._team2BattleCount = 0
                 self._team1MoveCount = 0
@@ -84,8 +107,8 @@ class ReplyMap72(ReplyMapCommon):
                 self.intoMap()
                 time.sleep(2)
 
-            print("onSelectTeam")
             if self.onSelectTeam():
+                print("onSelectTeam")
                 self.clickNeedLeaderCat()
                 time.sleep(2)
                 self.atTeamIntoMap()
@@ -93,10 +116,10 @@ class ReplyMap72(ReplyMapCommon):
 
             self.commonAction()
 
-            print("isInMap")
             if self.isInMap():
+                print("isInMap")
+                self.clickPoint()
                 self.findAndBattle()
-                
 
             time.sleep(self.interval)
             # screen.grabCaptureDir(self.handle,"reply_battle")
