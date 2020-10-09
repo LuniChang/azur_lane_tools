@@ -44,7 +44,7 @@ class BaseControl:
 
     def onGetItems(self):
         print("onGetItems")
-        return self.matchResImgInWindow("on_get_item_40_20_60_40.png")
+        return self.matchResImgInWindow("on_get_item_40_20_60_40.png") or  self.matchResImgInWindow("on_get_item2_40_30_60_35.png")
 
     def dragPer(self, x, y, toX, toY):
         win32api.SetCursorPos((self.getPosX(x), self.getPosY(y)))
@@ -245,7 +245,7 @@ class BaseControl:
 
     def onSelectTeam(self):
         print("onSelectTeam")
-        return screen.autoCompareResImgHash(self.handle, "on_select_team_78_80_92_88.png")
+        return screen.autoCompareResImgHash(self.handle, "on_select_team_78_80_92_88.png") 
 
     def onSelectTeamByMatch(self):  # 这种方式在地图会有问题
         print("onSelectTeamByMatch")
