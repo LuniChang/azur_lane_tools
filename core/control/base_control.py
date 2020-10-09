@@ -44,7 +44,7 @@ class BaseControl:
 
     def onGetItems(self):
         print("onGetItems")
-        return self.matchResImgInWindow("on_get_item_40_20_60_40.png") or  self.matchResImgInWindow("on_get_item2_40_30_60_35.png")
+        return self.matchResImgInWindow("on_get_item_40_20_60_40.png") or self.matchResImgInWindow("on_get_item2_40_30_60_35.png")
 
     def dragPer(self, x, y, toX, toY):
         win32api.SetCursorPos((self.getPosX(x), self.getPosY(y)))
@@ -286,6 +286,7 @@ class BaseControl:
             self.battleContinue()
             time.sleep(2)
 
+    
         if self.onBattleEndCount():
             print("onBattleEndCount", self._team1BattleCount,
                   self._team2BattleCount)
