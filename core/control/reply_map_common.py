@@ -28,18 +28,27 @@ class ReplyMapCommon(BaseControl):
 
     _enemys = [
 
-        "enemy\\ship_z1_45_45_55_55.png",
-        "enemy\\ship_z2_45_45_55_55.png",
-        "enemy\\ship_z3_45_45_55_55.png",
-        "enemy\\ship_h1_45_45_55_55.png",
         "enemy\\ship_h1_45_45_55_55.png",
         "enemy\\ship_h2_45_45_55_55.png",
         "enemy\\ship_h3_47_47_54_54.png",
         "enemy\\ship_q1_45_45_55_55.png",
         "enemy\\ship_q2_45_45_55_55.png",
         "enemy\\ship_q3_47_47_54_54.png",
+        "enemy\\ship_q4_46_46_53_53.png",
+        "enemy\\ship_q5_46_46_53_53.png",
+        "enemy\\ship_y1_46_46_53_53.png",
+        "enemy\\ship_y2_46_46_53_53.png",
+        "enemy\\ship_y3_46_46_53_53.png",
+        "enemy\\ship_y4_45_45_55_55.png",
+        "enemy\\ship_y5_45_45_53_53.png",
+        "enemy\\ship_z1_45_45_55_55.png",
+        "enemy\\ship_z2_45_45_55_55.png",
+        "enemy\\ship_z3_45_45_55_55.png",
+        "enemy\\ship_z4_46_46_53_53.png",
         "enemy\\ship_z4_47_47_54_54.png",
+        "enemy\\ship_z5_46_46_53_53.png",
         "enemy\\ship_z5_47_47_54_54.png",
+        "enemy\\ship_z6_46_46_53_53.png",
         "enemy\\ship_z6_47_47_54_54.png",
     ]
 
@@ -172,7 +181,7 @@ class ReplyMapCommon(BaseControl):
                         resList.append(point)
                 if len(resList) > 0:
                     x, y = resList[0]
-                    
+
                     cx = self.getPosX(50)
                     cy = self.getPosY(50)
                     self.drag(x, y, cx, cy)  # 拖动不是一比一 大概是一半
