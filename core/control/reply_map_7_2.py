@@ -73,6 +73,10 @@ class ReplyMap72(ReplyMapCommon):
                 x, y = xylist[0]
                 self.leftClick(x, y)
                 time.sleep(10)
+                if self.onGetItems():#防止点错
+                    self.battleContinue()
+                    time.sleep(4)    
+        
 
     def run(self):
         self._team1BattleCount = 0
@@ -115,10 +119,7 @@ class ReplyMap72(ReplyMapCommon):
                 time.sleep(2)
 
             self.commonAction()
-            if self.onGetItems():#防止点错
-                self.battleContinue()
-                time.sleep(2)    
-                continue
+      
 
 
             if self.isInMap():
