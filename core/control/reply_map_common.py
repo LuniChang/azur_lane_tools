@@ -116,7 +116,7 @@ class ReplyMapCommon(BaseControl):
             winHash = ""
             while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
                 winHash = screen.winScreenHash(self.handle)
-                self.dragPerRightUp()
+                self.dragPerLeftUp()
 
             self._needResetMap = False
             self._scranMapEnd = False
