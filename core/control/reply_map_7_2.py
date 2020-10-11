@@ -43,17 +43,9 @@ class ReplyMap72(ReplyMapCommon):
              "enemy\\boss4_46_46_50_52.png",
              ]
 
-    # _lastWinHash=""
+   
     def getEnemyLocation(self):
 
-        # imgs = self._c1Enemys+self._enemys
-        # winHash=screen.winScreenHash(self.handle)
-        # if screen.alikeHash( self._lastWinHash, winHash, 0.8):
-
-        #    imgs=self._enemys
-        #    random.shuffle(imgs)
-
-        # self._lastWinHash=winHash
         imgs = self._enemys
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
@@ -62,6 +54,17 @@ class ReplyMap72(ReplyMapCommon):
                 return xylist
 
         return []
+
+
+    def resetTeamPosition(self): 
+        winHash = ""
+        while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+            winHash = screen.winScreenHash(self.handle)
+            self.dragPerRightUp()
+
+        time.sleep(5)
+        self.leftClickPer(30,60)     
+
 
     def clickPoint(self):
         imgs = self._c1Enemys

@@ -94,24 +94,37 @@ class ReplyMapCommon(BaseControl):
     def dragPerUp(self):
         self.dragPer(50, 20, 50, 70)
 
+    def dragPerLeftUp(self):
+        self.dragPer(10, 20, 80, 70)
+
+    def dragPerRightUp(self):
+        self.dragPer(80, 20, 10, 70)
+
     def dragPerDown(self):
         self.dragPer(50, 70, 50, 20)
 
+    def dragPerLeftDown(self):
+        self.dragPer(10, 70, 80, 20)
+
     def resetMapPosition(self):
         if not self._isScranMap:
-            winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
-                self.dragPerUp()
+            # winHash = ""
+            # while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+            #     winHash = screen.winScreenHash(self.handle)
+            #     self.dragPerUp()
 
             winHash = ""
             while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
                 winHash = screen.winScreenHash(self.handle)
-                self.dragPerLeft()
+                self.dragPerRightUp()
 
             self._needResetMap = False
             self._scranMapEnd = False
             self._scranDirection = 0
+
+    def resetTeamPosition(self):
+        pass
+
 
     def scranDragMap(self):  # 全图扫描
         winHash = screen.winScreenHash(self.handle)
@@ -167,6 +180,7 @@ class ReplyMapCommon(BaseControl):
 
             else:
                 time.sleep(10)
+                self.resetTeamPosition()
                 self.switchTeam()
                 self._teamNum = 2
 
