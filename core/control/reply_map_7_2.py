@@ -64,7 +64,7 @@ class ReplyMap72(ReplyMapCommon):
 
         time.sleep(5)
         self.leftClickPer(30,60)     
-
+        time.sleep(10)
 
     def clickPoint(self):
         imgs = self._c1Enemys
