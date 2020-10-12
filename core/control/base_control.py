@@ -237,6 +237,14 @@ class BaseControl:
     def clickOnGetSR(self):
         self.leftClickPer(98, 98)
 
+
+    def clickToFire(self):
+        xylist = screen.matchResImgInWindow(
+            self.handle, "to_fire_80_85_95_95.png", 0.8)
+        if len(xylist) > 0:
+            x, y = xylist[0]
+            self.leftClick(x, y)
+
     def isNewMission(self):  # TODO 待优化
         print("isNewMission")
         return screen.autoCompareResImgHash(self.handle, "new_mission_28_26_70_76.png") \
@@ -285,6 +293,8 @@ class BaseControl:
         if self.onGetItems():
             self.battleContinue()
             time.sleep(2)
+
+        self.clickToFire()    
 
     
         if self.onBattleEndCount():

@@ -12,7 +12,7 @@ from control.reply_spc_essex import ReplySpcEssexD3
 from control.reply_map_8_1 import ReplyMap81
 from control.reply_map_7_2 import ReplyMap72
 
-from control.reply_map_activity_diehai_ht6 import ReplyMapActivity
+from control.reply_map_activity_sp_huaphaikong import ReplyMapActivity
 
 import common.screen as screen
 
@@ -81,7 +81,7 @@ tk.Button(fm1, text="结束8-1", width=20, height=1,
 
 def initAct():
     team1BattleMaxCount=tk.IntVar()
-    team1BattleMaxCount.set(6)
+    team1BattleMaxCount.set(5)
     team2BattleMaxCount=tk.IntVar()
     team2BattleMaxCount.set(0)
     tk.Label(fm1,text="1队打小怪数").grid(row=5,column=0) 
@@ -94,7 +94,7 @@ def initAct():
         replyMapActivity.start()
 
 
-    tk.Button(fm1, text="开始活动图", width=20, height=1,
+    tk.Button(fm1, text="开始活动图SP3", width=20, height=1,
             command=startAct).grid(row=7, column=1)
     tk.Button(fm1, text="结束活动图", width=20, height=1,
             command=replyMapActivity.stop).grid(row=7, column=2)

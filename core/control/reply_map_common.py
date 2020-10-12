@@ -59,10 +59,14 @@ class ReplyMapCommon(BaseControl):
              "enemy\\boss4_46_46_50_52.png",
 
              ]
+    _exEnemys = [
 
+
+    ]
+    
     def getEnemyLocation(self):
 
-        imgs = self._enemys
+        imgs = self._enemys+self._exEnemys 
 
         # random.shuffle(imgs)
         for i in range(len(imgs)):
