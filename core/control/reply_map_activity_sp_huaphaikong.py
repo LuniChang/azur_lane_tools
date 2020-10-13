@@ -53,7 +53,9 @@ class ReplyMapActivity(ReplyMapCommon):
 
         time.sleep(5)
         self.leftClickPer(30, 60)
-        time.sleep(10)
+        time.sleep(15)
+        if not self.isInMap():
+             time.sleep(60)
 
     def run(self):
         self._team1BattleCount = 0
@@ -64,7 +66,6 @@ class ReplyMapActivity(ReplyMapCommon):
 
         while self._isRun:
             win32gui.SetForegroundWindow(self.handle)
-
             # 底部菜单hash
             self.resetCusor()
             print("isAtHome")
