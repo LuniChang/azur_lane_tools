@@ -46,16 +46,17 @@ class ReplyMapActivity(ReplyMapCommon):
     ]
 
     def resetTeamPosition(self):
-        winHash = ""
-        while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-            winHash = screen.winScreenHash(self.handle)
-            self.dragPerRightUp()
+        if self.isInMap():
+            winHash = ""
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+                winHash = screen.winScreenHash(self.handle)
+                self.dragPerRightUp()
 
-        time.sleep(5)
-        self.leftClickPer(30, 60)
-        time.sleep(15)
-        if not self.isInMap():
-             time.sleep(60)
+            time.sleep(5)
+            self.leftClickPer(30, 60)
+            time.sleep(15)
+
+        return  self.isInMap()   
 
     def run(self):
         self._team1BattleCount = 0

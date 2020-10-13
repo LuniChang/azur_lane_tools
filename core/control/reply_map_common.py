@@ -127,7 +127,7 @@ class ReplyMapCommon(BaseControl):
             self._scranDirection = 0
 
     def resetTeamPosition(self):
-        pass
+        return True
 
 
     def scranDragMap(self):  # 全图扫描
@@ -184,9 +184,11 @@ class ReplyMapCommon(BaseControl):
 
             else:
                 time.sleep(10)
-                self.resetTeamPosition()
-                self.switchTeam()
-                self._teamNum = 2
+                if self.resetTeamPosition():
+                    self.switchTeam()
+                    self._teamNum = 2
+
+               
 
         if self._teamNum == 2:
             if self._team2BattleCount < self.team2BattleMaxCount:
