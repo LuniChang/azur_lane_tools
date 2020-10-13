@@ -81,9 +81,9 @@ tk.Button(fm1, text="结束8-1", width=20, height=1,
 
 def initAct():
     team1BattleMaxCount=tk.IntVar()
-    team1BattleMaxCount.set(5)
+    team1BattleMaxCount.set(4)
     team2BattleMaxCount=tk.IntVar()
-    team2BattleMaxCount.set(0)
+    team2BattleMaxCount.set(1)
     tk.Label(fm1,text="1队打小怪数").grid(row=5,column=0) 
     tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=5,column=1)
     tk.Label(fm1,text="2队打小怪数").grid(row=6,column=0) 
