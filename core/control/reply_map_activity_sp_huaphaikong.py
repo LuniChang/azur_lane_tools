@@ -28,13 +28,13 @@ class ReplyMapActivity(ReplyMapCommon):
         return screen.autoCompareResImgHash(self.handle, "act/sp_huapohaikong/ready_30_30_80_50.png")
 
     _boss = [
-        "act/sp_huapohaikong/boss1_50_45_55_55.png"
-        "act/sp_huapohaikong/boss2_50_45_55_56.png"
-        "act/sp_huapohaikong/boss3_50_48_55_56.png"
-        "act/sp_huapohaikong/boss4_45_40_55_55.png"
-        "act/sp_huapohaikong/boss5_45_45_55_55.png"
-        "act/sp_huapohaikong/boss6_45_45_55_55.png"
-        "act/sp_huapohaikong/boss7_45_45_55_55.png"
+        "act/sp_huapohaikong/boss1_50_45_55_55.png",
+        "act/sp_huapohaikong/boss2_50_45_55_56.png",
+        "act/sp_huapohaikong/boss3_50_48_55_56.png",
+        "act/sp_huapohaikong/boss4_45_40_55_55.png",
+        "act/sp_huapohaikong/boss5_45_45_55_55.png",
+        "act/sp_huapohaikong/boss6_45_45_55_55.png",
+        "act/sp_huapohaikong/boss7_45_45_55_55.png",
     ]
 
     _exEnemys = [

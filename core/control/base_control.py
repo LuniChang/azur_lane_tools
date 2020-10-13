@@ -218,6 +218,8 @@ class BaseControl:
     def onBattleEnd(self):
         return screen.autoCompareResImgHash(self.handle, "on_battle_end_10_10_90_30.png") \
             or screen.autoCompareResImgHash(self.handle, "battle_end1_30_80_50_95.png")
+        # return self.matchResImgInWindow("on_battle_end_10_10_90_30.png") \
+        #     or self.matchResImgInWindow( "battle_end1_30_80_50_95.png")
 
     def onBattleEndCount(self):
         return self.matchResImgInWindow("battle_end_68_86_92_96.png")\
@@ -229,10 +231,12 @@ class BaseControl:
     def onGetSR(self):
         print("onGetSR")
         return screen.autoCompareResImgHashValue(self.handle, "on_get_sr_70_20_95_60.png") > 0.2
+        # return self.matchResImgInWindow("on_get_sr_70_20_95_60.png")
 
     def onGetSSR(self):
         print("onGetSSR")
         return screen.autoCompareResImgHashValue(self.handle, "on_get_ssr_70_10_90_50.png") > 0.2
+        # return self.matchResImgInWindow("on_get_ssr_70_10_90_50.png")
 
     def clickOnGetSR(self):
         self.leftClickPer(98, 98)
@@ -283,32 +287,38 @@ class BaseControl:
     def commonAction(self):
 
         if self.onGetSR() or self.onGetSSR():
-
+            time.sleep(2)
             self.clickOnGetSR()
             time.sleep(2)
 
         if self.onBattleEnd():
+            time.sleep(2)
             self.battleContinue()
             time.sleep(2)
         if self.onGetItems():
+            time.sleep(2)
             self.battleContinue()
             time.sleep(2)
 
-        self.clickToFire()    
+          
 
     
         if self.onBattleEndCount():
+            time.sleep(2)
             print("onBattleEndCount", self._team1BattleCount,
                   self._team2BattleCount)
             if self._teamNum == 1:
                 self._team1BattleCount = self._team1BattleCount+1
             else:
                 self._team2BattleCount = self._team2BattleCount+1
+
             self.battleContinue()
             time.sleep(4)
         if self.isNewMission():
             self.leftClickPer(99, 99)
             time.sleep(3)
+
+        self.clickToFire()      
 
     def run(self):
         pass
