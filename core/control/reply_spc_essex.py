@@ -49,8 +49,9 @@ class ReplySpcEssexD3(BaseControl):
     def run(self):
         battleCount = 0
         toBattleLevel = 2
+        screen.setForegroundWindow(self.handle)
         while self._isRun:
-            win32gui.SetForegroundWindow(self.handle)
+           
 
             # 底部菜单hash
             self.resetCusor()
