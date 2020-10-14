@@ -130,7 +130,6 @@ class BaseControl:
         time.sleep(t)
         self.resetCusor()
 
-
     def moveLeft(self, num=1):
         print("moveLeft")
         screen.setForegroundWindow(self.handle)
@@ -140,8 +139,8 @@ class BaseControl:
         self.resetCusor()
 
     def moveLeftDrag(self, num=1):
-        x=self.getPosX(50-num*10)
-        y= self.getPosY(50)
+        x = self.getPosX(50-num*10)
+        y = self.getPosY(50)
         cx = self.getPosX(50)
         cy = self.getPosY(50)
         self.drag(x, y, cx, cy)
@@ -149,7 +148,7 @@ class BaseControl:
         time.sleep(2)
         self.leftClickPer(50, 50)
         time.sleep(num)
-        self.resetCusor()    
+        self.resetCusor()
 
     def moveRight(self, num=1):
         print("moveRight")
@@ -160,8 +159,8 @@ class BaseControl:
         self.resetCusor()
 
     def moveRightDrag(self, num=1):
-        x=self.getPosX(50+num*10)
-        y= self.getPosY(50)
+        x = self.getPosX(50+num*10)
+        y = self.getPosY(50)
         cx = self.getPosX(50)
         cy = self.getPosY(50)
         self.drag(x, y, cx, cy)
@@ -169,7 +168,7 @@ class BaseControl:
         time.sleep(2)
         self.leftClickPer(50, 50)
         time.sleep(num)
-        self.resetCusor()  
+        self.resetCusor()
 
     def moveUp(self, num=1):
         print("moveUp")
@@ -178,10 +177,10 @@ class BaseControl:
         self.leftClickPer(50, 50-num*13)
         time.sleep(num)
         self.resetCusor()
-    
+
     def moveUpDrag(self, num=1):
-        x=self.getPosX(50)
-        y= self.getPosY(50-num*13)
+        x = self.getPosX(50)
+        y = self.getPosY(50-num*13)
         cx = self.getPosX(50)
         cy = self.getPosY(50)
         self.drag(x, y, cx, cy)
@@ -189,7 +188,7 @@ class BaseControl:
         time.sleep(2)
         self.leftClickPer(50, 50)
         time.sleep(num)
-        self.resetCusor()  
+        self.resetCusor()
 
     def moveDown(self, num=1):
         print("moveDown")
@@ -200,8 +199,8 @@ class BaseControl:
         self.resetCusor()
 
     def moveDownDrag(self, num=1):
-        x=self.getPosX(50)
-        y= self.getPosY(50+num*15)
+        x = self.getPosX(50)
+        y = self.getPosY(50+num*15)
         cx = self.getPosX(50)
         cy = self.getPosY(50)
         self.drag(x, y, cx, cy)
@@ -209,7 +208,7 @@ class BaseControl:
         time.sleep(2)
         self.leftClickPer(50, 50)
         time.sleep(num)
-        self.resetCusor()  
+        self.resetCusor()
 
     def resetCusor(self):
         time.sleep(0.5)
@@ -241,7 +240,6 @@ class BaseControl:
     def clickOnGetSR(self):
         self.leftClickPer(98, 98)
 
-
     def clickToFire(self):
         xylist = screen.matchResImgInWindow(
             self.handle, "to_fire_80_85_95_95.png", 0.8)
@@ -257,7 +255,7 @@ class BaseControl:
 
     def onSelectTeam(self):
         print("onSelectTeam")
-        return screen.autoCompareResImgHash(self.handle, "on_select_team_78_80_92_88.png") 
+        return screen.autoCompareResImgHash(self.handle, "on_select_team_78_80_92_88.png")
 
     def onSelectTeamByMatch(self):  # 这种方式在地图会有问题
         print("onSelectTeamByMatch")
@@ -284,6 +282,17 @@ class BaseControl:
     def isHpEmpty(self):
         return screen.autoCompareResImgHash(self.handle, "hp_empty_10_40_90_62.png")
 
+    _currentWinHash = ""
+
+    def isSameWin(self):
+
+        nowHash = screen.winScreenHash(self.handle)
+        res = screen.alikeHash(self._currentWinHash,
+                               nowHash, 0.8)
+        self._currentWinHash = nowHash
+
+        return res
+
     def commonAction(self):
 
         if self.onGetSR() or self.onGetSSR():
@@ -300,9 +309,6 @@ class BaseControl:
             self.battleContinue()
             time.sleep(2)
 
-          
-
-    
         if self.onBattleEndCount():
             time.sleep(2)
             print("onBattleEndCount", self._team1BattleCount,
@@ -318,7 +324,7 @@ class BaseControl:
             self.leftClickPer(99, 99)
             time.sleep(3)
 
-        self.clickToFire()      
+        self.clickToFire()
 
     def run(self):
         pass
