@@ -12,12 +12,12 @@ class ReplyMapActivity(ReplyMapCommon):
 
     # 进地图
     def clickMap(self):
-        #win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         self.leftClickPer(25, 35)
         self.resetCusor()
 
     def intoMap(self):
-        #win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         self.leftClickPer(70, 68)
         self.resetCusor()
 
@@ -62,7 +62,7 @@ class ReplyMapActivity(ReplyMapCommon):
         self._teamNum = 1
 
         while self._isRun:
-            #win32gui.SetForegroundWindow(self.handle)
+            screen.setForegroundWindow(self.handle)
 
             # 底部菜单hash
             self.resetCusor()

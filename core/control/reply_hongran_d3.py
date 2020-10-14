@@ -22,14 +22,14 @@ class ReplyHongranD3(ReplyMapCommon):
    
     #进地图
     def clickD3(self):
-        #win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(55), self.getPosY(40)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)    
         self.resetCusor()    
 
     def intoD3(self):
-        #win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(70), self.getPosY(70)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)      
@@ -47,7 +47,7 @@ class ReplyHongranD3(ReplyMapCommon):
     def needUseKey(self):
         return screen.autoCompareResImgHash(self.handle,"hongran//usekey_30_26_70_76.png")
     def useKey(self):
-        #win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(65), self.getPosY(70)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0) 

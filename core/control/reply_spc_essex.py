@@ -49,7 +49,7 @@ class ReplySpcEssexD3(BaseControl):
     def run(self):
         battleCount = 0
         toBattleLevel = 2
-        #win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         while self._isRun:
            
 

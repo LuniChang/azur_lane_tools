@@ -22,14 +22,14 @@ class ReplyMap81(BaseControl):
    
     #进地图
     def clickMap(self):
-        #win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(44), self.getPosY(34)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)   
         self.resetCusor()    
 
     def intoMap(self):
-        #win32gui.SetForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(70), self.getPosY(68)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)      
