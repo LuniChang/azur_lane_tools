@@ -90,29 +90,29 @@ class BaseControl:
         self.resetCusor()
 
     def clickNeedLeaderCat(self):
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(95), self.getPosY(35)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
                              win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
         self.resetCusor()
 
     def clickOnGetItems(self):
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         self.leftClick(self.getPosX(50), self.getPosY(65))
 
     def battleContinue(self):
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         self.leftClick(self.getPosX(85), self.getPosY(90))
         self.resetCusor()
 
     def closeNewMission(self):
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(99, 99)
         self.resetCusor()
 
     def switchTeam(self):
         print("switchTeam")
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         # self.leftClickPer(99, 99)#防止任务弹出
         time.sleep(0.5)
         self.leftClickPer(82, 96)
@@ -121,7 +121,7 @@ class BaseControl:
 
     def resetTeamLocation(self, t=3):
         print("resetTeamLocation")
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         # self.leftClickPer(99, 99)#防止任务弹出
         time.sleep(0.5)
         self.leftClickPer(82, 96)
@@ -133,7 +133,7 @@ class BaseControl:
 
     def moveLeft(self, num=1):
         print("moveLeft")
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(50-num*10, 50)
         self.leftClickPer(50-num*10, 50)
         time.sleep(num)
@@ -153,7 +153,7 @@ class BaseControl:
 
     def moveRight(self, num=1):
         print("moveRight")
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(50+num*10, 50)
         self.leftClickPer(50+num*10, 50)
         time.sleep(num)
@@ -173,7 +173,7 @@ class BaseControl:
 
     def moveUp(self, num=1):
         print("moveUp")
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(50, 50-num*13)
         self.leftClickPer(50, 50-num*13)
         time.sleep(num)
@@ -193,7 +193,7 @@ class BaseControl:
 
     def moveDown(self, num=1):
         print("moveDown")
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         self.leftClickPer(50, 50+num*15)
         self.leftClickPer(50, 50+num*15)
         time.sleep(num)
@@ -264,11 +264,11 @@ class BaseControl:
         return self.matchResImgInWindow("on_select_team_78_80_92_88.png")
 
     def intoMap(self):
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         self.leftClick(self.getPosX(80), self.getPosY(85))
 
     def atTeamIntoMap(self):
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(80), self.getPosY(85)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
                              win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)

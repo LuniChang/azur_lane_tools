@@ -22,14 +22,14 @@ class ReplyMap81(BaseControl):
    
     #进地图
     def clickMap(self):
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(44), self.getPosY(34)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)   
         self.resetCusor()    
 
     def intoMap(self):
-        win32gui.SetForegroundWindow(self.handle)
+        #win32gui.SetForegroundWindow(self.handle)
         win32api.SetCursorPos((self.getPosX(70), self.getPosY(68)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)      
@@ -55,9 +55,9 @@ class ReplyMap81(BaseControl):
         self._team1MoveCount=0
         self._team2MoveCount=0
         self._teamNum=1
-
+        win32gui.SetForegroundWindow(self.handle)
         while self._isRun:
-            win32gui.SetForegroundWindow(self.handle)
+            
            
             #底部菜单hash 
             self.resetCusor() 
