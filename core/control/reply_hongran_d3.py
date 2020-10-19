@@ -67,14 +67,33 @@ class ReplyHongranD3(ReplyMapCommon):
             winHash = ""
             while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
                 winHash = screen.winScreenHash(self.handle)
-                self.dragPerLeftDown()
+                self.dragPerRightUp()
 
             time.sleep(5)
-            self.leftClickPer(75, 25)
+            self.leftClickPer(25, 97)
             time.sleep(15)
 
         return  self.isInMap() 
 
+    def setTeamPositionToBoss(self,code): 
+        if self.isInMap():
+            winHash = ""
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+                winHash = screen.winScreenHash(self.handle)
+                if code ==1:
+                   self.dragPerRightUp()
+                else:
+                   self.dragPerLeftUp()
+
+            time.sleep(5)
+            if code ==1:
+                self.leftClickPer(25, 85)
+            else:
+                self.leftClickPer(75, 85)
+            time.sleep(15)
+
+        return  self.isInMap() 
+        
           
     
     def run(self):    
@@ -208,10 +227,10 @@ class ReplyHongranD3(ReplyMapCommon):
                             self._team1MoveCount=9 #循环
 
                     else:      #这里够五次换队
-                        if  self._team2MoveCount==6 :
-                            self.switchTeam()
-                            self._teamNum=2
-                        else :
+                        # if  self._team2MoveCount==6 :
+                        #     self.switchTeam()
+                        #     self._teamNum=2
+                        # else :
                             self.resetTeamLocation() 
                             self.setTeamPositionToSave()
                             time.sleep(15)
@@ -248,9 +267,9 @@ class ReplyHongranD3(ReplyMapCommon):
                         self.moveLeft(1)
 
                     
-                    if self._team2MoveCount==5:
-                        self.switchTeam()
-                        self._teamNum=1
+                    # if self._team2MoveCount==5:
+                        # self.switchTeam()
+                        # self._teamNum=1
                         
                     if self._team2MoveCount==6:
                         self.resetTeamLocation()
@@ -306,8 +325,12 @@ class ReplyHongranD3(ReplyMapCommon):
                     if self._team2BattleCount==2:
                          self.leftClickPer(50,50)  
                          self.findAndClickBoss()
-                         self.resetMapPosition()
-                         self.scranDragMap()
+                         self.setTeamPositionToBoss(1)
+                         time.sleep(10)
+                         if self.isInMap():
+                            self.setTeamPositionToBoss(2)
+                        #  self.resetMapPosition()
+                        #  self.scranDragMap()
                         
                               
                     self._team2MoveCount=self._team2MoveCount+1  

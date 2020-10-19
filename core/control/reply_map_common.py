@@ -175,6 +175,8 @@ class ReplyMapCommon(BaseControl):
                     self.leftClick(cx, cy)
                     time.sleep(5)
                 else:
+                    if self.isSameWin():
+                        self.setTeamPositionToSave()
                     self.resetMapPosition()
                     self.scranDragMap()
 

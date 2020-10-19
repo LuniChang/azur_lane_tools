@@ -222,7 +222,7 @@ class BaseControl:
 
     def onBattleEndCount(self):
         return screen.autoCompareResImgHash(self.handle,"battle_end_68_86_92_96.png",0.5)\
-             or self.matchResImgInWindow("battle_end2_78_90_90_96.png",0.6)
+             or self.matchResImgInWindow("battle_end2_78_90_90_96.png",0.55)
 
     def isInMap(self):
         return screen.autoCompareResImgHash(self.handle, "in_map_65_90_100_100.png")
