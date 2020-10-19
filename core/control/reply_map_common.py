@@ -112,10 +112,6 @@ class ReplyMapCommon(BaseControl):
 
     def resetMapPosition(self):
         if not self._isScranMap:
-            # winHash = ""
-            # while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-            #     winHash = screen.winScreenHash(self.handle)
-            #     self.dragPerUp()
 
             winHash = ""
             while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
@@ -126,7 +122,7 @@ class ReplyMapCommon(BaseControl):
             self._scranMapEnd = False
             self._scranDirection = 0
 
-    def resetTeamPosition(self):
+    def setTeamPositionToSave(self):
         return True
 
 
@@ -184,7 +180,7 @@ class ReplyMapCommon(BaseControl):
 
             else:
                 time.sleep(10)
-                if self.resetTeamPosition():
+                if self.setTeamPositionToSave():
                     self.switchTeam()
                     self._teamNum = 2
 

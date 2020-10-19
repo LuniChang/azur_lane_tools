@@ -60,6 +60,22 @@ class ReplyHongranD3(ReplyMapCommon):
             self.leftClick(x,y)
             
             time.sleep(5)
+
+    
+    def setTeamPositionToSave(self): 
+        if self.isInMap():
+            winHash = ""
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+                winHash = screen.winScreenHash(self.handle)
+                self.dragPerLeftDown()
+
+            time.sleep(5)
+            self.leftClickPer(75, 25)
+            time.sleep(15)
+
+        return  self.isInMap() 
+
+          
     
     def run(self):    
         self._team1BattleCount=0
@@ -107,12 +123,12 @@ class ReplyHongranD3(ReplyMapCommon):
            
             print("isInMap")
             if self.isInMap():
-                self.leftClickPer(99, 99)
-                time.sleep(2)
+                # self.leftClickPer(99, 99)
+                # time.sleep(2)
                 if self.isNewMission():  
                     self.leftClickPer(99,99)
                     time.sleep(3)
-
+               
                 # time.sleep(1)
                 if self._teamNum==1:
                     print("self._team1MoveCount",self._team1MoveCount)
@@ -146,6 +162,7 @@ class ReplyHongranD3(ReplyMapCommon):
                     if self._team1MoveCount==6: 
                         self.resetTeamLocation()
                         self.moveUp(1)
+
                     print("self._team1BattleCount",self._team1BattleCount)
                     if self._team1BattleCount<5:
                         if self._team1MoveCount==7: 
@@ -191,21 +208,15 @@ class ReplyHongranD3(ReplyMapCommon):
                             self._team1MoveCount=9 #循环
 
                     else:      #这里够五次换队
-        
-                        self.resetTeamLocation() 
-                        for i in range(6):
-                            self.dragPer(50,90,50,30)
-                        #需要做判断
-                        self.leftClickPer(50,20) 
-                        # if self._team1MoveCount<=10:
-                        #    self.leftClickPer(50,85) 
-                        # if self._team1MoveCount>910 and self._team1MoveCount<15:
-                        #    self.leftClickPer(50,70) 
-                        # if self._team1MoveCount>=15:
-                        #    self.leftClickPer(50,55)    
-                        time.sleep(15)
-                        self.switchTeam()
-                        self._teamNum=2
+                        if  self._team2MoveCount==6 :
+                            self.switchTeam()
+                            self._teamNum=2
+                        else :
+                            self.resetTeamLocation() 
+                            self.setTeamPositionToSave()
+                            time.sleep(15)
+                            self.switchTeam()
+                            self._teamNum=2
                    
 
                     self._team1MoveCount=self._team1MoveCount+1
@@ -235,53 +246,59 @@ class ReplyHongranD3(ReplyMapCommon):
                     #此处一队应打完五次    
                     if self._team2MoveCount==4:
                         self.moveLeft(1)
+
+                    
                     if self._team2MoveCount==5:
-                        self.resetTeamLocation()
-                        self.moveUp(1)   
+                        self.switchTeam()
+                        self._teamNum=1
+                        
                     if self._team2MoveCount==6:
                         self.resetTeamLocation()
-                        self.moveUp(1)  
+                        self.moveUp(1)   
                     if self._team2MoveCount==7:
+                        self.resetTeamLocation()
+                        self.moveUp(1)  
+                    if self._team2MoveCount==8:
                         self.resetTeamLocation() 
                         self.moveLeft(1)  
-                    if self._team2MoveCount==8:
-                        self.moveLeft(2)    
                     if self._team2MoveCount==9:
+                        self.moveLeft(2)    
+                    if self._team2MoveCount==10:
                         self.resetTeamLocation() 
                         self.moveLeft(1)    
 
                     if self._team2BattleCount<2:
                             
-                        if self._team2MoveCount==10:
-                            self.resetTeamLocation(4)
-                            self.moveDown(1)   
                         if self._team2MoveCount==11:
                             self.resetTeamLocation(4)
-                            self.moveRight(1)   
+                            self.moveDown(1)   
                         if self._team2MoveCount==12:
-                            self.moveRight(2)  
+                            self.resetTeamLocation(4)
+                            self.moveRight(1)   
                         if self._team2MoveCount==13:
-                            self.moveRight(3)  
+                            self.moveRight(2)  
                         if self._team2MoveCount==14:
+                            self.moveRight(3)  
+                        if self._team2MoveCount==15:
                             self.resetTeamLocation(4)
                             self.moveDown(1)    
-                        if self._team2MoveCount==15:
-                            self.resetTeamLocation(4) 
-                            self.moveLeft(1) 
                         if self._team2MoveCount==16:
                             self.resetTeamLocation(4) 
                             self.moveLeft(1) 
                         if self._team2MoveCount==17:
-                            self.moveLeft(2) 
+                            self.resetTeamLocation(4) 
+                            self.moveLeft(1) 
                         if self._team2MoveCount==18:
-                            self.moveLeft(3)
+                            self.moveLeft(2) 
                         if self._team2MoveCount==19:
+                            self.moveLeft(3)
+                        if self._team2MoveCount==20:
                             self.resetTeamLocation(4) 
                             self.moveUp(1) 
 
-                        if self._team2MoveCount==20:
+                        if self._team2MoveCount==21:
                             self.moveUp(2)  
-                            self._team2MoveCount=9
+                            self._team2MoveCount=10
 
 
                          

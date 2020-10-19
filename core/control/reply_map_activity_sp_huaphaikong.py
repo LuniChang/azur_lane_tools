@@ -45,7 +45,7 @@ class ReplyMapActivity(ReplyMapCommon):
 
     ]
 
-    def resetTeamPosition(self):
+    def setTeamPositionToSave(self):
         if self.isInMap():
             winHash = ""
             while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
