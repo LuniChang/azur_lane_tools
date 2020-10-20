@@ -142,8 +142,8 @@ class ReplyHongranD3(ReplyMapCommon):
            
             print("isInMap")
             if self.isInMap():
-                # self.leftClickPer(99, 99)
-                # time.sleep(2)
+                self.leftClickPer(99, 99)
+                time.sleep(2)
                 if self.isNewMission():  
                     self.leftClickPer(99,99)
                     time.sleep(3)
@@ -231,11 +231,11 @@ class ReplyHongranD3(ReplyMapCommon):
                         #     self.switchTeam()
                         #     self._teamNum=2
                         # else :
-                            self.resetTeamLocation() 
-                            self.setTeamPositionToSave()
-                            time.sleep(15)
-                            self.switchTeam()
-                            self._teamNum=2
+                        # self.resetTeamLocation() 
+                        self.setTeamPositionToSave()
+                        time.sleep(15)
+                        self.switchTeam()
+                        self._teamNum=2
                    
 
                     self._team1MoveCount=self._team1MoveCount+1
