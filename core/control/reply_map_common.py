@@ -27,7 +27,17 @@ class ReplyMapCommon(BaseControl):
         self.interval = interval
 
     _enemys = [
-
+        "enemy\\ship_z21_45_15_55_25.png",
+        "enemy\\ship_z22_45_15_52_25.png",
+        "enemy\\ship_z22_45_15_55_25.png",
+        "enemy\\ship_z23_45_55_55_65.png",
+        "enemy\\ship_z24_45_15_52_25.png",
+        "enemy\\ship_z25_45_75_55_85.png",
+        "enemy\\ship_z26_45_55_55_65.png",
+        "enemy\\ship_z27_45_75_55_85.png",
+        "enemy\\ship_z28_45_65_55_75.png",
+        "enemy\\ship_z29_45_15_52_25.png",
+        "enemy\\ship_z201_45_15_55_25.png",
         "enemy\\ship_h1_45_45_55_55.png",
         "enemy\\ship_h2_45_45_55_55.png",
         "enemy\\ship_h3_47_47_54_54.png",
@@ -63,10 +73,10 @@ class ReplyMapCommon(BaseControl):
 
 
     ]
-    
+
     def getEnemyLocation(self):
 
-        imgs = self._enemys+self._exEnemys 
+        imgs = self._enemys+self._exEnemys
 
         # random.shuffle(imgs)
         for i in range(len(imgs)):
@@ -125,6 +135,8 @@ class ReplyMapCommon(BaseControl):
     def setTeamPositionToSave(self):
         return True
 
+    def onCanNotMove(self):
+        self.resetTeamLocation()
 
     def scranDragMap(self):  # 全图扫描
         winHash = screen.winScreenHash(self.handle)
@@ -176,7 +188,7 @@ class ReplyMapCommon(BaseControl):
                     time.sleep(5)
                 else:
                     if self.isSameWin():
-                        self.setTeamPositionToSave()
+                        self.onCanNotMove()
                     self.resetMapPosition()
                     self.scranDragMap()
 
@@ -185,8 +197,6 @@ class ReplyMapCommon(BaseControl):
                 if self.setTeamPositionToSave():
                     self.switchTeam()
                     self._teamNum = 2
-
-               
 
         if self._teamNum == 2:
             if self._team2BattleCount < self.team2BattleMaxCount:
