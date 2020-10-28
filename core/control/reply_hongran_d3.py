@@ -73,6 +73,14 @@ class ReplyHongranD3(ReplyMapCommon):
             self.leftClickPer(25, 97)
             time.sleep(15)
 
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+                winHash = screen.winScreenHash(self.handle)
+                self.dragPerRightDown()
+
+            time.sleep(5)
+            self.leftClickPer(25, 40)
+            time.sleep(15)
+
         return  self.isInMap() 
 
     def setTeamPositionToBoss(self,code): 
@@ -142,8 +150,8 @@ class ReplyHongranD3(ReplyMapCommon):
            
             print("isInMap")
             if self.isInMap():
-                self.leftClickPer(99, 99)
-                time.sleep(2)
+                # self.leftClickPer(99, 99)
+                # time.sleep(2)
                 if self.isNewMission():  
                     self.leftClickPer(99,99)
                     time.sleep(3)
@@ -152,7 +160,7 @@ class ReplyHongranD3(ReplyMapCommon):
                 if self._teamNum==1:
                     print("self._team1MoveCount",self._team1MoveCount)
                     if self._team1MoveCount==0:
-                        time.sleep(3)
+                        # time.sleep(3)
                         self.resetTeamLocation()
                         self.moveRight(2)
                         self.moveRight(3)

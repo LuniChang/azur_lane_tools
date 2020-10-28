@@ -123,11 +123,11 @@ class BaseControl:
         print("resetTeamLocation")
         screen.setForegroundWindow(self.handle)
         # self.leftClickPer(99, 99)#防止任务弹出
-        time.sleep(0.5)
+        # time.sleep(0.5)
         self.leftClickPer(82, 96)
         time.sleep(t)
         self.leftClickPer(82, 96)
-        time.sleep(t)
+        # time.sleep(t)
         self.resetCusor()
 
     def moveLeft(self, num=1):
@@ -221,8 +221,8 @@ class BaseControl:
         #     or self.matchResImgInWindow( "battle_end1_30_80_50_95.png")
 
     def onBattleEndCount(self):
-        return  self.matchResImgInWindow("battle_end_68_86_92_96.png",0.6)\
-             or self.matchResImgInWindow("battle_end2_78_90_90_96.png",0.55)
+        return  screen.autoCompareResImgHash(self.handle,"battle_end_68_86_92_96.png")\
+             or screen.autoCompareResImgHash(self.handle,"battle_end2_78_90_90_96.png")
 
     def isInMap(self):
         return screen.autoCompareResImgHash(self.handle, "in_map_65_90_100_100.png")

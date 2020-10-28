@@ -113,6 +113,9 @@ class ReplyMapCommon(BaseControl):
 
     def dragPerRightUp(self):
         self.dragPer(80, 20, 10, 70)
+    
+    def dragPerRightDown(self):
+        self.dragPer(80, 70, 10, 20)
 
     def dragPerDown(self):
         self.dragPer(50, 70, 50, 20)
@@ -136,7 +139,8 @@ class ReplyMapCommon(BaseControl):
         return True
 
     def onCanNotMove(self):
-        self.resetTeamLocation()
+        self.scranDragMap()
+        self.scranDragMap()
 
     def scranDragMap(self):  # 全图扫描
         winHash = screen.winScreenHash(self.handle)
