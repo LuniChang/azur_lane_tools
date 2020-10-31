@@ -39,8 +39,8 @@ class ReplyMapActivity(ReplyMapCommon):
         "act/music/enemy/95e575168a0ab975_46_34_54_44.png",
         "act/music/enemy/805d9e3de0495bea_46_46_54_56.png",
         "act/music/enemy/8879c2652b33c73b_46_46_54_56.png",
-        "act/music/enemy/9899e161c1d7c747_46_46_54_54.png",
-        "act/music/enemy/9899e161e9e2a70f_46_76_54_86.png",
+        # "act/music/enemy/9899e161c1d7c747_46_46_54_54.png",
+        # "act/music/enemy/9899e161e9e2a70f_46_76_54_86.png",
         "act/music/enemy/8043678f6bd13fe0_46_46_54_56.png",
         "act/music/enemy/9695666665c1c6ab_46_76_54_86.png",
         "act/music/enemy/c6c6d6da98c8ccb4_46_46_54_54.png",
@@ -65,7 +65,7 @@ class ReplyMapActivity(ReplyMapCommon):
 
     ]
 
-
+    _findEnemysMode=0
     def clickPoint(self):
             pass
         

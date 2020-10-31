@@ -169,6 +169,9 @@ class ReplyMapCommon(BaseControl):
                 self._scranDirection = DOWN
                 return
 
+    
+    _findEnemysMode=1
+
     def findAndBattle(self):
 
         if self._teamNum == 1:
@@ -182,13 +185,15 @@ class ReplyMapCommon(BaseControl):
                         resList.append(point)
                 if len(resList) > 0 and not self.isSameWin():
                     x, y = resList[0]
-                    # self.leftClick(x, y)
-                    cx = self.getPosX(50)
-                    cy = self.getPosY(50)
-                    self.drag(x, y, cx, cy)  # 拖动不是一比一 大概是一半
-                    time.sleep(2)
-                    self.drag(x, y, cx, cy)
-                    self.leftClick(cx, cy)
+                    if self._findEnemysMode==0:
+                        self.leftClick(x, y)
+                    if self._findEnemysMode==1:
+                        cx = self.getPosX(50)
+                        cy = self.getPosY(50)
+                        self.drag(x, y, cx, cy)  # 拖动不是一比一 大概是一半
+                        time.sleep(2)
+                        self.drag(x, y, cx, cy)
+                        self.leftClick(cx, cy)
                     time.sleep(5)
                 else:
                     if self.isSameWin():
@@ -213,13 +218,15 @@ class ReplyMapCommon(BaseControl):
                         resList.append(point)
                 if len(resList) > 0:
                     x, y = resList[0]
-
-                    cx = self.getPosX(50)
-                    cy = self.getPosY(50)
-                    self.drag(x, y, cx, cy)  # 拖动不是一比一 大概是一半
-                    time.sleep(2)
-                    self.drag(x, y, cx, cy)
-                    self.leftClick(cx, cy)
+                    if self._findEnemysMode==0:
+                        self.leftClick(x, y)
+                    if self._findEnemysMode==1:
+                        cx = self.getPosX(50)
+                        cy = self.getPosY(50)
+                        self.drag(x, y, cx, cy)  # 拖动不是一比一 大概是一半
+                        time.sleep(2)
+                        self.drag(x, y, cx, cy)
+                        self.leftClick(cx, cy)
                     time.sleep(5)
                 else:
                     self.resetMapPosition()
