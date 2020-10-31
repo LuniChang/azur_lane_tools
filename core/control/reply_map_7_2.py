@@ -27,7 +27,7 @@ class ReplyMap72(ReplyMapCommon):
     def isAtInMapReady(self):
         return screen.autoCompareResImgHash(self.handle, "map7/ready_20_30_80_50.png")
 
-    _c1Enemys = [
+    _mapPoints = [
         "map7/point_45_45_55_55.png",
         "map7/point2_45_45_55_55.png",
         # "map7/point3_47_47_54_54.png",
@@ -71,7 +71,7 @@ class ReplyMap72(ReplyMapCommon):
         
 
     def clickPoint(self):
-        imgs = self._c1Enemys
+        imgs = self._mapPoints
        
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
@@ -85,54 +85,4 @@ class ReplyMap72(ReplyMapCommon):
                     time.sleep(4)    
         
 
-    def run(self):
-        self._team1BattleCount = 0
-        self._team2BattleCount = 0
-        self._team1MoveCount = 0
-        self._team2MoveCount = 0
-        self._teamNum = 1
-        win32gui.SetForegroundWindow(self.handle)
-        while self._isRun:
-           
-
-            # 底部菜单hash
-            self.resetCusor()
-
-            if self.isAtHome():
-                print("isAtHome")
-                self._team1BattleCount = 0
-                self._team2BattleCount = 0
-                self._team1MoveCount = 0
-                self._team2MoveCount = 0
-                self._teamNum = 1
-                self.clickMap()
-                time.sleep(2)
-
-            if self.isAtInMapReady():
-                print("isAtInMapReady")
-                self._team1BattleCount = 0
-                self._team2BattleCount = 0
-                self._team1MoveCount = 0
-                self._team2MoveCount = 0
-                self._teamNum = 1
-                self.intoMap()
-                time.sleep(2)
-
-            if self.onSelectTeam():
-                print("onSelectTeam")
-                self.clickNeedLeaderCat()
-                time.sleep(2)
-                self.atTeamIntoMap()
-                time.sleep(2)
-
-            self.commonAction()
-      
-
-
-            if self.isInMap():
-                print("isInMap")
-                self.clickPoint()
-                self.findAndBattle()
-
-            time.sleep(self.interval)
-            # screen.grabCaptureDir(self.handle,"reply_battle")
+   

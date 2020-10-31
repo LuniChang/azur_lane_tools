@@ -76,7 +76,7 @@ class ReplyMapCommon(BaseControl):
 
     def getEnemyLocation(self):
 
-        imgs = self._enemys+self._exEnemys
+        imgs = self._exEnemys + self._enemys
 
         # random.shuffle(imgs)
         for i in range(len(imgs)):
@@ -113,7 +113,7 @@ class ReplyMapCommon(BaseControl):
 
     def dragPerRightUp(self):
         self.dragPer(80, 20, 10, 70)
-    
+
     def dragPerRightDown(self):
         self.dragPer(80, 70, 10, 20)
 
@@ -239,3 +239,83 @@ class ReplyMapCommon(BaseControl):
                 else:
                     self.resetMapPosition()
                     self.scranDragMap()
+
+    def clickMap(self):
+        pass
+
+    def intoMap(self):
+        pass
+
+    def isAtHome(self):
+        return False
+
+    def isAtInMapReady(self):
+        return False
+
+    _mapPoints = [
+        "map7/point_45_45_55_55.png",
+        "map7/point2_45_45_55_55.png",
+        "map7/point_45_38_55_55.png",
+    ]
+
+    def clickPoint(self):
+        imgs = self._mapPoints
+
+        for i in range(len(imgs)):
+            xylist = screen.matchResImgInWindow(
+                self.handle, imgs[i], 0.8)
+            if len(xylist) > 0:
+                x, y = xylist[0]
+                self.leftClick(x, y)
+                time.sleep(10)
+                if self.onGetItems():  # 防止点错
+                    self.battleContinue()
+                    time.sleep(4)
+
+    def run(self):
+        self._team1BattleCount = 0
+        self._team2BattleCount = 0
+        self._team1MoveCount = 0
+        self._team2MoveCount = 0
+        self._teamNum = 1
+        win32gui.SetForegroundWindow(self.handle)
+        while self._isRun:
+
+            # 底部菜单hash
+            self.resetCusor()
+
+            if self.isAtHome():
+                print("isAtHome")
+                self._team1BattleCount = 0
+                self._team2BattleCount = 0
+                self._team1MoveCount = 0
+                self._team2MoveCount = 0
+                self._teamNum = 1
+                self.clickMap()
+                time.sleep(2)
+
+            if self.isAtInMapReady():
+                print("isAtInMapReady")
+                self._team1BattleCount = 0
+                self._team2BattleCount = 0
+                self._team1MoveCount = 0
+                self._team2MoveCount = 0
+                self._teamNum = 1
+                self.intoMap()
+                time.sleep(2)
+
+            if self.onSelectTeam():
+                print("onSelectTeam")
+                self.clickNeedLeaderCat()
+                time.sleep(2)
+                self.atTeamIntoMap()
+                time.sleep(2)
+
+            self.commonAction()
+
+            if self.isInMap():
+                print("isInMap")
+                self.clickPoint()
+                self.findAndBattle()
+
+            time.sleep(self.interval)
