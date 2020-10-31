@@ -65,6 +65,10 @@ class ReplyMapActivity(ReplyMapCommon):
 
     ]
 
+
+    def clickPoint(self):
+            pass
+        
     def setTeamPositionToSave(self):
         if self.isInMap():
             winHash = ""
