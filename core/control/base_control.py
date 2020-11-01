@@ -291,7 +291,7 @@ class BaseControl:
 
         nowHash=screen.winScreenHash(self.handle)
         res=screen.alikeHash(self._currentWinHash,
-                               nowHash, 0.8)
+                               nowHash, 0.6)
         self._currentWinHash=nowHash
 
         return res

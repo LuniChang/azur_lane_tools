@@ -143,7 +143,7 @@ class ReplyMapCommon(BaseControl):
 
     def onCanNotMove(self):
         self.scranDragMap()
-        self.scranDragMap()
+        # self.scranDragMap()
 
     def scranDragMap(self):  # 全图扫描
         winHash = screen.winScreenHash(self.handle)

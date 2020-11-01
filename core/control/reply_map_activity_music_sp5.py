@@ -59,25 +59,37 @@ class ReplyMapActivity(ReplyMapCommon):
 
     _boss = [
         "act/music/boss/8c8c4ea7a359a976_46_46_54_54.png",
+        "act/music/boss/9756b97692a858a9_46_15_55_25.png",
+        "act/music/boss/b24db74db358a40e_50_48_54_56.png",
+        "act/music/boss/b748bc48b611ec3d_50_48_54_56.png",
+        "act/music/boss/c0c80dcd7cb67333_46_45_55_55.png",
         "act/music/boss/c1d19f4b3c643666_46_46_54_54.png",
         "act/music/boss/c1e0f0964eb3b366_46_46_54_54.png",
+        "act/music/boss/c3d1d9cd656c92a2_46_25_55_35.png",
+        "act/music/boss/cc4eccda0fc96645_50_48_54_54.png",
+        "act/music/boss/d36cc32ccf996483_46_15_55_25.png",
         "act/music/boss/d76e0c807ecf034e_46_46_54_54.png",
-
+        "act/music/boss/d80ddacdd88cd83c_50_50_54_54.png",
+        "act/music/boss/ff49a461a5a85536_46_15_55_25.png",
+        "act/music/boss/ff6743c363878320_46_25_55_35.png",
+        "act/music/boss/ff43947299c249a6_46_45_55_55.png",
+        "act/music/boss/ffd80d8d6896131a_46_35_55_45.png",
     ]
 
-    _findEnemysMode=0
+    _findEnemysMode = 0
+
     def clickPoint(self):
-            pass
-        
+        pass
+
     def setTeamPositionToSave(self):
         if self.isInMap():
             winHash = ""
             while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
                 winHash = screen.winScreenHash(self.handle)
-                self.dragPerRightUp()
+                self.dragPerLeftUp()
 
             time.sleep(5)
-            self.leftClickPer(25, 60)
+            self.leftClickPer(80, 25)
             time.sleep(15)
 
         return self.isInMap()
