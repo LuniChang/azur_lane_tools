@@ -84,6 +84,9 @@ def initAct():
     team1BattleMaxCount.set(4)
     team2BattleMaxCount=tk.IntVar()
     team2BattleMaxCount.set(2)
+
+
+   
     tk.Label(fm1,text="1队打小怪数").grid(row=5,column=0) 
     tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=5,column=1)
     tk.Label(fm1,text="2队打小怪数").grid(row=6,column=0) 
@@ -94,6 +97,14 @@ def initAct():
         replyMapActivity.start()
 
 
+    model = tk.IntVar()
+    model.set(0)
+    def toChangeModel():
+        replyMapActivity.setFindEnemysMode(model.get())  
+
+
+    tk.Checkbutton(fm1,text="拖拽敌人模式",variable=model,onvalue=1,offvalue=0,command=toChangeModel).grid(row=7,column=0)
+    
     tk.Button(fm1, text="开始活动图SP5", width=20, height=1,
             command=startAct).grid(row=7, column=1)
     tk.Button(fm1, text="结束活动图", width=20, height=1,
@@ -174,4 +185,4 @@ hashBtn.pack()
 main.mainloop()
 
 
-exit()
+exit(0)

@@ -108,8 +108,12 @@ class ReplyMapCommon(BaseControl):
     def dragPerUp(self):
         self.dragPer(50, 20, 50, 70)
 
+
     def dragPerLeftUp(self):
         self.dragPer(10, 20, 80, 70)
+   
+    def dragPerLeftDown(self):
+        self.dragPer(10, 70, 80, 20)    
 
     def dragPerRightUp(self):
         self.dragPer(80, 20, 10, 70)
@@ -120,8 +124,7 @@ class ReplyMapCommon(BaseControl):
     def dragPerDown(self):
         self.dragPer(50, 70, 50, 20)
 
-    def dragPerLeftDown(self):
-        self.dragPer(10, 70, 80, 20)
+
 
     def resetMapPosition(self):
         if not self._isScranMap:
@@ -170,7 +173,10 @@ class ReplyMapCommon(BaseControl):
                 return
 
     
-    _findEnemysMode=1
+    _findEnemysMode=1  #0 点击  1拖拽
+
+    def setFindEnemysMode(self,val):
+        self._findEnemysMode=val
 
     def findAndBattle(self):
 
