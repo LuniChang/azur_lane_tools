@@ -248,10 +248,14 @@ class BaseControl:
             self.leftClick(x, y)
 
     def isNewMission(self):  # TODO 待优化
-        print("isNewMission")
-        return self.autoCompareResImgHash("new_mission_28_26_70_76.png") \
+       
+        isNewMission= self.matchResImgInWindow("new_mission_28_26_70_76.png",0.5) \
             or self.matchResImgInWindow("newtask_28_26_70_30.png") \
             or self.matchResImgInWindow("newtask_30_68_66_76.png")
+
+         
+        print("isNewMission",isNewMission)
+        return isNewMission    
 
     def onSelectTeam(self):
         print("onSelectTeam")
@@ -297,6 +301,7 @@ class BaseControl:
         return res
 
     def commonAction(self):
+        
 
         isBattleEnd=False
         if self.onGetSR() or self.onGetSSR():
@@ -320,7 +325,7 @@ class BaseControl:
             self.battleContinue()
             time.sleep(4)
             isBattleEnd=True
-
+        print("isBattleEnd", isBattleEnd)
         if isBattleEnd:
             print("BattleCount", self._team1BattleCount, self._team2BattleCount)
             if self._teamNum == 1:
