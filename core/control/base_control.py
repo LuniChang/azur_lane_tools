@@ -228,14 +228,15 @@ class BaseControl:
         return self.autoCompareResImgHash("in_map_65_90_100_100.png")
 
     def onGetSR(self):
-        print("onGetSR")
-        return screen.autoCompareResImgHashValue(self.handle, "on_get_sr_70_20_95_60.png") > 0.2
-        # return self.matchResImgInWindow("on_get_sr_70_20_95_60.png")
-
+        
+        onGetSR=screen.autoCompareResImgHashValue(self.handle, "on_get_sr_70_20_95_60.png") > 0.2
+        print("onGetSR",onGetSR)
+        return onGetSR 
+      
     def onGetSSR(self):
-        print("onGetSSR")
-        return screen.autoCompareResImgHashValue(self.handle, "on_get_ssr_70_10_90_50.png") > 0.2
-        # return self.matchResImgInWindow("on_get_ssr_70_10_90_50.png")
+        onGetSSR=screen.autoCompareResImgHashValue(self.handle, "on_get_ssr_70_10_90_50.png") > 0.2
+        print("onGetSSR",onGetSSR)
+        return onGetSSR 
 
     def clickOnGetSR(self):
         self.leftClickPer(98, 98)
@@ -259,7 +260,9 @@ class BaseControl:
 
     def onSelectTeam(self):
         print("onSelectTeam")
-        return self.autoCompareResImgHash("on_select_team_78_80_92_88.png")
+        onSelectTeam= self.autoCompareResImgHash("on_select_team_78_80_92_88.png")
+        print("onSelectTeam",onSelectTeam)
+        return onSelectTeam 
 
     def onSelectTeamByMatch(self):  # 这种方式在地图会有问题
         print("onSelectTeamByMatch")
@@ -286,8 +289,8 @@ class BaseControl:
     def autoCompareResImgHash(self, img):
           return screen.autoCompareResImgHash(self.handle, img)
 
-    def isHpEmpty(self):
-        return self.autoCompareResImgHash("hp_empty_10_40_90_62.png")
+    # def isHpEmpty(self):
+    #     return self.autoCompareResImgHash("hp_empty_10_40_90_62.png")
 
     _currentWinHash=""
 

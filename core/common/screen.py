@@ -276,7 +276,7 @@ def alikeHashValue(hash1,hash2): #明汉距离 看情况取值
             num += 1
   
     res=num/length
-    print("alikeHashValue",hash1,hash2,res)
+    # print("alikeHashValue",hash1,hash2,res)
     return  res
 
 

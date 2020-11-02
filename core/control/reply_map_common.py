@@ -73,12 +73,12 @@ class ReplyMapCommon(BaseControl):
 
 
     ]
-
+    _needRandomEnemyLocation=False
     def getEnemyLocation(self):
 
         imgs = self._exEnemys + self._enemys
-
-        # random.shuffle(imgs)
+        if self._needRandomEnemyLocation:
+          random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
                 self.handle, imgs[i], 0.7)
