@@ -259,8 +259,8 @@ def alikeHash(hash1,hash2,alikeValue=0.35): #明汉距离 实际缩放会在2  �
             num += 1
   
     res=num/length
-    print("alikeHash",length,hash1,hash2,res)
-    return  True  if num/length >=alikeValue else False
+    # print("alikeHash",length,hash1,hash2,res)
+    return  True  if res >=alikeValue else False
 
 
 def imgHash(img,hashSize,highfreq_factor):
