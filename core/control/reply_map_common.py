@@ -308,7 +308,7 @@ class ReplyMapCommon(BaseControl):
                 time.sleep(2)
 
             if self.isAtInMapReady():
-                print("isAtInMapReady")
+                print("isAtInMapReady True")
                 self._team1BattleCount = 0
                 self._team2BattleCount = 0
                 self._team1MoveCount = 0
@@ -318,7 +318,6 @@ class ReplyMapCommon(BaseControl):
                 time.sleep(2)
 
             if self.onSelectTeam():
-                print("onSelectTeam")
                 self.clickNeedLeaderCat()
                 time.sleep(2)
                 self.atTeamIntoMap()

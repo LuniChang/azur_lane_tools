@@ -22,13 +22,13 @@ class ReplyMapActivity(ReplyMapCommon):
         self.resetCusor()
 
     def isAtHome(self):
-        
-        isAtHome= screen.autoCompareResImgHash(self.handle, "act/music/map_0_0_30_20.png", 0.4)
-        print("isAtHome",isAtHome)
+
+        isAtHome = self.matchResImgInWindow("act/music/map_0_0_30_20.png", 0.5)
+        print("isAtHome", isAtHome)
         return isAtHome
 
     def isAtInMapReady(self):
-        return screen.autoCompareResImgHash(self.handle, "act/music/ready_20_30_80_50.png")
+        return self.matchResImgInWindow("act/music/ready_20_30_80_50.png")
 
     _exEnemys = [
         "act/music/enemy/8a8ae86179bd9d38_46_76_54_86.png",
