@@ -51,8 +51,8 @@ class BaseControl:
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
         time.sleep(0.3)
 
-        moveToX=int(self.getPosX(toX)*(65535/win32api.GetSystemMetrics(0)))
-        moveToY=int(self.getPosY(toY)*(65535/win32api.GetSystemMetrics(1)))
+        moveToX = int(self.getPosX(toX)*(65535/win32api.GetSystemMetrics(0)))
+        moveToY = int(self.getPosY(toY)*(65535/win32api.GetSystemMetrics(1)))
         win32api.mouse_event(win32con.MOUSEEVENTF_ABSOLUTE +
                              win32con.MOUSEEVENTF_MOVE, moveToX, moveToY, 0, 0)
 
@@ -65,10 +65,10 @@ class BaseControl:
         win32api.SetCursorPos((x, y))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
         time.sleep(0.3)
-        sw=win32api.GetSystemMetrics(win32con.SM_CXSCREEN)
-        sh=win32api.GetSystemMetrics(win32con.SM_CYSCREEN)
-        moveToX=int(toX*(65535/sw))
-        moveToY=int(toY*(65535/sh))
+        sw = win32api.GetSystemMetrics(win32con.SM_CXSCREEN)
+        sh = win32api.GetSystemMetrics(win32con.SM_CYSCREEN)
+        moveToX = int(toX*(65535/sw))
+        moveToY = int(toY*(65535/sh))
         win32api.mouse_event(win32con.MOUSEEVENTF_ABSOLUTE +
                              win32con.MOUSEEVENTF_MOVE, moveToX, moveToY, 0, 0)
         time.sleep(0.6)
@@ -139,10 +139,10 @@ class BaseControl:
         self.resetCusor()
 
     def moveLeftDrag(self, num=1):
-        x=self.getPosX(50-num*10)
-        y=self.getPosY(50)
-        cx=self.getPosX(50)
-        cy=self.getPosY(50)
+        x = self.getPosX(50-num*10)
+        y = self.getPosY(50)
+        cx = self.getPosX(50)
+        cy = self.getPosY(50)
         self.drag(x, y, cx, cy)
         self.drag(x, y, cx, cy)
         time.sleep(2)
@@ -159,10 +159,10 @@ class BaseControl:
         self.resetCusor()
 
     def moveRightDrag(self, num=1):
-        x=self.getPosX(50+num*10)
-        y=self.getPosY(50)
-        cx=self.getPosX(50)
-        cy=self.getPosY(50)
+        x = self.getPosX(50+num*10)
+        y = self.getPosY(50)
+        cx = self.getPosX(50)
+        cy = self.getPosY(50)
         self.drag(x, y, cx, cy)
         self.drag(x, y, cx, cy)
         time.sleep(2)
@@ -179,10 +179,10 @@ class BaseControl:
         self.resetCusor()
 
     def moveUpDrag(self, num=1):
-        x=self.getPosX(50)
-        y=self.getPosY(50-num*13)
-        cx=self.getPosX(50)
-        cy=self.getPosY(50)
+        x = self.getPosX(50)
+        y = self.getPosY(50-num*13)
+        cx = self.getPosX(50)
+        cy = self.getPosY(50)
         self.drag(x, y, cx, cy)
         self.drag(x, y, cx, cy)
         time.sleep(2)
@@ -199,10 +199,10 @@ class BaseControl:
         self.resetCusor()
 
     def moveDownDrag(self, num=1):
-        x=self.getPosX(50)
-        y=self.getPosY(50+num*15)
-        cx=self.getPosX(50)
-        cy=self.getPosY(50)
+        x = self.getPosX(50)
+        y = self.getPosY(50+num*15)
+        cx = self.getPosX(50)
+        cy = self.getPosY(50)
         self.drag(x, y, cx, cy)
         self.drag(x, y, cx, cy)
         time.sleep(2)
@@ -221,48 +221,51 @@ class BaseControl:
         #     or self.matchResImgInWindow( "battle_end1_30_80_50_95.png")
 
     def onBattleEndCount(self):
-        return self.autoCompareResImgHash("battle_end_68_86_92_96.png")\
+        onBattleEndCount = self.autoCompareResImgHash("battle_end_68_86_92_96.png")\
             or self.autoCompareResImgHash("battle_end2_78_90_90_96.png")
+        print("onBattleEndCount", onBattleEndCount)
+        return onBattleEndCount
 
     def isInMap(self):
         return self.autoCompareResImgHash("in_map_65_90_100_100.png")
 
     def onGetSR(self):
-        
-        onGetSR=screen.autoCompareResImgHashValue(self.handle, "on_get_sr_70_20_95_60.png") > 0.2
-        print("onGetSR",onGetSR)
-        return onGetSR 
-      
+
+        onGetSR = screen.autoCompareResImgHashValue(
+            self.handle, "on_get_sr_70_20_95_60.png") > 0.2
+        print("onGetSR", onGetSR)
+        return onGetSR
+
     def onGetSSR(self):
-        onGetSSR=screen.autoCompareResImgHashValue(self.handle, "on_get_ssr_70_10_90_50.png") > 0.2
-        print("onGetSSR",onGetSSR)
-        return onGetSSR 
+        onGetSSR = screen.autoCompareResImgHashValue(
+            self.handle, "on_get_ssr_70_10_90_50.png") > 0.2
+        print("onGetSSR", onGetSSR)
+        return onGetSSR
 
     def clickOnGetSR(self):
         self.leftClickPer(98, 98)
 
     def clickToFire(self):
-        xylist=screen.matchResImgInWindow(
+        xylist = screen.matchResImgInWindow(
             self.handle, "to_fire_80_85_95_95.png", 0.8)
         if len(xylist) > 0:
-            x, y=xylist[0]
+            x, y = xylist[0]
             self.leftClick(x, y)
 
     def isNewMission(self):  # TODO 待优化
-       
-        isNewMission= self.matchResImgInWindow("new_mission_28_26_70_76.png",0.5) \
+
+        isNewMission = self.matchResImgInWindow("new_mission_28_26_70_76.png", 0.5) \
             or self.matchResImgInWindow("newtask_28_26_70_30.png") \
             or self.matchResImgInWindow("newtask_30_68_66_76.png")
 
-         
-        print("isNewMission",isNewMission)
-        return isNewMission    
+        print("isNewMission", isNewMission)
+        return isNewMission
 
     def onSelectTeam(self):
-        print("onSelectTeam")
-        onSelectTeam= self.autoCompareResImgHash("on_select_team_78_80_92_88.png")
-        print("onSelectTeam",onSelectTeam)
-        return onSelectTeam 
+        onSelectTeam = self.autoCompareResImgHash(
+            "on_select_team_78_80_92_88.png")
+        print("onSelectTeam", onSelectTeam)
+        return onSelectTeam
 
     def onSelectTeamByMatch(self):  # 这种方式在地图会有问题
         print("onSelectTeamByMatch")
@@ -280,61 +283,60 @@ class BaseControl:
         self.resetCusor()
 
     def matchResImgInWindow(self, imgName, threshold=0.8):
-        xylist=screen.matchResImgInWindow(self.handle, imgName, threshold)
+        xylist = screen.matchResImgInWindow(self.handle, imgName, threshold)
         if len(xylist) > 0:
             return True
         else:
             return False
 
     def autoCompareResImgHash(self, img):
-          return screen.autoCompareResImgHash(self.handle, img)
+        return screen.autoCompareResImgHash(self.handle, img)
 
     # def isHpEmpty(self):
     #     return self.autoCompareResImgHash("hp_empty_10_40_90_62.png")
 
-    _currentWinHash=""
+    _currentWinHash = ""
 
     def isSameWin(self):
 
-        nowHash=screen.winScreenHash(self.handle)
-        res=screen.alikeHash(self._currentWinHash,
+        nowHash = screen.winScreenHash(self.handle)
+        res = screen.alikeHash(self._currentWinHash,
                                nowHash, 0.6)
-        self._currentWinHash=nowHash
+        self._currentWinHash = nowHash
 
         return res
 
     def commonAction(self):
-        
 
-        isBattleEnd=False
+        isBattleEnd = False
         if self.onGetSR() or self.onGetSSR():
             time.sleep(2)
             self.clickOnGetSR()
             time.sleep(4)
-            isBattleEnd=True
+            isBattleEnd = True
 
         if self.onBattleEnd():
             time.sleep(2)
             self.battleContinue()
             time.sleep(4)
-            isBattleEnd=True
+            isBattleEnd = True
         if self.onGetItems():
             time.sleep(2)
             self.battleContinue()
             time.sleep(4)
-            isBattleEnd=True
+            isBattleEnd = True
 
         if self.onBattleEndCount():
             self.battleContinue()
             time.sleep(4)
-            isBattleEnd=True
+            isBattleEnd = True
         print("isBattleEnd", isBattleEnd)
         if isBattleEnd:
             print("BattleCount", self._team1BattleCount, self._team2BattleCount)
             if self._teamNum == 1:
-                self._team1BattleCount=self._team1BattleCount+1
+                self._team1BattleCount = self._team1BattleCount+1
             else:
-                self._team2BattleCount=self._team2BattleCount+1
+                self._team2BattleCount = self._team2BattleCount+1
 
         if self.isNewMission():
             self.leftClickPer(99, 99)

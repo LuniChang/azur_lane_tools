@@ -299,11 +299,11 @@ class ReplyMapCommon(BaseControl):
 
             if self.isAtHome():
                 print("isAtHome")
-                self._team1BattleCount = 0
-                self._team2BattleCount = 0
-                self._team1MoveCount = 0
-                self._team2MoveCount = 0
-                self._teamNum = 1
+                # self._team1BattleCount = 0
+                # self._team2BattleCount = 0
+                # self._team1MoveCount = 0
+                # self._team2MoveCount = 0
+                # self._teamNum = 1
                 self.clickMap()
                 time.sleep(2)
 
