@@ -43,8 +43,10 @@ class BaseControl:
         return int(wTop+(height*(srcPer)))
 
     def onGetItems(self):
-        print("onGetItems")
-        return self.autoCompareResImgHash("on_get_item_40_20_60_40.png") or self.matchResImgInWindow("on_get_item2_40_30_60_35.png")
+        onGetItems = self.autoCompareResImgHash(
+            "on_get_item_40_20_60_40.png") or self.matchResImgInWindow("on_get_item2_40_30_60_35.png")
+        print("onGetItems", onGetItems)
+        return onGetItems
 
     def dragPer(self, x, y, toX, toY):
         win32api.SetCursorPos((self.getPosX(x), self.getPosY(y)))
@@ -313,7 +315,7 @@ class BaseControl:
             time.sleep(2)
             self.clickOnGetSR()
             time.sleep(4)
-            isBattleEnd = True
+            # isBattleEnd = True
 
         if self.onBattleEnd():
             time.sleep(2)
@@ -324,7 +326,7 @@ class BaseControl:
             time.sleep(2)
             self.battleContinue()
             time.sleep(4)
-            isBattleEnd = True
+            # isBattleEnd = True
 
         if self.onBattleEndCount():
             self.battleContinue()
@@ -332,11 +334,13 @@ class BaseControl:
             isBattleEnd = True
         print("isBattleEnd", isBattleEnd)
         if isBattleEnd:
-            print("BattleCount", self._team1BattleCount, self._team2BattleCount)
+         
             if self._teamNum == 1:
                 self._team1BattleCount = self._team1BattleCount+1
             else:
                 self._team2BattleCount = self._team2BattleCount+1
+
+            print("BattleCount", self._team1BattleCount, self._team2BattleCount)    
 
         if self.isNewMission():
             self.leftClickPer(99, 99)
