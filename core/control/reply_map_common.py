@@ -83,6 +83,7 @@ class ReplyMapCommon(BaseControl):
             xylist = screen.matchResImgInWindow(
                 self.handle, imgs[i], 0.7)
             if len(xylist) > 0:
+                print("getEnemyLocation",imgs[i])
                 return xylist
 
         return []
