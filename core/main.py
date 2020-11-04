@@ -81,9 +81,9 @@ tk.Button(fm1, text="结束8-1", width=20, height=1,
 
 def initAct():
     team1BattleMaxCount=tk.IntVar()
-    team1BattleMaxCount.set(4)
+    team1BattleMaxCount.set(5)
     team2BattleMaxCount=tk.IntVar()
-    team2BattleMaxCount.set(2)
+    team2BattleMaxCount.set(1)
 
 
    
@@ -98,7 +98,7 @@ def initAct():
 
 
     model = tk.IntVar()
-    model.set(0)
+    model.set(1)
     def toChangeModel():
         replyMapActivity.setFindEnemysMode(model.get())  
 
