@@ -72,7 +72,7 @@ class ReplyMapActivity(ReplyMapCommon):
         "act/music/boss/cc4eccda0fc96645_50_48_54_54.png",
         "act/music/boss/d36cc32ccf996483_46_15_55_25.png",
         "act/music/boss/d76e0c807ecf034e_46_46_54_54.png",
-        "act/music/boss/d80ddacdd88cd83c_50_50_54_54.png",
+        # "act/music/boss/d80ddacdd88cd83c_50_50_54_54.png",
         "act/music/boss/ff49a461a5a85536_46_15_55_25.png",
         "act/music/boss/ff6743c363878320_46_25_55_35.png",
         "act/music/boss/ff43947299c249a6_46_45_55_55.png",

@@ -246,7 +246,7 @@ class ReplyMapCommon(BaseControl):
                 for point in xylist:
                     if point[0] >= minX:
                         resList.append(point)
-                if len(resList) > 0 and not self.isSameWin():
+                if len(resList) > 0 :#and not self.isSameWin():
                     x, y = resList[0]
                     self.leftClick(x, y)
                     time.sleep(5)
