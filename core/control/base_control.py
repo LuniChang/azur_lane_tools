@@ -311,7 +311,10 @@ class BaseControl:
     def commonAction(self):
 
         isBattleEnd = False
- 
+        if self.onGetSR() or self.onGetSSR():
+            time.sleep(2)
+            self.clickOnGetSR()
+            time.sleep(4)
 
         if self.onBattleEnd():
             time.sleep(2)
@@ -323,7 +326,7 @@ class BaseControl:
             self.battleContinue()
             time.sleep(4)
             # isBattleEnd = True
-            
+
         if self.onGetSR() or self.onGetSSR():
             time.sleep(2)
             self.clickOnGetSR()
