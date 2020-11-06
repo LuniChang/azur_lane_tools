@@ -302,63 +302,74 @@ def saveTmpImg(img,hashCode=""):
 
 
 
+def matchResImgInWindow(handle, imgName, threshold=0.8, mult=True):
+    # 获取目标图片
+    tmp = imgName.split(".")
+    fSplit = tmp[0].split("_")
+    fLen = len(fSplit)
+    targetImgPerLeftX = int(fSplit[fLen-4])
+    targetImgPerLeftY = int(fSplit[fLen-3])
+    targetImgPerRightX = int(fSplit[fLen-2])
+    targetImgPerRightY = int(fSplit[fLen-1])
 
-def matchResImgInWindow(handle,imgName,threshold=0.8,mult=True):
-  #获取目标图片
-  tmp=imgName.split(".")
-  fSplit=tmp[0].split("_")
-  fLen=len(fSplit)
-  targetImgPerLeftX=int(fSplit[fLen-4])
-  targetImgPerLeftY=int(fSplit[fLen-3])
-  targetImgPerRightX=int(fSplit[fLen-2])
-  targetImgPerRightY=int(fSplit[fLen-1])
+    imgPath = path.getResDirPath()+imgName
+    if not os.path.exists(path.getProjectPath()):
+        os.makedirs(path.getProjectPath())
+    targetImg = Image.open(imgPath)
 
-  imgPath=path.getResDirPath()+imgName
-  if not os.path.exists(path.getProjectPath()):
-    os.makedirs(path.getProjectPath())
-  targetImg=Image.open(imgPath)
+    targetImgWidth = targetImg.size[0]
+    targetImgHeigth = targetImg.size[1]
 
-  targetImgWidth=targetImg.size[0]
-  targetImgHeigth=targetImg.size[1]
-
-  perSize=(targetImgPerRightX-targetImgPerLeftX)*0.01
-  resWinWidth=int(targetImgWidth/perSize)
-  perSize=(targetImgPerRightY-targetImgPerLeftY)*0.01
-  resWinHeight=int(targetImgHeigth/perSize)
-
-
-  #模板图片
-  temImg=cv2.cvtColor(numpy.asarray(targetImg),cv2.COLOR_RGB2BGR)  
-  targetImg.close()
-
-  wLeft, wTop, wRight, wBottom = appGetWindowRect(handle)
-  winImg = ImageGrab.grab(bbox=(wLeft, wTop, wRight, wBottom))
-
-  #对截图缩放，适配资源图片
-  toMatchWinImgSrc=cv2.cvtColor(numpy.asarray(winImg),cv2.COLOR_RGB2BGR)  
-
-  toMatchWinImg=cv2.resize(toMatchWinImgSrc, (resWinWidth,resWinHeight),interpolation=cv2.INTER_AREA)
-  winImg.close()
-
-  res = cv2.matchTemplate(toMatchWinImg,temImg,cv2.TM_CCOEFF_NORMED)
-
-  xyList=[]
-  if mult==True :
-    loc = numpy.where(res>=threshold)
-
-    for pt in zip(*loc[::-1]):
-      xyList.append((wLeft+pt[0]+(targetImgWidth>>1),wTop+pt[1]+(targetImgHeigth>>1)))
-
-   
-   
-  else: #单个很不准确
-    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-    top_left = min_loc #左上角的位置
-    xyList.append((wLeft+top_left[0]+(targetImgWidth>>1),wTop+top_left[1]+(targetImgHeigth>>1)))
+    perSizeW = (targetImgPerRightX-targetImgPerLeftX)*0.01
+    resWinWidth = int(targetImgWidth/perSizeW)
+    perSizeH = (targetImgPerRightY-targetImgPerLeftY)*0.01
+    resWinHeight = int(targetImgHeigth/perSizeH)
 
 
-  # print(xyList)
-  return  xyList
+
+    # 模板图片
+    temImg = cv2.cvtColor(numpy.asarray(targetImg), cv2.COLOR_RGB2GRAY)
+    # temImg = cv2.cvtColor(numpy.asarray(targetImg), cv2.COLOR_RGB2GRAY)
+    
+    targetImg.close()
+
+    wLeft, wTop, wRight, wBottom = appGetWindowRect(handle)
+    winImg = ImageGrab.grab(bbox=(wLeft, wTop, wRight, wBottom))
+
+    winNowW=wRight-wLeft
+    winNowH=wBottom-wTop
+
+    # 对截图缩放，适配资源图片
+    toMatchWinImgSrc = cv2.cvtColor(numpy.asarray(winImg), cv2.COLOR_RGB2GRAY)
+
+    
+    toMatchWinImg = cv2.resize(
+        toMatchWinImgSrc, (resWinWidth, resWinHeight), interpolation=cv2.INTER_AREA)
+    winImg.close()
+
+
+    scaleValueW=int(winNowW/resWinWidth )
+    scaleValueH=int(winNowH/resWinHeight )
+
+    res = cv2.matchTemplate(toMatchWinImg, temImg, cv2.TM_CCOEFF_NORMED)
+
+    xyList = []
+    if mult == True:
+        loc = numpy.where(res >= threshold)
+
+        for pt in zip(*loc[::-1]):\
+            
+            xyList.append(
+                (wLeft+pt[0]+(int(targetImgWidth * scaleValueW)>> 1), wTop+pt[1]+(int(targetImgHeigth* scaleValueH)>> 1)))
+
+    else:  # 单个很不准确
+        min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
+        top_left = min_loc  # 左上角的位置
+        xyList.append(
+             (wLeft+pt[0]+(int(targetImgWidth * scaleValueW)>> 1), wTop+pt[1]+(int(targetImgHeigth* scaleValueH)>> 1)))
+
+    print(xyList)
+    return xyList
 
 
 
