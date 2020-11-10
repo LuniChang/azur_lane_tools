@@ -291,8 +291,8 @@ class BaseControl:
         else:
             return False
 
-    def autoCompareResImgHash(self, img):
-        return screen.autoCompareResImgHash(self.handle, img)
+    def autoCompareResImgHash(self, img,alikeValue=0.35):
+        return screen.autoCompareResImgHash(self.handle, img,alikeValue)
 
     # def isHpEmpty(self):
     #     return self.autoCompareResImgHash("hp_empty_10_40_90_62.png")
