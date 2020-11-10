@@ -223,8 +223,8 @@ class BaseControl:
         #     or self.matchResImgInWindow( "battle_end1_30_80_50_95.png")
 
     def onBattleEndCount(self):
-        onBattleEndCount = self.autoCompareResImgHash("battle_end_68_86_92_96.png")\
-            or self.autoCompareResImgHash("battle_end2_78_90_90_96.png")
+        onBattleEndCount = self.matchResImgInWindow("battle_end_68_86_92_96.png",0.7)\
+            or self.matchResImgInWindow("battle_end2_78_90_90_96.png",0.7)
         print("onBattleEndCount", onBattleEndCount)
         return onBattleEndCount
 
@@ -291,8 +291,8 @@ class BaseControl:
         else:
             return False
 
-    def autoCompareResImgHash(self, img):
-        return screen.autoCompareResImgHash(self.handle, img)
+    def autoCompareResImgHash(self, img,alikeValue=0.35):
+        return screen.autoCompareResImgHash(self.handle, img,alikeValue)
 
     # def isHpEmpty(self):
     #     return self.autoCompareResImgHash("hp_empty_10_40_90_62.png")
@@ -334,6 +334,7 @@ class BaseControl:
             # isBattleEnd = True
 
         if self.onBattleEndCount():
+            time.sleep(2)
             self.battleContinue()
             time.sleep(4)
             isBattleEnd = True
