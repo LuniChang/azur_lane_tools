@@ -303,9 +303,9 @@ class BaseControl:
 
         nowHash = screen.winScreenHash(self.handle)
         res = screen.alikeHash(self._currentWinHash,
-                               nowHash, 0.6)
+                               nowHash, 0.5)
         self._currentWinHash = nowHash
-
+        print("isSameWin",self._currentWinHash,nowHash)
         return res
 
     def commonAction(self):
