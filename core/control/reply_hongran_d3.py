@@ -151,7 +151,7 @@ class ReplyHongranD3(ReplyMapCommon):
             print("isInMap")
             if self.isInMap():
                 # self.leftClickPer(99, 99)
-                # time.sleep(2)
+                time.sleep(4)
                 if self.isNewMission():  
                     self.leftClickPer(99,99)
                     time.sleep(3)
