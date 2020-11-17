@@ -78,7 +78,7 @@ class ReplyHongranD3(ReplyMapCommon):
                 self.dragPerRightDown()
 
             time.sleep(5)
-            self.leftClickPer(25, 40)
+            self.leftClickPer(20, 40)
             time.sleep(15)
 
         return  self.isInMap() 
