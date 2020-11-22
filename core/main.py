@@ -127,8 +127,11 @@ def iniMap72():
         replyMapActivity.team1BattleMaxCount=int(team1BattleMaxCount.get())
         replyMapActivity.team2BattleMaxCount=int(team2BattleMaxCount.get())
         replyMapActivity.start()
-
-
+    model = tk.IntVar()
+    model.set(0)
+    def toChangeModel():
+        replyMapActivity.setFindEnemysMode(model.get())  
+    tk.Checkbutton(fm1,text="拖拽敌人模式",variable=model,onvalue=1,offvalue=0,command=toChangeModel).grid(row=10,column=0)
     tk.Button(fm1, text="开始7-2", width=20, height=1,
             command=startAct).grid(row=10, column=1)
     tk.Button(fm1, text="结束7-2", width=20, height=1,

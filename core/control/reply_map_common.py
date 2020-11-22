@@ -174,7 +174,7 @@ class ReplyMapCommon(BaseControl):
                 return
 
     
-    _findEnemysMode=1  #0 点击  1拖拽
+    _findEnemysMode=0  #0 点击  1拖拽
 
     def setFindEnemysMode(self,val):
         self._findEnemysMode=val
