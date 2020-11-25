@@ -294,6 +294,17 @@ class BaseControl:
     def autoCompareResImgHash(self, img,alikeValue=0.35):
         return screen.autoCompareResImgHash(self.handle, img,alikeValue)
 
+
+    def clickMacthImg(self,imgPath,threshold=0.9):
+        screen.setForegroundWindow(self.handle)
+        xylist = screen.matchResImgInWindow(
+            self.handle,imgPath,threshold)
+        if len(xylist) > 0:
+            x, y = xylist[0]
+            self.leftClick(x, y)
+            time.sleep(2)
+            return True
+        return False   
     # def isHpEmpty(self):
     #     return self.autoCompareResImgHash("hp_empty_10_40_90_62.png")
 
