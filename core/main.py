@@ -12,7 +12,7 @@ from control.reply_spc_essex import ReplySpcEssexD3
 from control.reply_map_8_1 import ReplyMap81
 from control.reply_map_7_2 import ReplyMap72
 
-from control.reply_map_activity_music_sp5 import ReplyMapActivity
+from control.reply_map_activity_doa_sp4 import ReplyMapActivity
 
 import common.screen as screen
 
@@ -81,7 +81,7 @@ tk.Button(fm1, text="结束8-1", width=20, height=1,
 
 def initAct():
     team1BattleMaxCount=tk.IntVar()
-    team1BattleMaxCount.set(5)
+    team1BattleMaxCount.set(4)
     team2BattleMaxCount=tk.IntVar()
     team2BattleMaxCount.set(1)
 
@@ -105,7 +105,7 @@ def initAct():
 
     tk.Checkbutton(fm1,text="拖拽敌人模式",variable=model,onvalue=1,offvalue=0,command=toChangeModel).grid(row=7,column=0)
     
-    tk.Button(fm1, text="开始活动图SP5", width=20, height=1,
+    tk.Button(fm1, text="开始活动图SP4", width=20, height=1,
             command=startAct).grid(row=7, column=1)
     tk.Button(fm1, text="结束活动图", width=20, height=1,
             command=replyMapActivity.stop).grid(row=7, column=2)
