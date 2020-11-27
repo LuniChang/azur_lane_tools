@@ -23,7 +23,7 @@ class ReplyMapActivity(ReplyMapCommon):
 
     def isAtHome(self):
 
-        isAtHome = self.matchResImgInWindow("act/doa/map_0_0_30_20.png", 0.6)
+        isAtHome = self.matchResImgInWindow("act/doa/home_0_0_30_20.png", 0.6)
         print("isAtHome", isAtHome)
         return isAtHome
 
