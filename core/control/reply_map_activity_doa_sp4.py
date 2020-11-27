@@ -59,11 +59,12 @@ class ReplyMapActivity(ReplyMapCommon):
         "act/doa/enemy/e53525c2e6c9163b_45_35_52_45.png",
         "act/doa/enemy/e65799e215aa32c5_45_45_52_53.png",
         "act/doa/enemy/ea6486a4e7a58793_45_45_52_55.png",
-        "act/doa/enemy/ea6686a627a68796_45_45_52_55.png",
-        "act/doa/enemy/ec6c8ccc4ca59793_45_35_52_45.png",
+        "act/doa/enemy/fe9c9c189ae68788_48_35_55_45.png",
+        "act/doa/enemy/fe9c9898cac69698_48_35_55_45.png",
         "act/doa/enemy/ed44b033e527ca78_45_45_52_53.png",
         "act/doa/enemy/f40c26499ab579e3_45_55_52_65.png",
         "act/doa/enemy/ffc4902fcc3a9125_45_35_52_45.png",
+
 
     ]
 
@@ -86,10 +87,10 @@ class ReplyMapActivity(ReplyMapCommon):
             winHash = ""
             while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
                 winHash = screen.winScreenHash(self.handle)
-                self.dragPerLeftDown()
+                self.dragPerLeftUp()
 
             time.sleep(5)
-            self.leftClickPer(90, 35)
+            self.leftClickPer(90, 75)
             time.sleep(15)
 
         return self.isInMap()

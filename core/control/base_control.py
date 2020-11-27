@@ -104,7 +104,7 @@ class BaseControl:
 
     def battleContinue(self):
         screen.setForegroundWindow(self.handle)
-        self.leftClick(self.getPosX(85), self.getPosY(90))
+        self.leftClick(self.getPosX(98), self.getPosY(98))
         self.resetCusor()
 
     def closeNewMission(self):
@@ -347,7 +347,9 @@ class BaseControl:
         if self.onBattleEndCount():
             time.sleep(2)
             self.battleContinue()
-            time.sleep(4)
+            time.sleep(0.5)
+            self.battleContinue()
+            time.sleep(8)
             isBattleEnd = True
         print("isBattleEnd", isBattleEnd)
         if isBattleEnd:
