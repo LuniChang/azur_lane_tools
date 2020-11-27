@@ -13,7 +13,7 @@ class ReplyMapActivity(ReplyMapCommon):
     # 进地图
     def clickMap(self):
         screen.setForegroundWindow(self.handle)
-        self.leftClickPer(50, 50)
+        self.leftClickPer(70, 35)
         self.resetCusor()
 
     def intoMap(self):
