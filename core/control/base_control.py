@@ -104,7 +104,7 @@ class BaseControl:
 
     def battleContinue(self):
         screen.setForegroundWindow(self.handle)
-        self.leftClick(self.getPosX(98), self.getPosY(98))
+        self.leftClick(self.getPosX(85), self.getPosY(90))
         self.resetCusor()
 
     def closeNewMission(self):
@@ -344,13 +344,14 @@ class BaseControl:
             time.sleep(4)
             # isBattleEnd = True
 
-        if self.onBattleEndCount():
-            time.sleep(2)
-            self.battleContinue()
-            time.sleep(0.5)
-            self.battleContinue()
+        if self.clickMacthImg("battle_end2_78_90_90_96.png"):
+            isBattleEnd = True 
             time.sleep(8)
-            isBattleEnd = True
+        # if self.onBattleEndCount():
+        #     time.sleep(2)
+        #     self.battleContinue()
+        #     time.sleep(8)
+        #     isBattleEnd = True
         print("isBattleEnd", isBattleEnd)
         if isBattleEnd:
          
