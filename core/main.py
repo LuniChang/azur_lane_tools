@@ -188,4 +188,4 @@ hashBtn.pack()
 main.mainloop()
 
 
-exit(0)
+main.protocol("WM_DELETE_WINDOW", exit(0))
