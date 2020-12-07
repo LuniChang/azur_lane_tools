@@ -17,13 +17,23 @@ class BaseControl:
     _teamNum = 1
     _isRun = False
 
+    _pause = False
+
     def __init__(self):
         pass
+
+
+    def pause(self):
+        self._pause=True
+    # def recovery(self):
+    #     self._pause=False
+
 
     def stop(self):
         self._isRun = False
 
     def start(self):
+        self._pause=False
         if self._isRun:
             return
         self._isRun = True

@@ -38,13 +38,13 @@ def resetHandle():
     replyMap81.handle = handle
 
 main.title("碧蓝航线工具")
-main.geometry("480x780")
+main.geometry("600x780")
 
 fm1 = tk.Frame(main)
 fm1.pack()
 
 
-tk.Label(fm1, text="模拟器分辨率1024*576").grid(row=0, column=2, columnspan=3)
+tk.Label(fm1, text="模拟器分辨率1024*576").grid(row=0, column=0, columnspan=3)
 
 
 tk.Button(fm1, text="重设窗口句柄", width=10, height=1,
@@ -116,9 +116,9 @@ initAct()
 def iniMap72():
     replyMapActivity= ReplyMap72(handle, 2)
     team1BattleMaxCount=tk.IntVar()
-    team1BattleMaxCount.set(5)
+    team1BattleMaxCount.set(4)
     team2BattleMaxCount=tk.IntVar()
-    team2BattleMaxCount.set(0)
+    team2BattleMaxCount.set(1)
     tk.Label(fm1,text="1队打小怪数").grid(row=8,column=0) 
     tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=8,column=1)
     tk.Label(fm1,text="2队打小怪数").grid(row=9,column=0) 
@@ -136,6 +136,8 @@ def iniMap72():
             command=startAct).grid(row=10, column=1)
     tk.Button(fm1, text="结束7-2", width=20, height=1,
             command=replyMapActivity.stop).grid(row=10, column=2)
+    tk.Button(fm1, text="暂停", width=20, height=1,
+            command=replyMapActivity.pause).grid(row=10, column=3)
 
 iniMap72()        
 

@@ -294,6 +294,9 @@ class ReplyMapCommon(BaseControl):
         self._teamNum = 1
         win32gui.SetForegroundWindow(self.handle)
         while self._isRun:
+            if self._pause:
+                time.sleep(3)
+                continue
 
             # 底部菜单hash
             self.resetCusor()
