@@ -3,7 +3,7 @@ import win32gui
 import win32con
 import time
 import tkinter as tk
-
+import sys
 
 from control.reply_hongran_d3 import ReplyHongranD3
 
@@ -190,4 +190,4 @@ hashBtn.pack()
 main.mainloop()
 
 
-main.protocol("WM_DELETE_WINDOW", exit(0))
+main.protocol("WM_DELETE_WINDOW", sys.exit(0))
