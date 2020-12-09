@@ -18,6 +18,7 @@ class ReplyMapCommon(BaseControl):
     _scranDirection = 0  # 0 → 1 ↓ 2←
     _nextScranDirection = 0
     _isScranMap = False
+    _need2FireBoss=False
 
     team1BattleMaxCount = 5
     team2BattleMaxCount = 0
@@ -182,6 +183,7 @@ class ReplyMapCommon(BaseControl):
     def findAndBattle(self):
 
         if self._teamNum == 1:
+            self._need2FireBoss=True
             if self._team1BattleCount < self.team1BattleMaxCount:
                 xylist = self.getEnemyLocation()
                 minX = self.getPosX(15)
@@ -216,6 +218,7 @@ class ReplyMapCommon(BaseControl):
 
         if self._teamNum == 2:
             if self._team2BattleCount < self.team2BattleMaxCount:
+                self._need2FireBoss=True
                 xylist = self.getEnemyLocation()
                 minX = self.getPosX(15)
                 # maxY=self.getPosY(80)
@@ -239,6 +242,10 @@ class ReplyMapCommon(BaseControl):
                     self.resetMapPosition()
                     self.scranDragMap()
             else:
+                if self._need2FireBoss:
+                    time.sleep(2)
+                    self.leftClickPer(50, 50)
+                    self._need2FireBoss=False
                 xylist = self.getBossLocation()
                 minX = self.getPosX(15)
                 # maxY=self.getPosY(80)
