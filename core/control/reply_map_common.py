@@ -19,6 +19,7 @@ class ReplyMapCommon(BaseControl):
     _nextScranDirection = 0
     _isScranMap = False
     _need2FireBoss=False
+    _isCenerBoss=True
 
     team1BattleMaxCount = 5
     team2BattleMaxCount = 0
@@ -242,7 +243,7 @@ class ReplyMapCommon(BaseControl):
                     self.resetMapPosition()
                     self.scranDragMap()
             else:
-                if self._need2FireBoss:
+                if self._isCenerBoss and self._need2FireBoss:
                     time.sleep(2)
                     self.leftClickPer(50, 50)
                     self._need2FireBoss=False
@@ -273,6 +274,15 @@ class ReplyMapCommon(BaseControl):
     def isAtInMapReady(self):
         return False
 
+    
+    _isNeedKeyMap=False
+
+    def needUseKey(self):
+        return self.matchResImgInWindow("usekey_30_26_70_76.png")    
+    def useKey(self):
+        screen.setForegroundWindow(self.handle)
+        self.leftClickPer(65,70)
+
     _mapPoints = [
         "map7/point_45_45_55_55.png",
         "map7/point2_45_45_55_55.png",
@@ -292,7 +302,7 @@ class ReplyMapCommon(BaseControl):
                 if self.onGetItems():  # 防止点错
                     self.battleContinue()
                     time.sleep(4)
-
+    
     def run(self):
         self._team1BattleCount = 0
         self._team2BattleCount = 0
@@ -304,7 +314,7 @@ class ReplyMapCommon(BaseControl):
             if self._pause:
                 time.sleep(3)
                 continue
-
+            
             # 底部菜单hash
             self.resetCusor()
 
@@ -327,12 +337,18 @@ class ReplyMapCommon(BaseControl):
                 self._teamNum = 1
                 self.intoMap()
                 time.sleep(2)
+            
 
             if self.onSelectTeam():
                 self.clickNeedLeaderCat()
                 time.sleep(2)
                 self.atTeamIntoMap()
                 time.sleep(2)
+
+            if self._isNeedKeyMap and self.needUseKey():  
+               self.useKey()
+               time.sleep(10)
+                
 
             self.commonAction()
 
@@ -342,3 +358,6 @@ class ReplyMapCommon(BaseControl):
                 self.findAndBattle()
 
             time.sleep(self.interval)
+    
+
+   

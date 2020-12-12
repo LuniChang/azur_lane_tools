@@ -11,7 +11,7 @@ from control.reply_spc_essex import ReplySpcEssexD3
 
 from control.reply_map_8_1 import ReplyMap81
 from control.reply_map_7_2 import ReplyMap72
-
+from control.reply_map_guangying_d2 import ReplyGuangyiD2
 from control.reply_map_activity_doa_sp4 import ReplyMapActivity
 
 import common.screen as screen
@@ -142,6 +142,35 @@ def iniMap72():
 iniMap72()        
 
 
+
+
+def iniGuangying():
+    replyMapActivity= ReplyGuangyiD2(handle, 2)
+    team1BattleMaxCount=tk.IntVar()
+    team1BattleMaxCount.set(5)
+    team2BattleMaxCount=tk.IntVar()
+    team2BattleMaxCount.set(1)
+    tk.Label(fm1,text="1队打小怪数").grid(row=8,column=0) 
+    tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=8,column=1)
+    tk.Label(fm1,text="2队打小怪数").grid(row=9,column=0) 
+    tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=9,column=1)
+    def startAct():
+        replyMapActivity.team1BattleMaxCount=int(team1BattleMaxCount.get())
+        replyMapActivity.team2BattleMaxCount=int(team2BattleMaxCount.get())
+        replyMapActivity.start()
+    model = tk.IntVar()
+    model.set(0)
+    def toChangeModel():
+        replyMapActivity.setFindEnemysMode(model.get())  
+    tk.Checkbutton(fm1,text="拖拽敌人模式",variable=model,onvalue=1,offvalue=0,command=toChangeModel).grid(row=11,column=0)
+    tk.Button(fm1, text="开始光影D2", width=20, height=1,
+            command=startAct).grid(row=11, column=1)
+    tk.Button(fm1, text="结束光影D2", width=20, height=1,
+            command=replyMapActivity.stop).grid(row=11, column=2)
+    tk.Button(fm1, text="暂停", width=20, height=1,
+            command=replyMapActivity.pause).grid(row=11, column=3)
+
+iniGuangying()   
 
 
 tk.Label(main, text="工具操作").pack()

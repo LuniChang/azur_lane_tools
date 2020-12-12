@@ -44,14 +44,8 @@ class ReplyHongranD3(ReplyMapCommon):
     def getBossLocation(self):
         return screen.matchResImgInWindow(self.handle,"hongran//boss_45_45_55_55.png")
    
-    def needUseKey(self):
-        return screen.autoCompareResImgHash(self.handle,"hongran//usekey_30_26_70_76.png")
-    def useKey(self):
-        screen.setForegroundWindow(self.handle)
-        win32api.SetCursorPos((self.getPosX(65), self.getPosY(70)))
-        win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
-        win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0) 
-        self.resetCusor()  
+    
+
     
     def findAndClickBoss(self):
         xylist= self.getBossLocation() 
