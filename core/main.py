@@ -113,16 +113,16 @@ def initAct():
 initAct()          
 
 
-def iniMap72():
+def iniMap72(pRow):
     replyMapActivity= ReplyMap72(handle, 2)
     team1BattleMaxCount=tk.IntVar()
     team1BattleMaxCount.set(4)
     team2BattleMaxCount=tk.IntVar()
     team2BattleMaxCount.set(1)
-    tk.Label(fm1,text="1队打小怪数").grid(row=8,column=0) 
-    tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=8,column=1)
-    tk.Label(fm1,text="2队打小怪数").grid(row=9,column=0) 
-    tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=9,column=1)
+    tk.Label(fm1,text="1队打小怪数").grid(row=pRow,column=0) 
+    tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=pRow,column=1)
+    tk.Label(fm1,text="2队打小怪数").grid(row=pRow,column=2) 
+    tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=pRow,column=3)
     def startAct():
         replyMapActivity.team1BattleMaxCount=int(team1BattleMaxCount.get())
         replyMapActivity.team2BattleMaxCount=int(team2BattleMaxCount.get())
@@ -131,29 +131,29 @@ def iniMap72():
     model.set(0)
     def toChangeModel():
         replyMapActivity.setFindEnemysMode(model.get())  
-    tk.Checkbutton(fm1,text="拖拽敌人模式",variable=model,onvalue=1,offvalue=0,command=toChangeModel).grid(row=10,column=0)
+    tk.Checkbutton(fm1,text="拖拽敌人模式",variable=model,onvalue=1,offvalue=0,command=toChangeModel).grid(row=pRow+1,column=0)
     tk.Button(fm1, text="开始7-2", width=20, height=1,
-            command=startAct).grid(row=10, column=1)
+            command=startAct).grid(row=pRow+1, column=1)
     tk.Button(fm1, text="结束7-2", width=20, height=1,
-            command=replyMapActivity.stop).grid(row=10, column=2)
+            command=replyMapActivity.stop).grid(row=pRow+1, column=2)
     tk.Button(fm1, text="暂停", width=20, height=1,
-            command=replyMapActivity.pause).grid(row=10, column=3)
+            command=replyMapActivity.pause).grid(row=pRow+1, column=3)
 
-iniMap72()        
-
-
+iniMap72(8)        
 
 
-def iniGuangying():
+
+
+def iniGuangying(pRow):
     replyMapActivity= ReplyGuangyiD2(handle, 2)
     team1BattleMaxCount=tk.IntVar()
     team1BattleMaxCount.set(5)
     team2BattleMaxCount=tk.IntVar()
     team2BattleMaxCount.set(1)
-    tk.Label(fm1,text="1队打小怪数").grid(row=8,column=0) 
-    tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=8,column=1)
-    tk.Label(fm1,text="2队打小怪数").grid(row=9,column=0) 
-    tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=9,column=1)
+    tk.Label(fm1,text="光影1队打小怪数").grid(row=pRow,column=0) 
+    tk.Entry(fm1,textvariable=team1BattleMaxCount,width=10).grid(row=pRow,column=1)
+    tk.Label(fm1,text="2队打小怪数").grid(row=pRow,column=2) 
+    tk.Entry(fm1,textvariable=team2BattleMaxCount,width=10).grid(row=pRow,column=3)
     def startAct():
         replyMapActivity.team1BattleMaxCount=int(team1BattleMaxCount.get())
         replyMapActivity.team2BattleMaxCount=int(team2BattleMaxCount.get())
@@ -162,15 +162,15 @@ def iniGuangying():
     model.set(0)
     def toChangeModel():
         replyMapActivity.setFindEnemysMode(model.get())  
-    tk.Checkbutton(fm1,text="拖拽敌人模式",variable=model,onvalue=1,offvalue=0,command=toChangeModel).grid(row=11,column=0)
+    tk.Checkbutton(fm1,text="拖拽敌人模式",variable=model,onvalue=1,offvalue=0,command=toChangeModel).grid(row=pRow+1,column=0)
     tk.Button(fm1, text="开始光影D2", width=20, height=1,
-            command=startAct).grid(row=11, column=1)
+            command=startAct).grid(row=pRow+1, column=1)
     tk.Button(fm1, text="结束光影D2", width=20, height=1,
-            command=replyMapActivity.stop).grid(row=11, column=2)
+            command=replyMapActivity.stop).grid(row=pRow+1, column=2)
     tk.Button(fm1, text="暂停", width=20, height=1,
-            command=replyMapActivity.pause).grid(row=11, column=3)
+            command=replyMapActivity.pause).grid(row=pRow+1, column=3)
 
-iniGuangying()   
+iniGuangying(10)   
 
 
 tk.Label(main, text="工具操作").pack()

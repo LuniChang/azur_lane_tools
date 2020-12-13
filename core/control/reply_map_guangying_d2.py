@@ -60,14 +60,14 @@ class ReplyGuangyiD2(ReplyMapCommon):
         pass
 
     def setTeamPositionToSave(self):
-        if self.isInMap():
-            winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
-                self.dragPerLeftUp()
+        # if self.isInMap():
+        #     winHash = ""
+        #     while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+        #         winHash = screen.winScreenHash(self.handle)
+        #         self.dragPerLeftUp()
 
-            time.sleep(5)
-            self.leftClickPer(90, 75)
-            time.sleep(15)
+        #     time.sleep(5)
+        #     self.leftClickPer(90, 75)
+        #     time.sleep(15)
 
         return self.isInMap()

@@ -114,7 +114,7 @@ class BaseControl:
 
     def battleContinue(self):
         screen.setForegroundWindow(self.handle)
-        self.leftClick(self.getPosX(85), self.getPosY(90))
+        self.leftClick(self.getPosX(99), self.getPosY(99))
         self.resetCusor()
 
     def closeNewMission(self):
@@ -227,8 +227,8 @@ class BaseControl:
         win32api.SetCursorPos((0, 0))
 
     def onBattleEnd(self):
-        return self.autoCompareResImgHash("on_battle_end_10_10_90_30.png") \
-            or self.autoCompareResImgHash("battle_end1_30_80_50_95.png")
+        return self.matchResImgInWindow("on_battle_end_10_10_90_30.png",0.7) \
+            or self.matchResImgInWindow("battle_end1_30_80_50_95.png",0.7)
         # return self.matchResImgInWindow("on_battle_end_10_10_90_30.png") \
         #     or self.matchResImgInWindow( "battle_end1_30_80_50_95.png")
 
