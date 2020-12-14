@@ -158,6 +158,7 @@ class ReplyMapCommon(BaseControl):
                 self._nextScranDirection = LEFT
                 self._scranDirection = DOWN
                 return
+            return    
         if self._scranDirection == DOWN:
             self.dragPerDown()
             # 换方向左右
@@ -167,6 +168,7 @@ class ReplyMapCommon(BaseControl):
                 return
 
             self._scranDirection = self._nextScranDirection
+            return
         if self._scranDirection == LEFT:
             self.dragPerLeft()
 
@@ -174,7 +176,7 @@ class ReplyMapCommon(BaseControl):
                 self._nextScranDirection = RIGHT  # 左边到尽头 下去后往右
                 self._scranDirection = DOWN
                 return
-
+            return
     
     _findEnemysMode=0  #0 点击  1拖拽
 
