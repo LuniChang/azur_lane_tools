@@ -102,11 +102,13 @@ class BaseControl:
         self.resetCusor()
 
     def clickNeedLeaderCat(self):
-        screen.setForegroundWindow(self.handle)
-        win32api.SetCursorPos((self.getPosX(95), self.getPosY(35)))
+        # screen.setForegroundWindow(self.handle)
+        self.clickMacthImg("cat_92_35_96_50.png")
+        win32api.SetCursorPos((self.getPosX(95), self.getPosY(40)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
                              win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
         self.resetCusor()
+       
 
     def clickOnGetItems(self):
         screen.setForegroundWindow(self.handle)
