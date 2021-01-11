@@ -104,6 +104,7 @@ class BaseControl:
     def clickNeedLeaderCat(self):
         # screen.setForegroundWindow(self.handle)
         self.leftClickPer(93,40)
+        time.sleep(0.5)
         self.clickMacthImg("cat_92_35_96_50.png")
         self.resetCusor()
        
@@ -274,8 +275,10 @@ class BaseControl:
         return isNewMission
 
     def onSelectTeam(self):
-        onSelectTeam = self.autoCompareResImgHash(
-            "on_select_team_78_80_92_88.png")
+        # onSelectTeam = self.autoCompareResImgHash(
+        #     "on_select_team_78_80_92_88.png")
+
+        onSelectTeam =self.matchResImgInWindow("on_select_team_10_20_25_80.png")
         print("onSelectTeam", onSelectTeam)
         return onSelectTeam
 
