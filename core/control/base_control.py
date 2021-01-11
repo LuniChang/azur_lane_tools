@@ -103,8 +103,8 @@ class BaseControl:
 
     def clickNeedLeaderCat(self):
         # screen.setForegroundWindow(self.handle)
-        self.clickMacthImg("cat_92_35_96_50.png")
         self.leftClickPer(93,40)
+        self.clickMacthImg("cat_92_35_96_50.png")
         self.resetCusor()
        
 
