@@ -306,9 +306,9 @@ def saveTmpImg(img, hashCode=""):
 def matchResImgInWindow(handle, imgName, threshold=0.8, mult=True, multSize=False):
     # 获取目标图片
     if multSize:
-        matchResImgInWindowPerSize(handle, imgName, threshold, mult)
+      return  matchResImgInWindowPerSize(handle, imgName, threshold, mult)
     else:
-        matchResImgInWindowOneSize(handle, imgName, threshold, mult)
+      return  matchResImgInWindowOneSize(handle, imgName, threshold, mult)
 
 
 def matchResImgInWindowPerSize(handle, imgName, threshold=0.8,  mult=True):
@@ -395,8 +395,6 @@ def matchResImgInWindowOneSize(handle, imgName, threshold=0.8,  mult=True):
     wLeft, wTop, wRight, wBottom = appGetWindowRect(handle)
     winImg = ImageGrab.grab(bbox=(wLeft, wTop, wRight, wBottom))
 
-    winNowW = wRight-wLeft
-    winNowH = wBottom-wTop
 
     # 对截图缩放，适配资源图片
     toMatchWinImgSrc = cv2.cvtColor(numpy.asarray(winImg), cv2.COLOR_RGB2GRAY)
