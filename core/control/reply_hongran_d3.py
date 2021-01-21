@@ -139,6 +139,8 @@ class ReplyHongranD3(ReplyMapCommon):
                time.sleep(10)
             
             self.commonAction()
+
+            continue
             
             self.findAndClickBoss()
            

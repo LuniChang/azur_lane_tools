@@ -107,7 +107,11 @@ class BaseControl:
         time.sleep(0.5)
         self.clickMacthImg("cat_92_35_96_50.png")
         self.resetCusor()
-       
+
+    def clickReAutoMap(self):
+        # screen.setForegroundWindow(self.handle)
+        self.clickMacthImg("reauto_do.png")
+        self.resetCusor()   
 
     def clickOnGetItems(self):
         screen.setForegroundWindow(self.handle)
@@ -374,12 +378,16 @@ class BaseControl:
                 self._team2BattleCount = self._team2BattleCount+1
 
             print("BattleCount", self._team1BattleCount, self._team2BattleCount)    
+        
+        self.clickReAutoMap()
 
         if self.isNewMission():
             self.leftClickPer(99, 99)
             time.sleep(3)
 
         self.clickToFire()
+
+        
 
     def run(self):
         pass

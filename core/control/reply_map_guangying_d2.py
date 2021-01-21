@@ -9,6 +9,7 @@ import common.screen as screen
 
 
 class ReplyGuangyiD2(ReplyMapCommon):
+    _useGameSelfAuto=False
 
     # 进地图
     def clickMap(self):

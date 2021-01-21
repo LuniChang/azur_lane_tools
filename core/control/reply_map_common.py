@@ -23,6 +23,7 @@ class ReplyMapCommon(BaseControl):
 
     team1BattleMaxCount = 5
     team2BattleMaxCount = 0
+    _useGameSelfAuto=False
 
     def __init__(self, handle, interval):
         self.handle = handle
@@ -280,7 +281,7 @@ class ReplyMapCommon(BaseControl):
     _isNeedKeyMap=False
 
     def needUseKey(self):
-        return self.matchResImgInWindow("usekey_30_26_70_76.png")    
+        return self.matchResImgInWindow("usekey.png")    
     def useKey(self):
         screen.setForegroundWindow(self.handle)
         self.leftClickPer(65,70)
@@ -354,7 +355,7 @@ class ReplyMapCommon(BaseControl):
 
             self.commonAction()
 
-            if self.isInMap():
+            if self.isInMap() and self._useGameSelfAuto:
                 print("isInMap")
                 self.clickPoint()
                 self.findAndBattle()
