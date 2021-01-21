@@ -13,7 +13,7 @@ from control.reply_map_8_1 import ReplyMap81
 from control.reply_map_7_2 import ReplyMap72
 from control.reply_map_guangying_d2 import ReplyGuangyiD2
 from control.reply_map_activity_fuxiangd3 import ReplyMapActivity
-
+from control.reply_map_common_auto import ReplyMapCommonAuto
 import common.screen as screen
 
 
@@ -171,6 +171,21 @@ def iniGuangying(pRow):
             command=replyMapActivity.pause).grid(row=pRow+1, column=3)
 
 iniGuangying(10)   
+
+
+
+
+def iniXunhang(pRow):
+    replyMapActivity= ReplyMapCommonAuto(handle, 5)
+    def startAct():
+       replyMapActivity.start()
+    tk.Button(fm1, text="开始巡航", width=20, height=1,
+            command=startAct).grid(row=pRow+1, column=1)
+    tk.Button(fm1, text="结束巡航", width=20, height=1,
+            command=replyMapActivity.stop).grid(row=pRow+1, column=2)
+
+iniXunhang(11)   
+
 
 
 tk.Label(main, text="工具操作").pack()
