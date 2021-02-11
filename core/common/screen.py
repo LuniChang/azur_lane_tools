@@ -303,12 +303,15 @@ def saveTmpImg(img, hashCode=""):
     img.save(screenPath)
 
 
-def matchResImgInWindow(handle, imgName, threshold=0.8, mult=True, multSize=False):
+def matchResImgInWindow(handle, imgName, threshold=0.8, mult=True, multSize=True):
     # 获取目标图片
-    if multSize:
-      return  matchResImgInWindowPerSize(handle, imgName, threshold, mult)
+    tmp = imgName.split(".")
+    fSplit = tmp[0].split("_")
+    fLen = len(fSplit)
+    if fLen>3:
+      return  matchResImgInWindowPerSize(handle, imgName, threshold, multSize )
     else:
-      return  matchResImgInWindowOneSize(handle, imgName, threshold, mult)
+      return  matchResImgInWindowOneSize(handle, imgName, threshold, multSize)
 
 
 def matchResImgInWindowPerSize(handle, imgName, threshold=0.8,  mult=True):
