@@ -22,14 +22,14 @@ class ReplyMap72(ReplyMapCommon):
         self.resetCusor()
 
     def isAtHome(self):
-        isAtHome= self.matchResImgInWindow("map7/on_map_0_0_30_20.png", 0.4)
+        isAtHome= self.matchResImgInWindow("map7/on_map_0_0_30_20.png", 0.6)
         print("isAtHome",isAtHome)
         return isAtHome
 
-    def isAtInMapReady(self):
-        isAtInMapReady= self.matchResImgInWindow("map7/ready_20_30_80_50.png")
-        print("isAtInMapReady",isAtInMapReady)
-        return isAtInMapReady
+    # def isAtInMapReady(self):
+    #     isAtInMapReady= self.matchResImgInWindow("map7/ready_20_30_80_50.png")
+    #     print("isAtInMapReady",isAtInMapReady)
+    #     return isAtInMapReady
 
     _mapPoints = [
         "map7/point_45_45_55_55.png",

@@ -23,7 +23,7 @@ class ReplyMapCommon(BaseControl):
 
     team1BattleMaxCount = 5
     team2BattleMaxCount = 0
-    _useGameSelfAuto=False
+    _useGameSelfAuto=True
 
     def __init__(self, handle, interval):
         self.handle = handle
@@ -275,7 +275,7 @@ class ReplyMapCommon(BaseControl):
         return False
 
     def isAtInMapReady(self):
-        return False
+        return self.clickMacthImg("onSelectTeam.png")
 
     
     _isNeedKeyMap=False

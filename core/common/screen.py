@@ -375,7 +375,7 @@ def matchResImgInWindowPerSize(handle, imgName, threshold=0.8,  mult=True):
         y = wTop+int((pt[1]+(targetImgHeigth >> 1))*scaleValueW)
         xyList.append((x, y))
 
-    print(xyList[:10])
+    print(imgName+":"+str(xyList[:10]))
     return xyList
 
 
@@ -423,7 +423,7 @@ def matchResImgInWindowOneSize(handle, imgName, threshold=0.8,  mult=True):
         y = wTop+int((pt[1]+(targetImgHeigth >> 1)))
         xyList.append((x, y))
 
-    print(xyList[:10])
+    print("one:"+imgName+":"+str(xyList[:10]))
     return xyList
 
 

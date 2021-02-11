@@ -244,7 +244,7 @@ class BaseControl:
         return onBattleEndCount
 
     def isInMap(self):
-        return self.autoCompareResImgHash("in_map_65_90_100_100.png")
+        return self.matchResImgInWindow("in_map_65_90_100_100.png",0.6)
 
     def onGetSR(self):
 
