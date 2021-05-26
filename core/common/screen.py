@@ -23,23 +23,39 @@ highfreq_factor = 6
 
 #1022*576
 
-TOP_OFFSET = 35
-RIGHT_OFFSET = -1
+TOP_OFFSET = 38
+RIGHT_OFFSET = -39
 
-BOTTOM_OFFSET = -54
+BOTTOM_OFFSET = 0
 LEFT_OFFSET = 1
 
 def getWinHandle():
-    # return win32gui.FindWindow("Qt5QWindowIcon", "碧蓝航线 - MuMu模拟器")
+    return getLeiDianWinHandle()
+
+
+
+def getLeiDianWinHandle():
+    TOP_OFFSET = 38
+    RIGHT_OFFSET = -39
+
+    BOTTOM_OFFSET = 0
+    LEFT_OFFSET = 1
     return win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
 
+
+def getMuMuWinHandle():
+    TOP_OFFSET=40
+    RIGHT_OFFSET=-38
+
+    BOTTOM_OFFSET=-1
+    LEFT_OFFSET=2
+    return win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
 # TOP_OFFSET=40
 # RIGHT_OFFSET=-38
 
 # BOTTOM_OFFSET=-1
 # LEFT_OFFSET=2
-# def getWinHandle():
-#   return win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
+
 
 
 def appGetWindowRect(handle):
