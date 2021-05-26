@@ -18,12 +18,12 @@ class ReplyMapActivity(ReplyMapCommon):
    
     #进地图
     def clickMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(15,35)    
         self.resetCusor()   
 
     def intoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(70,68)    
         self.resetCusor()  
 
@@ -33,7 +33,7 @@ class ReplyMapActivity(ReplyMapCommon):
         return self.matchResImgInWindow("act//map_home_0_0_30_20.png")
 
     def isAtInMapReady(self):
-        return screen.autoCompareResImgHash(self.handle,"act//ready_20_30_80_80.png")
+        return screen.autoCompareResImgHash(self.getHandle(),"act//ready_20_30_80_80.png")
 
    
   
@@ -45,7 +45,7 @@ class ReplyMapActivity(ReplyMapCommon):
         self._teamNum=1
 
         while self._isRun:
-            screen.setForegroundWindow(self.handle)
+            screen.setForegroundWindow(self.getHandle())
            
             #底部菜单hash 
             self.resetCusor() 
@@ -92,7 +92,7 @@ class ReplyMapActivity(ReplyMapCommon):
 
                 
             time.sleep(self.interval)
-            # screen.grabCaptureDir(self.handle,"reply_battle")
+            # screen.grabCaptureDir(self.getHandle(),"reply_battle")
 
 
 

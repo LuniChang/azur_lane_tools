@@ -12,13 +12,12 @@ import common.screen as screen
 
 
 class ReplyMapCommonAuto(BaseControl):
-    def __init__(self, handle, interval):
-        self.handle = handle
+    def __init__(self, interval):
         self.interval = interval
     
     def run(self):
        
-        win32gui.SetForegroundWindow(self.handle)
+        win32gui.SetForegroundWindow(self.getHandle())
         while self._isRun:
             
  

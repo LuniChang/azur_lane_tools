@@ -25,8 +25,8 @@ class ReplyMapCommon(BaseControl):
     team2BattleMaxCount = 0
     _useGameSelfAuto=True
 
-    def __init__(self, handle, interval):
-        self.handle = handle
+    def __init__(self, interval):
+    
         self.interval = interval
 
     _enemys = [
@@ -84,7 +84,7 @@ class ReplyMapCommon(BaseControl):
           random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i], 0.7)
+                self.getHandle(), imgs[i], 0.7)
             if len(xylist) > 0:
                 print("getEnemyLocation",imgs[i])
                 return xylist
@@ -97,7 +97,7 @@ class ReplyMapCommon(BaseControl):
         random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i], 0.7)
+                self.getHandle(), imgs[i], 0.7)
             if len(xylist) > 0:
                 return xylist
 
@@ -134,8 +134,8 @@ class ReplyMapCommon(BaseControl):
         if not self._isScranMap:
 
             winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
+                winHash = screen.winScreenHash(self.getHandle())
                 self.dragPerLeftUp()
 
             self._needResetMap = False
@@ -150,12 +150,12 @@ class ReplyMapCommon(BaseControl):
         # self.scranDragMap()
 
     def scranDragMap(self):  # 全图扫描
-        winHash = screen.winScreenHash(self.handle)
+        winHash = screen.winScreenHash(self.getHandle())
         self._isScranMap = True
         if self._scranDirection == RIGHT:
             self.dragPerRight()
 
-            if screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+            if screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
                 self._nextScranDirection = LEFT
                 self._scranDirection = DOWN
                 return
@@ -164,7 +164,7 @@ class ReplyMapCommon(BaseControl):
             self.dragPerDown()
             # 换方向左右
 
-            if screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+            if screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
                 self._isScranMap = False  # 扫完全图
                 return
 
@@ -173,7 +173,7 @@ class ReplyMapCommon(BaseControl):
         if self._scranDirection == LEFT:
             self.dragPerLeft()
 
-            if screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
+            if screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
                 self._nextScranDirection = RIGHT  # 左边到尽头 下去后往右
                 self._scranDirection = DOWN
                 return
@@ -283,7 +283,7 @@ class ReplyMapCommon(BaseControl):
     def needUseKey(self):
         return self.matchResImgInWindow("usekey.png")    
     def useKey(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(65,70)
 
     _mapPoints = [
@@ -297,7 +297,7 @@ class ReplyMapCommon(BaseControl):
 
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i], 0.8)
+                self.getHandle(), imgs[i], 0.8)
             if len(xylist) > 0:
                 x, y = xylist[0]
                 self.leftClick(x, y)
@@ -312,7 +312,7 @@ class ReplyMapCommon(BaseControl):
         self._team1MoveCount = 0
         self._team2MoveCount = 0
         self._teamNum = 1
-        win32gui.SetForegroundWindow(self.handle)
+        win32gui.SetForegroundWindow(self.getHandle())
         while self._isRun:
             if self._pause:
                 time.sleep(3)

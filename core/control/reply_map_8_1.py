@@ -12,8 +12,7 @@ class ReplyMap81(BaseControl):
   
   
 
-    def __init__(self,handle,interval):
-        self.handle=handle
+    def __init__(self,interval):
         self.interval=interval
 
 
@@ -22,14 +21,14 @@ class ReplyMap81(BaseControl):
    
     #进地图
     def clickMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         win32api.SetCursorPos((self.getPosX(44), self.getPosY(34)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)   
         self.resetCusor()    
 
     def intoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         win32api.SetCursorPos((self.getPosX(70), self.getPosY(68)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)      
@@ -44,7 +43,7 @@ class ReplyMap81(BaseControl):
         return self.matchResImgInWindow("map8//ready_20_30_80_50.png")
 
     def getBossLocation(self):
-        return screen.matchResImgInWindow(self.handle,"map8//boss_48_45_54_55.png")
+        return screen.matchResImgInWindow(self.getHandle(),"map8//boss_48_45_54_55.png")
    
 
    
@@ -55,7 +54,7 @@ class ReplyMap81(BaseControl):
         self._team1MoveCount=0
         self._team2MoveCount=0
         self._teamNum=1
-        win32gui.SetForegroundWindow(self.handle)
+        win32gui.SetForegroundWindow(self.getHandle())
         while self._isRun:
             
            
@@ -243,7 +242,7 @@ class ReplyMap81(BaseControl):
 
                 
             time.sleep(self.interval)
-            # screen.grabCaptureDir(self.handle,"reply_battle")
+            # screen.grabCaptureDir(self.getHandle(),"reply_battle")
 
 
 

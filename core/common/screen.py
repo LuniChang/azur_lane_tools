@@ -14,14 +14,14 @@ import numpy
 hashSize = 8  # 大于8 明汉距离会有很大差异，即使相似图片也会低于0.1
 highfreq_factor = 6
 
-#MUMU
+# MUMU
 # TOP_OFFSET = 35
 # RIGHT_OFFSET = -1
 
 # BOTTOM_OFFSET = -54
 # LEFT_OFFSET = 1
 
-#1022*576
+# 1022*576
 
 TOP_OFFSET = 38
 RIGHT_OFFSET = -39
@@ -29,27 +29,48 @@ RIGHT_OFFSET = -39
 BOTTOM_OFFSET = 0
 LEFT_OFFSET = 1
 
-def getWinHandle():
-    return getLeiDianWinHandle()
+USE_SYS = 1
 
+MAIN_HANDLE = 0
+
+
+def getWinHandle():
+    global MAIN_HANDLE
+    if USE_SYS == 1:
+        MAIN_HANDLE = getLeiDianWinHandle()
+    elif USE_SYS == 2:
+        MAIN_HANDLE = getMuMuWinHandle()
+    else:
+        pass
+
+    return MAIN_HANDLE
 
 
 def getLeiDianWinHandle():
+    global TOP_OFFSET 
+    global RIGHT_OFFSET
+    global BOTTOM_OFFSET
+    global LEFT_OFFSET
+
     TOP_OFFSET = 38
     RIGHT_OFFSET = -39
-
     BOTTOM_OFFSET = 0
     LEFT_OFFSET = 1
+    print("雷电模拟器")
     return win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
 
 
 def getMuMuWinHandle():
+    global TOP_OFFSET 
+    global RIGHT_OFFSET
+    global BOTTOM_OFFSET
+    global LEFT_OFFSET
     TOP_OFFSET=40
     RIGHT_OFFSET=-38
-
     BOTTOM_OFFSET=-1
     LEFT_OFFSET=2
-    return win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
+    print("mumu")
+    return win32gui.FindWindow("Qt5QWindowIcon", "碧蓝航线 - MuMu模拟器")
 # TOP_OFFSET=40
 # RIGHT_OFFSET=-38
 

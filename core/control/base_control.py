@@ -8,6 +8,10 @@ import time
 
 class BaseControl:
 
+    def getHandle(self):
+        print(screen.MAIN_HANDLE)
+        return screen.MAIN_HANDLE
+
     handle = 0
     interval = 5
     _team1BattleCount = 0
@@ -42,13 +46,13 @@ class BaseControl:
 
     def getPosX(self, srcPer):
         srcPer = srcPer*0.01
-        wLeft, wTop, wRight, wBottom = screen.appGetWindowRect(self.handle)
+        wLeft, wTop, wRight, wBottom = screen.appGetWindowRect(self.getHandle())
         width = wRight-wLeft
         return int(wLeft+(width*srcPer))
 
     def getPosY(self, srcPer):
         srcPer = srcPer*0.01
-        wLeft, wTop, wRight, wBottom = screen.appGetWindowRect(self.handle)
+        wLeft, wTop, wRight, wBottom = screen.appGetWindowRect(self.getHandle())
         height = wBottom-wTop
         return int(wTop+(height*(srcPer)))
 
@@ -102,34 +106,34 @@ class BaseControl:
         self.resetCusor()
 
     def clickNeedLeaderCat(self):
-        # screen.setForegroundWindow(self.handle)
+        # screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(93,40)
         time.sleep(0.5)
         self.clickMacthImg("cat_92_35_96_50.png")
         self.resetCusor()
 
     def clickReAutoMap(self):
-        # screen.setForegroundWindow(self.handle)
+        # screen.setForegroundWindow(self.getHandle())
         self.clickMacthImg("reauto_do.png")
         self.resetCusor()   
 
     def clickOnGetItems(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClick(self.getPosX(50), self.getPosY(65))
 
     def battleContinue(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClick(self.getPosX(99), self.getPosY(99))
         self.resetCusor()
 
     def closeNewMission(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(99, 99)
         self.resetCusor()
 
     def switchTeam(self):
         print("switchTeam")
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         # self.leftClickPer(99, 99)#防止任务弹出
         time.sleep(0.5)
         self.leftClickPer(82, 96)
@@ -138,7 +142,7 @@ class BaseControl:
 
     def resetTeamLocation(self, t=3):
         print("resetTeamLocation")
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         # self.leftClickPer(99, 99)#防止任务弹出
         # time.sleep(0.5)
         self.leftClickPer(82, 96)
@@ -149,7 +153,7 @@ class BaseControl:
 
     def moveLeft(self, num=1):
         print("moveLeft")
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(50-num*10, 50)
         self.leftClickPer(50-num*10, 50)
         time.sleep(num)
@@ -169,7 +173,7 @@ class BaseControl:
 
     def moveRight(self, num=1):
         print("moveRight")
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(50+num*10, 50)
         self.leftClickPer(50+num*10, 50)
         time.sleep(num)
@@ -189,7 +193,7 @@ class BaseControl:
 
     def moveUp(self, num=1):
         print("moveUp")
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(50, 50-num*13)
         self.leftClickPer(50, 50-num*13)
         time.sleep(num)
@@ -209,7 +213,7 @@ class BaseControl:
 
     def moveDown(self, num=1):
         print("moveDown")
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(50, 50+num*15)
         self.leftClickPer(50, 50+num*15)
         time.sleep(num)
@@ -249,13 +253,13 @@ class BaseControl:
     def onGetSR(self):
 
         onGetSR = screen.autoCompareResImgHashValue(
-            self.handle, "on_get_sr_70_20_95_60.png") > 0.2
+            self.getHandle(), "on_get_sr_70_20_95_60.png") > 0.2
         print("onGetSR", onGetSR)
         return onGetSR
 
     def onGetSSR(self):
         onGetSSR = screen.autoCompareResImgHashValue(
-            self.handle, "on_get_ssr_70_10_90_50.png") > 0.2
+            self.getHandle(), "on_get_ssr_70_10_90_50.png") > 0.2
         print("onGetSSR", onGetSSR)
         return onGetSSR
 
@@ -264,7 +268,7 @@ class BaseControl:
 
     def clickToFire(self):
         xylist = screen.matchResImgInWindow(
-            self.handle, "to_fire_80_85_95_95.png", 0.8)
+            self.getHandle(), "to_fire_80_85_95_95.png", 0.8)
         if len(xylist) > 0:
             x, y = xylist[0]
             self.leftClick(x, y)
@@ -291,31 +295,31 @@ class BaseControl:
         return self.matchResImgInWindow("on_select_team_78_80_92_88.png")
 
     def intoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClick(self.getPosX(80), self.getPosY(85))
 
     def atTeamIntoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         win32api.SetCursorPos((self.getPosX(80), self.getPosY(85)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
                              win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
         self.resetCusor()
 
     def matchResImgInWindow(self, imgName, threshold=0.8):
-        xylist = screen.matchResImgInWindow(self.handle, imgName, threshold)
+        xylist = screen.matchResImgInWindow(self.getHandle(), imgName, threshold)
         if len(xylist) > 0:
             return True
         else:
             return False
 
     def autoCompareResImgHash(self, img,alikeValue=0.35):
-        return screen.autoCompareResImgHash(self.handle, img,alikeValue)
+        return screen.autoCompareResImgHash(self.getHandle(), img,alikeValue)
 
 
     def clickMacthImg(self,imgPath,threshold=0.9):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         xylist = screen.matchResImgInWindow(
-            self.handle,imgPath,threshold)
+            self.getHandle(),imgPath,threshold)
         if len(xylist) > 0:
             x, y = xylist[0]
             self.leftClick(x, y)
@@ -329,7 +333,7 @@ class BaseControl:
 
     def isSameWin(self):
 
-        nowHash = screen.winScreenHash(self.handle)
+        nowHash = screen.winScreenHash(self.getHandle())
         res = screen.alikeHash(self._currentWinHash,
                                nowHash, 0.6)
         self._currentWinHash = nowHash

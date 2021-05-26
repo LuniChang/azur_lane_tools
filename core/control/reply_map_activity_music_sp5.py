@@ -12,12 +12,12 @@ class ReplyMapActivity(ReplyMapCommon):
 
     # 进地图
     def clickMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(50, 50)
         self.resetCusor()
 
     def intoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(70, 68)
         self.resetCusor()
 
@@ -87,8 +87,8 @@ class ReplyMapActivity(ReplyMapCommon):
     def setTeamPositionToSave(self):
         if self.isInMap():
             winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
+                winHash = screen.winScreenHash(self.getHandle())
                 self.dragPerLeftDown()
 
             time.sleep(5)

@@ -12,12 +12,12 @@ class ReplyMap72(ReplyMapCommon):
 
     # 进地图
     def clickMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(35, 35)
         self.resetCusor()
 
     def intoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(70, 68)
         self.resetCusor()
 
@@ -53,7 +53,7 @@ class ReplyMap72(ReplyMapCommon):
         imgs = self._enemys
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i], 0.8)
+                self.getHandle(), imgs[i], 0.8)
             if len(xylist) > 0:
                 return xylist
 
@@ -63,8 +63,8 @@ class ReplyMap72(ReplyMapCommon):
     def setTeamPositionToSave(self): 
         if self.isInMap():
             winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
+                winHash = screen.winScreenHash(self.getHandle())
                 self.dragPerRightUp()
 
             time.sleep(5)
@@ -79,7 +79,7 @@ class ReplyMap72(ReplyMapCommon):
        
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i], 0.8)
+                self.getHandle(), imgs[i], 0.8)
             if len(xylist) > 0:
                 x, y = xylist[0]
                 self.leftClick(x, y)

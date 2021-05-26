@@ -14,12 +14,12 @@ class ReplyGuangyiD2(ReplyMapCommon):
     # 进地图
     def clickMap(self):
         self._isNeedKeyMap = True
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(33, 75)
         self.resetCusor()
 
     def intoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(70, 68)
         self.resetCusor()
 
@@ -63,8 +63,8 @@ class ReplyGuangyiD2(ReplyMapCommon):
     def setTeamPositionToSave(self):
         if self.isInMap():
             winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
+                winHash = screen.winScreenHash(self.getHandle())
                 self.dragPerLeftUp()
 
             time.sleep(5)

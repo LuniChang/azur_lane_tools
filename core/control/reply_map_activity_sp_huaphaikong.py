@@ -12,20 +12,20 @@ class ReplyMapActivity(ReplyMapCommon):
 
     # 进地图
     def clickMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(65, 65)
         self.resetCusor()
 
     def intoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(70, 68)
         self.resetCusor()
 
     def isAtHome(self):
-        return screen.autoCompareResImgHash(self.handle, "act/sp_huapohaikong/home_0_0_30_20.png", 0.4)
+        return screen.autoCompareResImgHash(self.getHandle(), "act/sp_huapohaikong/home_0_0_30_20.png", 0.4)
 
     def isAtInMapReady(self):
-        return screen.autoCompareResImgHash(self.handle, "act/sp_huapohaikong/ready_30_30_80_50.png")
+        return screen.autoCompareResImgHash(self.getHandle(), "act/sp_huapohaikong/ready_30_30_80_50.png")
 
     _boss = [
         "act/sp_huapohaikong/boss1_50_45_55_55.png",
@@ -48,8 +48,8 @@ class ReplyMapActivity(ReplyMapCommon):
     def setTeamPositionToSave(self):
         if self.isInMap():
             winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
+                winHash = screen.winScreenHash(self.getHandle())
                 self.dragPerRightUp()
 
             time.sleep(5)
@@ -66,7 +66,7 @@ class ReplyMapActivity(ReplyMapCommon):
         self._teamNum = 1
 
         while self._isRun:
-            win32gui.SetForegroundWindow(self.handle)
+            win32gui.SetForegroundWindow(self.getHandle())
             # 底部菜单hash
             self.resetCusor()
             print("isAtHome")
@@ -103,4 +103,4 @@ class ReplyMapActivity(ReplyMapCommon):
                 self.findAndBattle()
 
             time.sleep(self.interval)
-            # screen.grabCaptureDir(self.handle,"reply_battle")
+            # screen.grabCaptureDir(self.getHandle(),"reply_battle")

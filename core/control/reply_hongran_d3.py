@@ -12,8 +12,8 @@ class ReplyHongranD3(ReplyMapCommon):
   
   
 
-    def __init__(self,handle,interval):
-        self.handle=handle
+    def __init__(self,interval):
+    
         self.interval=interval
 
 
@@ -22,14 +22,14 @@ class ReplyHongranD3(ReplyMapCommon):
    
     #进地图
     def clickD3(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         win32api.SetCursorPos((self.getPosX(55), self.getPosY(40)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)    
         self.resetCusor()    
 
     def intoD3(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         win32api.SetCursorPos((self.getPosX(70), self.getPosY(70)))
         win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN |
         win32con.MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)      
@@ -42,7 +42,7 @@ class ReplyHongranD3(ReplyMapCommon):
         return self.matchResImgInWindow("hongran//d3_ready_20_20_80_80.png")
 
     def getBossLocation(self):
-        return screen.matchResImgInWindow(self.handle,"hongran//boss_45_45_55_55.png")
+        return screen.matchResImgInWindow(self.getHandle(),"hongran//boss_45_45_55_55.png")
    
     
 
@@ -59,16 +59,16 @@ class ReplyHongranD3(ReplyMapCommon):
     def setTeamPositionToSave(self): 
         if self.isInMap():
             winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
+                winHash = screen.winScreenHash(self.getHandle())
                 self.dragPerRightUp()
 
             time.sleep(5)
             self.leftClickPer(25, 97)
             time.sleep(15)
 
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
+                winHash = screen.winScreenHash(self.getHandle())
                 self.dragPerRightDown()
 
             time.sleep(5)
@@ -80,8 +80,8 @@ class ReplyHongranD3(ReplyMapCommon):
     def setTeamPositionToBoss(self,code): 
         if self.isInMap():
             winHash = ""
-            while not screen.alikeHash(winHash, screen.winScreenHash(self.handle), 0.8):
-                winHash = screen.winScreenHash(self.handle)
+            while not screen.alikeHash(winHash, screen.winScreenHash(self.getHandle()), 0.8):
+                winHash = screen.winScreenHash(self.getHandle())
                 if code ==1:
                    self.dragPerRightUp()
                 else:
@@ -105,7 +105,7 @@ class ReplyHongranD3(ReplyMapCommon):
         self._team2MoveCount=0
         self._teamNum=1
      
-        win32gui.SetForegroundWindow(self.handle)
+        win32gui.SetForegroundWindow(self.getHandle())
         while self._isRun:
             
            
@@ -343,7 +343,7 @@ class ReplyHongranD3(ReplyMapCommon):
             self.findAndClickBoss()
 
             time.sleep(self.interval)
-            # screen.grabCaptureDir(self.handle,"reply_battle")
+            # screen.grabCaptureDir(self.getHandle(),"reply_battle")
 
 
 

@@ -12,23 +12,22 @@ class ReplySpcEssexD3(BaseControl):
 
     assignLevel = 0
 
-    def __init__(self, handle, interval):
-        self.handle = handle
+    def __init__(self, interval):
         self.interval = interval
 
     def onSelectTeam(self):
         print("onSelectTeam")
-        return screen.autoCompareResImgHash(self.handle, "spc_essex//on_select_team_78_82_90_88.png")
+        return screen.autoCompareResImgHash(self.getHandle(), "spc_essex//on_select_team_78_82_90_88.png")
 
     def onReady(self):
-        return screen.autoCompareResImgHash(self.handle, "spc_essex//ready_80_84_96_94.png")
+        return screen.autoCompareResImgHash(self.getHandle(), "spc_essex//ready_80_84_96_94.png")
 
     def clickBattle(self):
         self.leftClickPer(85, 90)
 
     def isAtHome(self):
         print("isAtHome")
-        return screen.autoCompareResImgHash(self.handle, "spc_essex//at_home_10_10_50_30.png")
+        return screen.autoCompareResImgHash(self.getHandle(), "spc_essex//at_home_10_10_50_30.png")
 
     def clickEx(self):
         self.leftClickPer(90, 20)
@@ -43,13 +42,13 @@ class ReplySpcEssexD3(BaseControl):
         self.leftClickPer(90, 70)
     def onBattleEndCount(self):
         return self.matchResImgInWindow("battle_end_68_86_92_96.png")\
-            or screen.autoCompareResImgHash(self.handle,"battle_end2_68_86_92_96.png")
+            or screen.autoCompareResImgHash(self.getHandle(),"battle_end2_68_86_92_96.png")
 
 
     def run(self):
         battleCount = 0
         toBattleLevel = 2
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         while self._isRun:
            
 
@@ -110,4 +109,4 @@ class ReplySpcEssexD3(BaseControl):
                 time.sleep(3)
 
             time.sleep(self.interval)
-            # screen.grabCaptureDir(self.handle,"reply_battle")
+            # screen.grabCaptureDir(self.getHandle(),"reply_battle")

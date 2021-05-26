@@ -12,20 +12,20 @@ class ReplyMapActivity(ReplyMapCommon):
 
     # 进地图
     def clickMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(70, 51)
         self.resetCusor()
 
     def intoMap(self):
-        screen.setForegroundWindow(self.handle)
+        screen.setForegroundWindow(self.getHandle())
         self.leftClickPer(70, 68)
         self.resetCusor()
 
     def isAtHome(self):
-        return screen.autoCompareResImgHash(self.handle, "diehai/map_0_0_30_20.png", 0.4)
+        return screen.autoCompareResImgHash(self.getHandle(), "diehai/map_0_0_30_20.png", 0.4)
 
     def isAtInMapReady(self):
-        return screen.autoCompareResImgHash(self.handle, "diehai/ready_20_30_80_80.png")
+        return screen.autoCompareResImgHash(self.getHandle(), "diehai/ready_20_30_80_80.png")
 
     _ht6Enemys = [
         "diehai/enemy/9abb636ada8a8515_47_47_54_54.png",
@@ -73,7 +73,7 @@ class ReplyMapActivity(ReplyMapCommon):
         # random.shuffle(imgs)
         for i in range(len(imgs)):
             xylist = screen.matchResImgInWindow(
-                self.handle, imgs[i], 0.7)
+                self.getHandle(), imgs[i], 0.7)
             if len(xylist) > 0:
                 return xylist
 
