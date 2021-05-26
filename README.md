@@ -13,3 +13,6 @@ pip install PIL   (for 3.7 pip install pillow)
 pip install imagehash
 
 pip install opencv-python
+
+
+-i   https://pypi.tuna.tsinghua.edu.cn/simple

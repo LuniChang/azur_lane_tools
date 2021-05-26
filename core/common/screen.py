@@ -14,15 +14,24 @@ import numpy
 hashSize = 8  # 大于8 明汉距离会有很大差异，即使相似图片也会低于0.1
 highfreq_factor = 6
 
+#MUMU
+# TOP_OFFSET = 35
+# RIGHT_OFFSET = -1
+
+# BOTTOM_OFFSET = -54
+# LEFT_OFFSET = 1
+
+#1022*576
+
 TOP_OFFSET = 35
 RIGHT_OFFSET = -1
 
 BOTTOM_OFFSET = -54
 LEFT_OFFSET = 1
 
-
 def getWinHandle():
-    return win32gui.FindWindow("Qt5QWindowIcon", "碧蓝航线 - MuMu模拟器")
+    # return win32gui.FindWindow("Qt5QWindowIcon", "碧蓝航线 - MuMu模拟器")
+    return win32gui.FindWindow("LDPlayerMainFrame", "雷电模拟器")
 
 # TOP_OFFSET=40
 # RIGHT_OFFSET=-38

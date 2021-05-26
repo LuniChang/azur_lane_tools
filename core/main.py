@@ -36,6 +36,7 @@ def resetHandle():
     replyHongRanD3.handle = handle
     replySpcEssex.handle = handle
     replyMap81.handle = handle
+    replyMapActivity.handle = handle
 
 main.title("碧蓝航线工具")
 main.geometry("600x780")
